@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context/>
+  <aml:Item time="0">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="1.00" elicitor="Test"/>
+    </aml:AffectInput>
+  </aml:Item>
+</aml:AffectScript>

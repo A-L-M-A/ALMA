@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Bruno setzen sich für die artgerechte Haltung von Hühnern ein und sind einem skrupellosen Hühnerbauer auf der Spur. Sie schleichen sich abends in eine seiner Hühnerfarmen, um Beweisfotos zu machen ...</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:Context>Bruno: Ach, Quatsch. Es ist mitten in der Nacht, was soll da passieren?</aml:Context>
+  </aml:Item>
+  <aml:Item time="2500">
+    <aml:Context>Anne: Okay, wenn du meinst. Ich fang' dann mal an zu fotografieren.</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="ConjureBad" intensity="0.90" elicitor="Erwischt werden"/>
+    </aml:AffectInput>
+    <aml:Context>Ich hab kein gutes Gefühl. Sei bitte leise! Wenn wir erwischt werden, sitzen wir echt in der Tinte. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="PointToUgliness" intensity="0.80" elicitor="Eklige Hühnerkäfige"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Man, sind das eklige Käfige hier, ich meine das kann doch keinem Huhn gefallen, oder was meinst du? [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="6500">
+    <aml:Context>(Kurze Zeit später geht plötzlich das Licht an)</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadUnlikelyFutureEvent" intensity="0.20" elicitor="Erwischt werden"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="ConfirmConjuredBad" intensity="0.40" elicitor="Erwischt werden"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Mist, der Bauer kommt! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Action type="BadActOther" intensity="0.90" elicitor="Böser Bauer"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Für das, was der den Hühnern täglich antut, [signal] sollte man ihn auch in so einen Käfig sperren.</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Chide" intensity="0.50" elicitor="Keine Reden schwingen"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Los, lass uns abhauen und schwing' jetzt keine Reden, sonst fliegen wir wegen dir noch auf. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:Context>Bruno: Ja, ja, ich bin doch schon unterwegs.</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Bruno gehen in den neuen Film mit Weissenegger und treffen sich vor dem Kino.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Encourage" intensity="0.50" elicitor="film"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Hi Bruno, Clementine war gestern schon drin und hat mir gesagt, dass du bestimmt nicht enttäuscht sein wirst. Soll gut sein! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:Context>Bruno: Hi! Na, jetzt bin ich aber gespannt auf den Film.</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringBadNews" intensity="0.90" elicitor="film"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Moment, hier auf dem Plakat steht, dass es ein Western sein soll. Du magst doch keine Western. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:Context>Bruno: Komisch. Und Clementine meint, dass mir der Film gefällt? Na ja, probieren geht über studieren. Lass uns reingehen!</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:Context>(Wenige Minuten nachdem der Film begonnen hat)</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Excuse" intensity="0.70" elicitor="bad things happen"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Also, ich hab' schon mal bessere Dialoge gehört. Sorry, dass ich dich da mit 'reingeschleppt hab'. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Console" intensity="0.80" elicitor="bad things are not bad"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Hey, du kannst doch gar nichts dafür. Clementine hat den Film empfohlen - nicht du! [signal] Vielleicht wird er ja noch besser.</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:Context>Anne: Ja, warten wir's mal ab.</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:Context>(Nach einer gewissen Zeit)</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEventForBadOther" intensity="1.00" elicitor="giggeling voices"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Man ist der Film öde. Den Quasselstrippen hinter uns scheint's auch nicht zu gefallen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:Context>Anne: Hm, Geschmäcker sind eben verschieden.</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="0.40" elicitor="hope for end"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Stimmt, hoffentlich geht er nicht mehr so lang', jetzt wo der Held gerade erschossen wurde. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringBadNews" intensity="0.90" elicitor="hope for end"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Nein schau, das haben wir leider nur gedacht. Jetzt steht er wieder auf. Nach der Programmankündigung dauert es außerdem noch mindestens eine Stunde. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:Context>Bruno: Na ja, zumindest weiß ich, dass alles endlich ist.</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:Context>Anne: Hier hast Du was zu knabbern ...</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

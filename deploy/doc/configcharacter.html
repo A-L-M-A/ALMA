@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+  <title>Configuration of Characters</title>
+  <style type="text/css">
+  <!--
+    body  { font-size:12pt;
+            font-family:Helvetica,Arial,sans-serif;}
+    ul,li { font-size:12pt;
+            font-family:Helvetica,Arial,sans-serif;}
+    -->
+  </style>
+</head>
+<body bgcolor="white">
+<table>
+      <tr>
+	<td width="100%" align="left">
+          <h1>Configuration of Characters</h1>
+        </td>
+	<td width="80px">&nbsp;</td>
+	<td align="right"><a href="index.html"><img border="0"
+	      src="docs/pics/upto.gif"></a></td>
+      </tr>
+</table>
+
+The configuration of characters and groups can be done by editing an ALMA
+character definition AML file (e.g. conf/CharacterDefinition.aml) with a common
+text editor. Also, this can be done with the CharacterBuilder tool. Therefore,
+select the character or the group which has to be configured by the menu. If 
+there is no character, create a <a href="menu.html">new character</a>.
+
+In this section the configuration of the parameters relevant for the affect
+computation of characters are described. The configuration of groups is somehow
+similar, but lacks the definition of a personality. For the definition of a
+group at least 2 characters have to be created.
+
+<h2>Personality</h2>
+
+For the affect computation in ALMA, the personality of a character has to be
+defined by selecting a value for 5 personality traits: openness,
+conscientiousness, extraversion, agreeableness, and neuroticism. Negative values
+represent a weak characteristic; whereas positive values represent a strong
+characteristic. In the ALMA affect computation the personality values are used
+as predefined static knowledge.
+<br><br>
+<img src="docs/pics/characterconfig-personality.png">
+<br><br> 
+The personality trait values influence the definition of a character's default 
+mood and the intensity bias for emotions. The influence can be observed online 
+via the <a href="affectmonitor.html">Affect Monitor</a>.
+
+The personality configuration window shows 3 other parameters:
+<ul>
+<li><b>Personality Influence</b> (below the personality traits). The higher this value,
+the more the personality influence the emotion's intensity bias. The default
+value is 0.2.</li>
+<li><b>Character Description</b> (on the right side). An informal description of a
+character can be given in a separate text area.</li>
+<li><b>Runtime Configuration</b> (right, down). If <i>Show runtime affect monitor</i> is
+selected, an <a href="affectmonitor.html">Affect Monitor</a> window for the
+character will be displayed during runtime.</li>
+</ul>
+
+Changes are available instantly.<br>
+<b>Important: To keep the changes permanently, press the Apply-Button and
+save them via the
+<a href="menu.html">File-Save-Character Specification menu</a>.</b>
+
+<h2>Appraisal</h2>
+
+The computation of mood relies on the elicitation of emotions. In ALMA emotions
+are the result of a cognitive appraisal of a situation. The emotion elicitation 
+and their intensity computation are based on an extended approach of the OCC
+emotion and appraisal theory. In order to simplify the emotion elicitation
+process, a basic appraisal language has been developed. <b>Appraisal Tags</b> are 
+shortcuts to OCC variables of emotion eliciting conditions. The appraisal of 
+dialog contributions, can be done with dialog act based appraisal language using
+<b>Dialog Act Tags</b>. Both, can be configured in a character' Appraisal 
+window. 
+
+<br><br>
+<img src="docs/pics/characterconfig-appraisal.png">
+
+<h3>Appraisal Tags</h3>
+In general, there are 18 <b>appraisal tags</b> a character can use to
+appraise a situation from its individual point of view. Based on this appraisal
+emotions are generated according to the OCC emotion model: 
+<ul>
+<li><b>GoodEvent</b></li> 
+<li><b>GoodEventForGoodOther</b></li>
+<li><b>GoodEventForGoodOther</b></li>
+<li><b>BadEvent</b></li>
+<li><b>BadEventForGoodOther</b></li>
+<li><b>BadEventForBadOther</b></li>
+<li><b>GoodLikelyFutureEvent</b></li>
+<li><b>GoodUnlikelyFutureEvent</b></li>
+<li><b>BadLikelyFutureEvent</b></li>
+<li><b>BadUnlikelyFutureEvent</b></li>
+<li><b>EventConfirmed</b></li>
+<li><b>EventDisconfirmed</b></li>
+<li><b>GoodActSelf</b></li>
+<li><b>GoodActOther</b></li>
+<li><b>BadActSelf</b></li>
+<li><b>BadActOther</b></li>
+<li><b>NiceThing</b></li>
+<li><b>NastyThing</b></li>
+</ul>
+
+By these tags and their combination all 
+<a href="emotionelicitation.html">24 types of emotion</a> of the OCC model can
+be elicited.
+<br><br>
+On the left side of the Appraisal window, a character's individual
+appraisal schema can be defined. Below each appraisal tag, the corresponding 
+OCC variables and values are shown. The values can be changed by a slider.
+This allows, that a character appraises e.g. a <b>BadActOther</b> less
+intensive than another character.
+<br><br>
+Changes are available after restarting ALMA.<br>
+<b>Important: To keep the changes permanently, press the Apply-Button and
+save them via the
+<a href="menu.html">File-Save-Character Specification menu</a>.</b>
+
+<h3>Dialog Act Appraisal</h3>
+
+Emotions can be elicited by utterances. ALMA provides an interface that allows
+elicit/compute emotions by dialog acts - the intentional content of an
+utterance. Before this can be done, the <a href="globalconfig.html">allowed
+dialog acts</a> have to be specified.
+
+The definition of the Dialog Act appraisal rule depends of the character's role
+in a dialog. In general, 3 roles are distinguished. Related acts are stored in
+different tabs (see right side):
+<ul>
+<li><b>Speaker</b>. Related acts are marked as <b>SelfActs</b></li>
+<li><b>Addressee</b>. Related acts are marked as <b>DirectActs</b> </li>
+<li><b>Hearer</b>. Related acts are marked as <b>IndirectActs</b></li>
+</ul>
+For each role, a different appraisal rule has to be defined (if needed!).
+First, select the role/act category (e.g. <b>SelfActs</b>) on the right
+side of the window.<br><br>
+By the pop-down menu in the middle, the dialog act can be selected. Choose the
+desired one and create an empty appraisal rule by pressing the Add-button.
+<br><br>
+Now, the Dialog Act has to be appraised with an Appraisal Tag. Therefore, drag
+a tag from the left side into the appraisal rule body in the middle of the 
+window. Additional tags can be dragged too! Remember to every combination of
+tags is reasonable. This <a href="emotionelicitation.html">overview</a> shows
+the valid combinations of tags.
+<br><br>
+Changes are available after restarting ALMA.<br>
+<b>Important: To keep the changes permanently, press the Apply-Button and
+save them via the
+<a href="menu.html">File-Save-Character Specification menu</a>.</b>
+
+<h2>Affect Computation</h2>
+
+The computation of emotions and mood in ALMA is highly adjustable. The emotion 
+decay time and function, as well as the computation update interval can be 
+selected. For the mood computation, the return time to the default mood and the computation update interval can be selected.<br>
+<b>Important: Selecting a short (e.g. 10ms) computation update interval will lead
+to a higher computational load!</b>
+<br><br>
+<img src="docs/pics/characterconfig-computation.png">
+<br><br>
+For the emotion computation, a simulation panel visualizes the current
+parameters by a decay graph. 
+<br><br>
+Changes are available after pressing the Apply-Button.<br>
+<b>Important: To keep the changes permanently, press the Apply-Button and
+save them via the <a href="menu.html">File-Save-Character Specification menu</a>.</b>
+
+    <hr>
+    <span style="font-size:8pt"> ALMA Help - Version 1.3 -
+      07.05.2008<br> Author: Patrick Gebhard
+    </span>
+  </body>
+</html>

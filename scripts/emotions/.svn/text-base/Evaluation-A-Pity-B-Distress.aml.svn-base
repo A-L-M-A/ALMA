@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Bruno sind Nachbarn. Sie wohnen an einer stark befahrenen Straße. Brunos Katze ist überfahren worden.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEvent" intensity="0.70" elicitor="Dead cat"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Anne, heute ist meine Katze überfahren worden. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Console" intensity="0.70" elicitor="Dead Cat"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Oh nein! Das tut mir leid. Wenn ich was für dich tun kann, sag' Bescheid, ich bin da. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

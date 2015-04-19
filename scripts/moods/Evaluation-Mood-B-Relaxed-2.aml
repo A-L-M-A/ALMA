@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno arbeitet an einer künstlichen Netzhaut. Heute stellt er ihn der Öffentlichkeit vor.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="1.00" elicitor="artificial retina"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Anne schau mal! Die künstliche Netzhaut, die ich entwickelt habe, verbraucht nur sehr wenig Strom. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="PraiseAction" intensity="1.00" elicitor="artificial retina"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Super, damit hast du die prinzipiellen Energieprobleme gelöst, die damit verbunden sind. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:Context>Bruno: Das ging nur durch die neu entworfenen künstlichen Netzhautzellen.</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="PraiseAction" intensity="0.70" elicitor="artificial retina"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Tja, Du bist schon ein cleveres Kerlchen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8500">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.80" elicitor="first people which did it"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Das Tolle an dem ganzen Trubel ist, dass wir jetzt endlich auch von anderen Forschungsinstituten respektiert werden! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Admire" intensity="1.00" elicitor="first people which did it"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ich glaube kein anderer hätte das mit den heutigen Mitteln hinbekommen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="WishGood" intensity="0.60" elicitor="thank"/>
+    </aml:AffectInput>
+    <aml:Context>Glückwunsch! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.80" elicitor="new good encounter"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Du glaubst es kaum, heute hat mich einer von der ESA angerufen, die wollen das in einen Roboter einbauen. Super, oder? [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="16000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="PraiseAction" intensity="0.80" elicitor="new good encounter"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Mensch klasse ... Durch dein Engagement bekommen wir mehr Forschungsgelder. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="18000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="0.70" elicitor="new computer"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Und ich kann mir endlich einen neuen Computer kaufen.  [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="20000">
+    <aml:Context>Anne: Genau!</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne assoziiert mit Schweden eine besonders schöne Landschaft.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="CrazyAboutSwedenBeauty" intensity="0.60" elicitor="Schweden ist so schön"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Du Bruno, ich muss dir sagen: Schweden ist einfach ein Traum. Wahnsinn! [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

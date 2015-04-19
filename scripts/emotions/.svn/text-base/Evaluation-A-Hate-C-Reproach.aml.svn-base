@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Clementine sind Klassensprecherinnen. Anne findet Clementine total häßlich und mag ihre Art nicht. In der Pause sagt Anne Clementine vor allen anderen sie von ihr hält.
+	Clementine und Anne mögen sich nicht</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Clementine"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Object type="NastyThing" intensity="0.60" elicitor="Nasty Clementine"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: (denkt) Clementine und ihre blöden Hippie-Klamotten. Ich bekomm schon beim bloßen Hinschauen Kopfschmerzen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Clementine" listener="" type="Insult" intensity="0.70" elicitor="Nasty Clementine"/>
+    </aml:AffectInput>
+    <aml:Context>sagt: Hey, Clementine, was ich dir schon immer mal sagen wollte: Meld' dich mal zum Knigge-Kurs an - dein "Heile-Welt-Hippie-Getue" geht mir echt auf den Nerv! [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

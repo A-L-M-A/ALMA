@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Basic EEC test</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="self" elicitor="d1"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Joy</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="-1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="self" elicitor="d2"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Distress</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="1.0" agency="other" elicitor="d3"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Happy-For</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="-1.0" agency="other" elicitor="d4"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Resentment</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="-1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="-1.0" agency="other" elicitor="d5"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Gloating</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="-1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="1.0" agency="other" elicitor="d5"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Pity</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="1.0" realization="0.0" liking="0.0" agency="self" elicitor="d6"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Hope</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="-1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="1.0" realization="0.0" liking="0.0" agency="self" elicitor="d7"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Fear</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="1.0" realization="0.0" liking="0.0" agency="self" elicitor="d8.1"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Satisfaction - Phase 1 Hope</aml:Context>
+  </aml:Item>
+  <aml:Item time="9050">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="1.0" liking="0.0" agency="self" elicitor="d8.1"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Satisfaction - Confirmation</aml:Context>
+  </aml:Item>
+ <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="1.0" realization="0.0" liking="0.0" agency="self" elicitor="d8.2"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Disappointment - Phase 1 Hope</aml:Context>
+  </aml:Item>
+  <aml:Item time="10050">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="-1.0" liking="0.0" agency="self" elicitor="d8.2"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Disappointment - Confirmation</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="-1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="1.0" realization="0.0" liking="0.0" agency="self" elicitor="d8.3"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Fears-Confirmed - Phase 1 Fear</aml:Context>
+  </aml:Item>
+  <aml:Item time="11050">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="1.0" liking="0.0" agency="self" elicitor="d8.3"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Fears-Confirmed - Confirmation</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="-1.0" praiseworthiness="0.0" appealingness="0.0" likelihood="1.0" realization="0.0" liking="0.0" agency="self" elicitor="d8.4"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Relief - Phase 1 Fear</aml:Context>
+  </aml:Item>
+  <aml:Item time="12050">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="0.0" appealingness="0.0" likelihood="0.0" realization="-1.0" liking="0.0" agency="self" elicitor="d8.4"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Relief - Confirmation</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="1.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="self" elicitor="p1"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Pride</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="-1.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="self" elicitor="p2"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Shame</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="1.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="other" elicitor="p3"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Admiration</aml:Context>
+  </aml:Item>
+  <aml:Item time="16000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="-1.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="other" elicitor="p4"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Reproach</aml:Context>
+  </aml:Item>
+  <aml:Item time="17000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="1.0" praiseworthiness="1.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="self" elicitor="dp1"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Gratification</aml:Context>
+  </aml:Item>
+  <aml:Item time="18000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="-1.0" praiseworthiness="-1.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="self" elicitor="dp2"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Remorse</aml:Context>
+  </aml:Item>
+  <aml:Item time="19000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="1.0" praiseworthiness="1.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="other" elicitor="dp3"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Gratitude</aml:Context>
+  </aml:Item>
+  <aml:Item time="20000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="-1.0" praiseworthiness="-1.0" appealingness="0.0" likelihood="0.0" realization="0.0" liking="0.0" agency="other" elicitor="dp4"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Anger</aml:Context>
+  </aml:Item>
+  <aml:Item time="21000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="0.0" appealingness="1.0" likelihood="0.0" realization="0.0" liking="0.0" agency="self" elicitor="a1"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Liking</aml:Context>
+  </aml:Item>
+  <aml:Item time="22000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="0.0" appealingness="-1.0" likelihood="0.0" realization="0.0" liking="0.0" agency="self" elicitor="a2"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Disliking</aml:Context>
+  </aml:Item>
+  <aml:Item time="23000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="1.0" appealingness="1.0" likelihood="0.0" realization="0.0" liking="0.0" agency="other" elicitor="pa1"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Love</aml:Context>
+  </aml:Item>
+  <aml:Item time="24000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:BasicEEC desirability="0.0" praiseworthiness="-1.0" appealingness="-1.0" likelihood="0.0" realization="0.0" liking="0.0" agency="other" elicitor="pa2"/>
+    </aml:AffectInput>
+    <aml:Context>EEC for Hate</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

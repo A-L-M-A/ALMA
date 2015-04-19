@@ -1,0 +1,1702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Patrick Gebhard (DFKI GmbH) -->
+<!--Version 1.1, 10.11.2004-->
+<!--Copyright Patrick Gebhard, 2004-->
+<xs:schema targetNamespace="xml.affect.de" xmlns="xml.affect.de" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="AffectComputation">
+		<xs:annotation>
+			<xs:documentation>Contains all data needed by the affect computation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AvailableActs">
+					<xs:annotation>
+						<xs:documentation>Lists all available acts</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ActSpecification" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="use" type="xs:boolean" use="required"/>
+									<xs:attribute name="docu" type="xs:string" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AvailableEmotions">
+					<xs:annotation>
+						<xs:documentation>Lists all available emotions</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EmotionSpecification" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="EmotionName" use="required"/>
+									<xs:attribute name="use" type="xs:boolean" use="required"/>
+									<xs:attribute name="docu" type="xs:string" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MoodRelations">
+					<xs:annotation>
+						<xs:documentation>Defines the relationship between emotions and personality traits and the mood dimensions</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="OpennessRelation">
+								<xs:complexType>
+									<xs:attribute name="pleasure" type="SignedIntensity" use="required"/>
+									<xs:attribute name="arousal" type="SignedIntensity" use="required"/>
+									<xs:attribute name="dominance" type="SignedIntensity" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ConscientiousnessRelation">
+								<xs:complexType>
+									<xs:attribute name="pleasure" type="SignedIntensity" use="required"/>
+									<xs:attribute name="arousal" type="SignedIntensity" use="required"/>
+									<xs:attribute name="dominance" type="SignedIntensity" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ExtraversionRelation">
+								<xs:complexType>
+									<xs:attribute name="pleasure" type="SignedIntensity" use="required"/>
+									<xs:attribute name="arousal" type="SignedIntensity" use="required"/>
+									<xs:attribute name="dominance" type="SignedIntensity" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AgreeablenessRelation">
+								<xs:complexType>
+									<xs:attribute name="pleasure" type="SignedIntensity" use="required"/>
+									<xs:attribute name="arousal" type="SignedIntensity" use="required"/>
+									<xs:attribute name="dominance" type="SignedIntensity" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="NeurotismRelation">
+								<xs:complexType>
+									<xs:attribute name="pleasure" type="SignedIntensity" use="required"/>
+									<xs:attribute name="arousal" type="SignedIntensity" use="required"/>
+									<xs:attribute name="dominance" type="SignedIntensity" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="EmotionRelation" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="EmotionName" use="required"/>
+									<xs:attribute name="pleasure" type="SignedIntensity" use="required"/>
+									<xs:attribute name="arousal" type="SignedIntensity" use="required"/>
+									<xs:attribute name="dominance" type="SignedIntensity" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="docu" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PersonalityRelations">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PleasureRelation" type="PersonalityType"/>
+							<xs:element name="ArousalRelation" type="PersonalityType"/>
+							<xs:element name="DominanceRelation" type="PersonalityType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RealtimeOutput">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="FileLog">
+								<xs:complexType>
+									<xs:attribute name="enable" type="xs:boolean" use="required"/>
+									<xs:attribute name="file" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ConsoleLog">
+								<xs:complexType>
+									<xs:attribute name="enable" type="xs:boolean" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="enable" type="xs:boolean" use="required"/>
+						<xs:attribute name="period" type="xs:int" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RuntimeInteractionMonitor">
+					<xs:complexType>
+						<xs:attribute name="enabled" type="xs:boolean" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AffectDefinition">
+		<xs:annotation>
+			<xs:documentation>Contains all necessary basics for processing affect related signals</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CharacterAffect" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Specification of personality, mood features and subjective appraisal</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PersonalitySpecification">
+								<xs:annotation>
+									<xs:documentation>Personality defines the long term characteristics of people by traits. They give clues how people will be behave in terms of their manner, type and degree of motivation, prevelent mood, relation to other people</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="PersonalityType">
+											<xs:attribute name="derived" type="xs:boolean" use="optional"/>
+											<xs:attribute name="emotioninfluence" type="Intensity" use="required"/>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MoodSpecification">
+								<xs:annotation>
+									<xs:documentation>Defines in which way a character generates mood</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="decaytime" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:long">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minInclusive value="0"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="decayperiod" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="0"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="neurotismstability" type="xs:boolean" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="EmotionSpecification">
+								<xs:annotation>
+									<xs:documentation>Defines in which way a character generates emotions TODO: baseline should be maxbaseline</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="decaytime" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:long">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minInclusive value="0"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="decayperiod" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="0"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="decayfunction" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="collapse"/>
+												<xs:pattern value="linear"/>
+												<xs:pattern value="exponential"/>
+												<xs:pattern value="hyperbolic"/>
+												<xs:enumeration value="linear"/>
+												<xs:enumeration value="exponential"/>
+												<xs:enumeration value="hyperbolic"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="baseline" type="Intensity" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Appraisal">
+								<xs:annotation>
+									<xs:documentation>Defines in which way the character appraises signals, that are relevant for affect</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Basic">
+											<xs:annotation>
+												<xs:documentation>Appraisal of events, actions and objects </xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="GoodEvent">
+														<xs:annotation>
+															<xs:documentation>Pleased about an desirable event</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodEventForGoodOther">
+														<xs:annotation>
+															<xs:documentation>Pleased about an event presumed to be desirable for someone else</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+															<xs:attribute name="liking" type="Liking" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodEventForBadOther">
+														<xs:annotation>
+															<xs:documentation>Displeased about an event presumed to be desirable for someone else</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+															<xs:attribute name="liking" type="Disliking" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadEvent">
+														<xs:annotation>
+															<xs:documentation>Displeased about an undesirable event</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadEventForGoodOther">
+														<xs:annotation>
+															<xs:documentation>Pleased about an event presumed to be desirable for someone else</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+															<xs:attribute name="liking" type="Liking" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadEventForBadOther">
+														<xs:annotation>
+															<xs:documentation>Displeased about an event presumed to be desirable for someone else</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+															<xs:attribute name="liking" type="Disliking" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodLikelyFutureEvent">
+														<xs:annotation>
+															<xs:documentation>Pleased about an desirable likely event in the future</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+															<xs:attribute name="likelihood" type="Likelihood" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodUnlikelyFutureEvent">
+														<xs:annotation>
+															<xs:documentation>Pleased about an desirable unlikely event in the future</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+															<xs:attribute name="likelihood" type="Unlikelihood" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadLikelyFutureEvent">
+														<xs:annotation>
+															<xs:documentation>Displeased about an undesirable likely event in the future</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+															<xs:attribute name="likelihood" type="Likelihood" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadUnlikelyFutureEvent">
+														<xs:annotation>
+															<xs:documentation>Displeased about an undesirable unlikely event in the future</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+															<xs:attribute name="likelihood" type="Unlikelihood" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="EventConfirmed">
+														<xs:annotation>
+															<xs:documentation>Confirmation of an event</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="realization" type="xs:string" use="required" fixed="true"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="EventDisconfirmed">
+														<xs:annotation>
+															<xs:documentation>Disconfirmation of an event</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="realization" type="xs:string" use="required" fixed="false"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodActSelf">
+														<xs:annotation>
+															<xs:documentation>Approving of one's own praiseworthy action</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="self"/>
+															<xs:attribute name="praiseworthiness" type="Praiseworthiness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodActOther">
+														<xs:annotation>
+															<xs:documentation>Approving of someone else's praiseworthy action</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="praiseworthiness" type="Praiseworthiness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadActSelf">
+														<xs:annotation>
+															<xs:documentation>Approving of one's own blameoworthy action</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="self"/>
+															<xs:attribute name="praiseworthiness" type="Blameworthiness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadActOther">
+														<xs:annotation>
+															<xs:documentation>Approving of someone else's blameworthy action</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="praiseworthiness" type="Blameworthiness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="NiceThing">
+														<xs:annotation>
+															<xs:documentation>Liking an appealing object</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="appealingness" type="Appealingness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="NastyThing">
+														<xs:annotation>
+															<xs:documentation>Disliking an unappealing object</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="appealingness" type="Disappealingness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="SelfAct" type="SelfActType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Appraisal of own acts</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="DirectAct" type="DirectActType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Appraisal of other character's acts</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="IndirectAct" type="IndirectActType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Appraisal of other character's acts</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="SelfEmotion" type="SelfEmotionType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Self emotion appraisal defines in which way a character appraises the expression of own emotions</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="IndirectEmotion" type="IndirectEmotionType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>External emotion appraisal defines in which way a character appraises the expression of emotions of other characters</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="SelfMood" type="SelfMoodType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Self emotion appraisal defines in which way a character appraises the expression of own emotions</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="IndirectMood" type="IndirectMoodType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>External emotion appraisal defines in which way a character appraises the expression of emotions of other characters</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="internalAffectAppraisal" type="xs:boolean" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="monitored" type="xs:boolean" use="optional"/>
+						<xs:attribute name="docu" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="GroupAffect" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Specification of a group's affect. A group allways has neutral personality and neutral mood. The appraisal is influcenced by the actor's personality. A group is allways addressed as listener. A group can be seen as an abstract character. </xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="MoodSpecification">
+								<xs:annotation>
+									<xs:documentation>Defines in which way a character generates mood</xs:documentation>
+									<xs:documentation>Defines in which way a character generates mood</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="decaytime" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:long">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minInclusive value="0"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="decayperiod" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="0"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="EmotionSpecification">
+								<xs:annotation>
+									<xs:documentation>Defines in which way a character generates emotions</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="decaytime" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:long">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minInclusive value="0"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="decayperiod" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:int">
+												<xs:minInclusive value="0"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="decayfunction" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="collapse"/>
+												<xs:pattern value="linear"/>
+												<xs:pattern value="exponetial"/>
+												<xs:pattern value="hyperbolic"/>
+												<xs:enumeration value="linear"/>
+												<xs:enumeration value="exponential"/>
+												<xs:enumeration value="hyperbolic"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Appraisal" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Basic">
+											<xs:annotation>
+												<xs:documentation>Appraisal of events, actions and objects </xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="GoodEvent">
+														<xs:annotation>
+															<xs:documentation>Pleased about an desirable event</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodEventForGoodOther">
+														<xs:annotation>
+															<xs:documentation>Pleased about an event presumed to be desirable for someone else</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+															<xs:attribute name="liking" type="Liking" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodEventForBadOther">
+														<xs:annotation>
+															<xs:documentation>Displeased about an event presumed to be desirable for someone else</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+															<xs:attribute name="liking" type="Disliking" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadEvent">
+														<xs:annotation>
+															<xs:documentation>Displeased about an undesirable event</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadEventForGoodOther">
+														<xs:annotation>
+															<xs:documentation>Pleased about an event presumed to be desirable for someone else</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+															<xs:attribute name="liking" type="Liking" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadEventForBadOther">
+														<xs:annotation>
+															<xs:documentation>Displeased about an event presumed to be desirable for someone else</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+															<xs:attribute name="liking" type="Disliking" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodLikelyFutureEvent">
+														<xs:annotation>
+															<xs:documentation>Pleased about an desirable likely event in the future</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+															<xs:attribute name="likelihood" type="Likelihood" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodUnlikelyFutureEvent">
+														<xs:annotation>
+															<xs:documentation>Pleased about an desirable unlikely event in the future</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Desirability" use="required"/>
+															<xs:attribute name="likelihood" type="Unlikelihood" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadLikelyFutureEvent">
+														<xs:annotation>
+															<xs:documentation>Displeased about an undesirable likely event in the future</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+															<xs:attribute name="likelihood" type="Likelihood" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadUnlikelyFutureEvent">
+														<xs:annotation>
+															<xs:documentation>Displeased about an undesirable unlikely event in the future</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="desirability" type="Undesirability" use="required"/>
+															<xs:attribute name="likelihood" type="Unlikelihood" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="EventConfirmed">
+														<xs:annotation>
+															<xs:documentation>Confirmation of an event</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="realization" type="xs:string" use="required" fixed="true"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="EventDisconfirmed">
+														<xs:annotation>
+															<xs:documentation>Disconfirmation of an event</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="realization" type="xs:string" use="required" fixed="false"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodActSelf">
+														<xs:annotation>
+															<xs:documentation>Approving of one's own praiseworthy action</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="self"/>
+															<xs:attribute name="praiseworthiness" type="Praiseworthiness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="GoodActOther">
+														<xs:annotation>
+															<xs:documentation>Approving of someone else's praiseworthy action</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="praiseworthiness" type="Praiseworthiness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadActSelf">
+														<xs:annotation>
+															<xs:documentation>Approving of one's own blameoworthy action</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="self"/>
+															<xs:attribute name="praiseworthiness" type="Blameworthiness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BadActOther">
+														<xs:annotation>
+															<xs:documentation>Approving of someone else's blameworthy action</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+															<xs:attribute name="praiseworthiness" type="Blameworthiness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="NiceThing">
+														<xs:annotation>
+															<xs:documentation>Liking an appealing object</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="appealingness" type="Appealingness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="NastyThing">
+														<xs:annotation>
+															<xs:documentation>Disliking an unappealing object</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="appealingness" type="Disappealingness" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="IndirectAct" type="IndirectActType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Appraisal of other character's acts</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="IndirectEmotion" type="IndirectEmotionType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>External emotion appraisal defines in which way a character appraises the expression of emotions of other characters</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="IndirectMood" type="IndirectMoodType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>External emotion appraisal defines in which way a character appraises the expression of emotions of other characters</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+						<xs:attribute name="characters" type="xs:string" use="required"/>
+						<xs:attribute name="monitored" type="xs:boolean" use="optional"/>
+						<xs:attribute name="docu" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="docu" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AffectOutput">
+		<xs:annotation>
+			<xs:documentation>Contains all data of the affective state of each character as well as statements on group affect</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CharacterAffect" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The list of characters</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="DominantEmotion" type="EmotionType">
+								<xs:annotation>
+									<xs:documentation>The character's current dominant emotion</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Emotions">
+								<xs:annotation>
+									<xs:documentation>The current state of all character's emotions</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Emotion" type="EmotionType" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Mood" type="MoodType">
+								<xs:annotation>
+									<xs:documentation>The character's current mood. Mood is described by a so-called mood word and by related values of three degrees: pleasure, arousal and dominance</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="MoodTendency" type="MoodType">
+								<xs:annotation>
+									<xs:documentation>The mood to which the character's tends.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="DefaultMood" type="MoodType">
+								<xs:annotation>
+									<xs:documentation>The character's current mood. Mood is described by a so-called mood word and by related values of three degrees: pleasure, arousal and dominance</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Personality">
+								<xs:annotation>
+									<xs:documentation>Personality defines the long term characteristics of people by traits. They give clues how people will be behave in terms of their manner, type and degree of motivation, prevelent mood, relation to other people</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="PersonalityType">
+											<xs:attribute name="derived" type="xs:boolean" use="optional"/>
+											<xs:attribute name="emotioninfluence" type="Intensity" use="required"/>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="GroupAffect" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence minOccurs="0">
+							<xs:element name="OverallMood">
+								<xs:annotation>
+									<xs:documentation>The group's overall mood</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="MoodType"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SocialIntegrity">
+								<xs:annotation>
+									<xs:documentation>The group's social integritiy - a measure how consistent the mood spreading is.  </xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="value" type="Intensity" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MoodSimilarities" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Lists of characters which are in the the same mood</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CharacterPair" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="first" type="xs:string" use="required"/>
+												<xs:attribute name="second" type="xs:string" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MoodExtremes" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Lists of characters which are in extreme moods</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Character" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="name" type="xs:string" use="required"/>
+												<xs:attribute name="difference" type="xs:double" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+						<xs:attribute name="characters" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="docu" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AffectInput">
+		<xs:annotation>
+			<xs:documentation>Contains relevant data for processing affect</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Character">
+					<xs:annotation>
+						<xs:documentation>The character whose affect will be determined by one of the following input: act, action, event, object</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="name" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:choice>
+					<xs:element name="Act">
+						<xs:annotation>
+							<xs:documentation>The currently performed (dialog)act</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="addressee" type="xs:string" use="optional"/>
+							<xs:attribute name="listener" type="xs:string" use="optional"/>
+							<xs:attribute name="type" type="xs:string" use="required"/>
+							<xs:attribute name="intensity" type="Intensity" use="optional"/>
+							<xs:attribute name="elicitor" type="xs:string" use="optional"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="EmotionDisplay">
+						<xs:annotation>
+							<xs:documentation>Type of the displayed emotion</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="addressee" type="xs:string" use="optional"/>
+							<xs:attribute name="listener" type="xs:string" use="optional"/>
+							<xs:attribute name="type" type="EmotionName" use="required"/>
+							<xs:attribute name="intensity" type="Intensity" use="optional"/>
+							<xs:attribute name="elicitor" type="xs:string" use="optional"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="MoodDisplay">
+						<xs:annotation>
+							<xs:documentation>Type of the displayed mood</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="addressee" type="xs:string" use="optional"/>
+							<xs:attribute name="listener" type="xs:string" use="optional"/>
+							<xs:attribute name="type" type="MoodWord" use="required"/>
+							<xs:attribute name="intensity" type="Intensity" use="optional"/>
+							<xs:attribute name="elicitor" type="xs:string" use="optional"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Action">
+						<xs:annotation>
+							<xs:documentation>Type of the action which is currently performed by the character</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="type" type="ActionTypes" use="required"/>
+							<xs:attribute name="intensity" type="Intensity" use="optional"/>
+							<xs:attribute name="elicitor" type="xs:string" use="optional"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Event">
+						<xs:annotation>
+							<xs:documentation>Type of an currently occured event</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="type" type="EventTypes" use="required"/>
+							<xs:attribute name="intensity" type="Intensity" use="optional"/>
+							<xs:attribute name="elicitor" type="xs:string" use="optional"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Object">
+						<xs:annotation>
+							<xs:documentation>Type of an object which is currently in the character's focus</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="type" type="ObjectTypes" use="required"/>
+							<xs:attribute name="intensity" type="Intensity" use="optional"/>
+							<xs:attribute name="elicitor" type="xs:string" use="optional"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="BasicEEC">
+						<xs:annotation>
+							<xs:documentation>Raw input format</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="desirability" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="-1.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="praiseworthiness" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="-1.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="appealingness" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="-1.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="likelihood" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="-1.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="realization" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="-1.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="liking" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="-1.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="agency" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="self"/>
+										<xs:pattern value="other"/>
+										<xs:enumeration value="self"/>
+										<xs:enumeration value="other"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="elicitor" type="xs:string" use="optional"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="PAD">
+						<xs:annotation>
+							<xs:documentation>Plaesure, Arousal, and Dominance value</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="pleasure" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="-1.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="arousal" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="-1.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="dominance" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="-1.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="intensity" use="optional">
+								<xs:simpleType>
+									<xs:restriction base="xs:double">
+										<xs:minInclusive value="0.0"/>
+										<xs:maxInclusive value="1.0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="description" type="xs:string"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AffectScript">
+		<xs:annotation>
+			<xs:documentation>Contains a list of AffectInput elements with timestamps</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Context" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Holds context data, which is describes the situation of the affect script</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:sequence maxOccurs="unbounded">
+					<xs:element name="Item">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element ref="AffectInput" minOccurs="0"/>
+								<xs:element name="Appraisal" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Defines in which way the character appraises signals, that are relevant for affect</xs:documentation>
+										<xs:documentation>Defines in which way the character appraises signals, that are relevant for affect</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="SelfAct" type="SelfActType" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Appraisal of own acts</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="DirectAct" type="DirectActType" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Appraisal of other character's acts</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="IndirectAct" type="IndirectActType" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Appraisal of other character's acts</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="SelfEmotion" type="SelfEmotionType" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Self emotion appraisal defines in which way a character appraises the expression of own emotions</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="IndirectEmotion" type="IndirectEmotionType" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>External emotion appraisal defines in which way a character appraises the expression of emotions of other characters</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="SelfMood" type="SelfMoodType" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Self emotion appraisal defines in which way a character appraises the expression of own emotions</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="IndirectMood" type="IndirectMoodType" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>External emotion appraisal defines in which way a character appraises the expression of emotions of other characters</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="ResetCharacter" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Resets all affective values of default values</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attribute name="name" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="collapse"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Context" type="xs:string" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Holds context data, which is not relevant for affect but for the situation</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+							<xs:attribute name="time" type="xs:long" use="required"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CharacterType">
+		<xs:annotation>
+			<xs:documentation>Defines a character</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="MoodType">
+		<xs:annotation>
+			<xs:documentation>Defines a mood state</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="moodword" type="MoodWord" use="required"/>
+		<xs:attribute name="intensity" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:whiteSpace value="collapse"/>
+					<xs:pattern value="slightly"/>
+					<xs:pattern value="moderate"/>
+					<xs:pattern value="fully"/>
+					<xs:pattern value="neutral"/>
+					<xs:enumeration value="slightly"/>
+					<xs:enumeration value="moderate"/>
+					<xs:enumeration value="fully"/>
+					<xs:enumeration value="neutral"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="pleasure" type="SignedIntensity" use="optional"/>
+		<xs:attribute name="arousal" type="SignedIntensity" use="optional"/>
+		<xs:attribute name="dominance" type="SignedIntensity" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="EmotionType">
+		<xs:annotation>
+			<xs:documentation>Defines an emotion</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" type="EmotionName" use="required"/>
+		<xs:attribute name="value" type="Intensity" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PersonalityType">
+		<xs:annotation>
+			<xs:documentation>Defines personality</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="openness" type="SignedIntensity" use="required"/>
+		<xs:attribute name="conscientiousness" type="SignedIntensity" use="required"/>
+		<xs:attribute name="extraversion" type="SignedIntensity" use="required"/>
+		<xs:attribute name="agreeableness" type="SignedIntensity" use="required"/>
+		<xs:attribute name="neurotism" type="SignedIntensity" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="AppraisalTag">
+		<xs:annotation>
+			<xs:documentation>Contains useful subset of basic appraisal tags for act and emotion appraisal</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="GoodEvent" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Pleased about an desirable event</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="desirability" type="Desirability" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GoodEventForGoodOther" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Pleased about an event presumed to be desirable for someone else</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+					<xs:attribute name="desirability" type="Desirability" use="required"/>
+					<xs:attribute name="liking" type="Liking" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GoodEventForBadOther" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Displeased about an event presumed to be desirable for someone else</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+					<xs:attribute name="desirability" type="Desirability" use="required"/>
+					<xs:attribute name="liking" type="Disliking" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GoodLikelyFutureEvent" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Pleased about an desirable likely event in the future</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="desirability" type="Desirability" use="required"/>
+					<xs:attribute name="likelihood" type="Likelihood" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GoodUnlikelyFutureEvent" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Pleased about an desirable unlikely event in the future</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="desirability" type="Desirability" use="required"/>
+					<xs:attribute name="likelihood" type="Unlikelihood" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BadEvent" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Displeased about an undesirable event</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="desirability" type="Undesirability" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BadEventForGoodOther" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Pleased about an event presumed to be desirable for someone else</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+					<xs:attribute name="desirability" type="Undesirability" use="required"/>
+					<xs:attribute name="liking" type="Liking" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BadEventForBadOther" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Displeased about an event presumed to be desirable for someone else</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+					<xs:attribute name="desirability" type="Undesirability" use="required"/>
+					<xs:attribute name="liking" type="Disliking" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BadLikelyFutureEvent" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Displeased about an undesirable likely event in the future</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="desirability" type="Undesirability" use="required"/>
+					<xs:attribute name="likelihood" type="Likelihood" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BadUnlikelyFutureEvent" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Displeased about an undesirable unlikely event in the future</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="desirability" type="Undesirability" use="required"/>
+					<xs:attribute name="likelihood" type="Unlikelihood" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="EventConfirmed" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Confirmation of an event</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="realization" type="xs:string" use="required" fixed="true"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="EventDisconfirmed" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Disconfirmation of an event</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="realization" type="xs:string" use="required" fixed="false"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GoodActSelf" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Approving of one's own praiseworthy action</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="agency" type="xs:string" use="required" fixed="self"/>
+					<xs:attribute name="praiseworthiness" type="Praiseworthiness" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BadActSelf" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Approving of one's own blameoworthy action</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="agency" type="xs:string" use="required" fixed="self"/>
+					<xs:attribute name="praiseworthiness" type="Blameworthiness" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GoodActOther" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Approving of someone else's praiseworthy action</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+					<xs:attribute name="praiseworthiness" type="Praiseworthiness" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BadActOther" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Approving of someone else's blameworthy action</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="agency" type="xs:string" use="required" fixed="other"/>
+					<xs:attribute name="praiseworthiness" type="Blameworthiness" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="NiceThing" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Liking an appealing object</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="appealingness" type="Appealingness" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="NastyThing" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Disliking an unappealing object</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="appealingness" type="Disappealingness" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IndirectActType">
+		<xs:complexContent>
+			<xs:extension base="AppraisalTag">
+				<xs:attribute name="type" type="xs:string" use="required"/>
+				<xs:attribute name="performer" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IndirectEmotionType">
+		<xs:complexContent>
+			<xs:extension base="AppraisalTag">
+				<xs:attribute name="emotion" type="EmotionName" use="required"/>
+				<xs:attribute name="performer" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IndirectMoodType">
+		<xs:complexContent>
+			<xs:extension base="AppraisalTag">
+				<xs:attribute name="mood" type="MoodWord" use="required"/>
+				<xs:attribute name="performer" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SelfActType">
+		<xs:complexContent>
+			<xs:extension base="AppraisalTag">
+				<xs:attribute name="type" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DirectActType">
+		<xs:complexContent>
+			<xs:extension base="AppraisalTag">
+				<xs:attribute name="type" type="xs:string" use="required"/>
+				<xs:attribute name="performer" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SelfEmotionType">
+		<xs:complexContent>
+			<xs:extension base="AppraisalTag">
+				<xs:attribute name="emotion" type="EmotionName" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SelfMoodType">
+		<xs:complexContent>
+			<xs:extension base="AppraisalTag">
+				<xs:attribute name="mood" type="MoodWord" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="MoodWord" final="list">
+		<xs:annotation>
+			<xs:documentation>Contains all words describing different mood states, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="Exuberant"/>
+			<xs:pattern value="Bored"/>
+			<xs:pattern value="Dependent"/>
+			<xs:pattern value="Disdainful"/>
+			<xs:pattern value="Relaxed"/>
+			<xs:pattern value="Anxious"/>
+			<xs:pattern value="Docile"/>
+			<xs:pattern value="Hostile"/>
+			<xs:pattern value="Neutral"/>
+			<xs:enumeration value="Exuberant"/>
+			<xs:enumeration value="Bored"/>
+			<xs:enumeration value="Dependent"/>
+			<xs:enumeration value="Disdainful"/>
+			<xs:enumeration value="Relaxed"/>
+			<xs:enumeration value="Anxious"/>
+			<xs:enumeration value="Docile"/>
+			<xs:enumeration value="Hostile"/>
+			<xs:enumeration value="Neutral"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EmotionName" final="list">
+		<xs:annotation>
+			<xs:documentation>Contains all names of the different emotion types, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="Distress"/>
+			<xs:pattern value="Joy"/>
+			<xs:pattern value="HappyFor"/>
+			<xs:pattern value="Gloating"/>
+			<xs:pattern value="Resentment"/>
+			<xs:pattern value="Pity"/>
+			<xs:pattern value="Hope"/>
+			<xs:pattern value="Fear"/>
+			<xs:pattern value="Satisfaction"/>
+			<xs:pattern value="Relief"/>
+			<xs:pattern value="FearsConfirmed"/>
+			<xs:pattern value="Disappointment"/>
+			<xs:pattern value="Pride"/>
+			<xs:pattern value="Admiration"/>
+			<xs:pattern value="Shame"/>
+			<xs:pattern value="Reproach"/>
+			<xs:pattern value="Liking"/>
+			<xs:pattern value="Disliking"/>
+			<xs:pattern value="Gratitude"/>
+			<xs:pattern value="Anger"/>
+			<xs:pattern value="Gratification"/>
+			<xs:pattern value="Remorse"/>
+			<xs:pattern value="Love"/>
+			<xs:pattern value="Hate"/>
+			<xs:pattern value="Undefined"/>
+			<xs:pattern value="Physical"/>
+			<xs:enumeration value="Distress"/>
+			<xs:enumeration value="Joy"/>
+			<xs:enumeration value="HappyFor"/>
+			<xs:enumeration value="Gloating"/>
+			<xs:enumeration value="Resentment"/>
+			<xs:enumeration value="Pity"/>
+			<xs:enumeration value="Hope"/>
+			<xs:enumeration value="Fear"/>
+			<xs:enumeration value="Satisfaction"/>
+			<xs:enumeration value="Relief"/>
+			<xs:enumeration value="FearsConfirmed"/>
+			<xs:enumeration value="Disappointment"/>
+			<xs:enumeration value="Pride"/>
+			<xs:enumeration value="Admiration"/>
+			<xs:enumeration value="Shame"/>
+			<xs:enumeration value="Reproach"/>
+			<xs:enumeration value="Liking"/>
+			<xs:enumeration value="Disliking"/>
+			<xs:enumeration value="Gratitude"/>
+			<xs:enumeration value="Anger"/>
+			<xs:enumeration value="Gratification"/>
+			<xs:enumeration value="Remorse"/>
+			<xs:enumeration value="Love"/>
+			<xs:enumeration value="Hate"/>
+			<xs:enumeration value="Undefined"/>
+			<xs:enumeration value="Physical"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Intensity" final="list">
+		<xs:annotation>
+			<xs:documentation>Defines a positive intensity value, comparable to a positive float, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[0][.][0-9]+[0-9]*|1.0"/>
+			<xs:pattern value="null"/>
+			<xs:pattern value="little"/>
+			<xs:pattern value="mild"/>
+			<xs:pattern value="medium"/>
+			<xs:pattern value="strong"/>
+			<xs:pattern value="immense"/>
+			<xs:pattern value="full"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SignedIntensity" final="list">
+		<xs:annotation>
+			<xs:documentation>Defines a signed intensity value, comparable to a float, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:double">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[\+|\-]*[0][.][0-9]+[0-9]*|-1.0|1.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Desirability">
+		<xs:annotation>
+			<xs:documentation>Definition of desirablilty values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[0][.][0-9]+[0-9]*|1.0"/>
+			<xs:pattern value="barely desired"/>
+			<xs:pattern value="mildly desired"/>
+			<xs:pattern value="strongly desired"/>
+			<xs:pattern value="immensely desired"/>
+			<xs:pattern value="fullly desired"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Undesirability">
+		<xs:annotation>
+			<xs:documentation>Definition of undesirablilty values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="-[0][.][0-9]+[0-9]*|-1.0|1.0|0.0"/>
+			<xs:pattern value="barely undesired"/>
+			<xs:pattern value="mildly undesired"/>
+			<xs:pattern value="strongly undesired"/>
+			<xs:pattern value="immensely undesired"/>
+			<xs:pattern value="fullly undesired"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Likelihood">
+		<xs:annotation>
+			<xs:documentation>Definiton of likelihood values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[0][.][0-9]+[0-9]*|1.0"/>
+			<xs:pattern value="barely likely"/>
+			<xs:pattern value="mildly likely"/>
+			<xs:pattern value="strongly likely"/>
+			<xs:pattern value="immensely likely"/>
+			<xs:pattern value="fullly likely"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Unlikelihood">
+		<xs:annotation>
+			<xs:documentation>Definition of unlikelihood values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="-[0][.][0-9]+[0-9]*|-1.0|1.0|0.0"/>
+			<xs:pattern value="barely unlikely"/>
+			<xs:pattern value="mildly unlikely"/>
+			<xs:pattern value="strongly unlikely"/>
+			<xs:pattern value="immensely unlikely"/>
+			<xs:pattern value="fullly unlikely"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Praiseworthiness">
+		<xs:annotation>
+			<xs:documentation>Definition of praiseworthiness values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[0][.][0-9]+[0-9]*|1.0"/>
+			<xs:pattern value="barely praiseworthy"/>
+			<xs:pattern value="mildly praiseworthy"/>
+			<xs:pattern value="strongly praiseworthy"/>
+			<xs:pattern value="immensely praiseworthy"/>
+			<xs:pattern value="fullly praiseworthy"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Blameworthiness">
+		<xs:annotation>
+			<xs:documentation>Definition of blameworthiness values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="-[0][.][0-9]+[0-9]*|-1.0|1.0|0.0"/>
+			<xs:pattern value="barely blameworthy"/>
+			<xs:pattern value="mildly blameworthy"/>
+			<xs:pattern value="strongly blameworthy"/>
+			<xs:pattern value="immensely blameworthy"/>
+			<xs:pattern value="fullly blameworthy"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Appealingness">
+		<xs:annotation>
+			<xs:documentation>Definition of appealingness values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[0][.][0-9]+[0-9]*|1.0"/>
+			<xs:pattern value="barely appealing"/>
+			<xs:pattern value="mildly appealing"/>
+			<xs:pattern value="strongly appealing"/>
+			<xs:pattern value="immensely appealing"/>
+			<xs:pattern value="fullly appealing"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Disappealingness">
+		<xs:annotation>
+			<xs:documentation>Definition of diappealingness values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="-[0][.][0-9]+[0-9]*|-1.0|1.0|0.0"/>
+			<xs:pattern value="barely disappealing"/>
+			<xs:pattern value="mildly disappealing"/>
+			<xs:pattern value="strongly disappealing"/>
+			<xs:pattern value="immensely disappealing"/>
+			<xs:pattern value="fullly disappealing"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Liking">
+		<xs:annotation>
+			<xs:documentation>Definition of liking values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[0][.][0-9]+[0-9]*|1.0"/>
+			<xs:pattern value="barely liking"/>
+			<xs:pattern value="mildly liking"/>
+			<xs:pattern value="strongly liking"/>
+			<xs:pattern value="immensely liking"/>
+			<xs:pattern value="fullly liking"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Disliking">
+		<xs:annotation>
+			<xs:documentation>Definition of disliking values, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="-[0][.][0-9]+[0-9]*|-1.0|1.0|0.0"/>
+			<xs:pattern value="barely disliking"/>
+			<xs:pattern value="mildly disliking"/>
+			<xs:pattern value="strongly disliking"/>
+			<xs:pattern value="immensely disliking"/>
+			<xs:pattern value="fullly disliking"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActionTypes" final="list">
+		<xs:annotation>
+			<xs:documentation>Contains all appraisal descriptions of actions, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="GoodActSelf"/>
+			<xs:pattern value="GoodActOther"/>
+			<xs:pattern value="BadActSelf"/>
+			<xs:pattern value="BadActOther"/>
+			<xs:enumeration value="GoodActSelf"/>
+			<xs:enumeration value="GoodActOther"/>
+			<xs:enumeration value="BadActSelf"/>
+			<xs:enumeration value="BadActOther"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EventTypes" final="list">
+		<xs:annotation>
+			<xs:documentation>Contains all appraisal descriptionsof events, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="GoodEvent"/>
+			<xs:pattern value="GoodEventForGoodOther"/>
+			<xs:pattern value="GoodEventForBadOther"/>
+			<xs:pattern value="BadEvent"/>
+			<xs:pattern value="BadEventForGoodOther"/>
+			<xs:pattern value="BadEventForBadOther"/>
+			<xs:pattern value="GoodLikelyFutureEvent"/>
+			<xs:pattern value="GoodUnlikelyFutureEvent"/>
+			<xs:pattern value="BadLikelyFutureEvent"/>
+			<xs:pattern value="BadUnlikelyFutureEvent"/>
+			<xs:pattern value="EventConfirmed"/>
+			<xs:pattern value="EventDisconfirmed"/>
+			<xs:enumeration value="GoodEvent"/>
+			<xs:enumeration value="GoodEventForGoodOther"/>
+			<xs:enumeration value="GoodEventForBadOther"/>
+			<xs:enumeration value="BadEvent"/>
+			<xs:enumeration value="BadEventForGoodOther"/>
+			<xs:enumeration value="BadEventForBadOther"/>
+			<xs:enumeration value="GoodLikelyFutureEvent"/>
+			<xs:enumeration value="GoodUnlikelyFutureEvent"/>
+			<xs:enumeration value="BadLikelyFutureEvent"/>
+			<xs:enumeration value="BadUnlikelyFutureEvent"/>
+			<xs:enumeration value="EventConfirmed"/>
+			<xs:enumeration value="EventDisconfirmed"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ObjectTypes" final="list">
+		<xs:annotation>
+			<xs:documentation>Contains all appraisal descriptions of objects, provides tags for values</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="NiceThing"/>
+			<xs:pattern value="NastyThing"/>
+			<xs:enumeration value="NiceThing"/>
+			<xs:enumeration value="NastyThing"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

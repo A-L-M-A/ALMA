@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno und Anne schauen sich eine Stand-Up-Comedy-Show an.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.90" elicitor="witty performance"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Gut das wir noch Karten für die vorderen Plätze bekommen haben. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:Context>Anne: Stimmt! Da bekommen wir alles mit.</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:Context>(Die Show beginnt)</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Thank" intensity="0.30" elicitor="great show"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Gut das Du mich mitgenommen hast. Die Show ist ja echt klasse! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEventForBadOther" intensity="1.00" elicitor="lost chance"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Clementine hat mir ja nicht geglaubt. Sie sagte vorhin, dass ich eh' kein Geschmack dafür hätte und ist mit ihren Freundinnen ins Kino in so einen langweiligen Streifen gegangen. Tja, jetzt verpasst sie die geniale Performance hier. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="PraiseAction" intensity="1.00" elicitor="good taste for humor"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Tja, hat sie eben Pech gehabt! Gut, dass du mich überredet hast, mit dir hierher zu gehen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="1.00" elicitor="good taste for humor"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Lass uns d'rauf anstoßen: Auf einen gelungenen Abend! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:Context>Anne: Prost!</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEventForBadOther" intensity="0.70" elicitor="poor clementine"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Mich freut's, dass "Miss-Schlauberger" Clementine mal nicht dabei ist, wo's was Gutes gibt! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:Context>Anne: Man sieht's dir direkt an.</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:Context>Bruno: Was soll's, reden wir nicht darüber. Genießen wir die Show!</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

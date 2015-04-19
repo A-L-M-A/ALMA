@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Bruno sind auf der Pferderennbahn. Bruno hat gewettet.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="0.90" elicitor="good chances to win"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Da, Anne, schau! Die Pferde sind auf der Zielgeraden. Mein Pferd ist an zweiter Stelle und holt auf. Es könnte  gewinnen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="GiveHope" intensity="0.90" elicitor="good chances to win"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ich drück' Dir die Daumen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:Context>(kurze Zeit später)</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringGoodNews" intensity="1.00" elicitor="won horse race"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Mensch, ich fass' es nicht. Dein Pferd hat's geschafft. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="PraiseAction" intensity="0.80" elicitor="good intuition"/>
+    </aml:AffectInput>
+    <aml:Context>Deine Idee mit Pferdewetten an Geld zu kommen, war echt gut! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.80" elicitor="good intuition"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Da schau, sind es sind exakt 500 Euro Gewinn! [signal] Lass uns damit einen Trip nach Paris machen.</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Thank" intensity="0.90" elicitor="situation"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Klasse, Paris war schon immer mein Traum. Danke! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:Context>Bruno: Komm, lass uns den Gewinn holen und direkt ins Reisebüro gehen.</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.70" elicitor="book the trip"/>
+    </aml:AffectInput>
+    <aml:Context>Anne:  Au ja, dann mal los. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

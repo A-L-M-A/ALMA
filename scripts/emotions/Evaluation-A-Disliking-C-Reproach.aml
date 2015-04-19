@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne mag die Arbeiten von Michelangelo nicht. Clementine mag jedoch die Arbeiten.
+	Clementine und Anne mögen sich nicht</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Clementine"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Clementine" listener="" type="LowerArtworkMichelangelo" intensity="0.70" elicitor="Arbeiten von Michelangelo"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Clementine, ich weiß, du stehst auf das Michelangelo-Zeugs. Aber diese David-Statue hat doch viel zu große Füße. Total hässlich! [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

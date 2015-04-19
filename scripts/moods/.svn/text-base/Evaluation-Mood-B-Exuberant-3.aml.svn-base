@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno und Anne sind gerade im Winter-Urlaub in den Schweizer Bergen.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:Context>Anne: Du, ich hab' schon mal den Fahrplan vom Skibus an der Rezeption abgeholt.</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.70" elicitor="plan is there"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ah ja, dann muss ich das nicht mehr machen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Thank" intensity="0.80" elicitor="nice move"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Danke, dass Du gestern angerufen hast und ihn zurücklegen lassen hast. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:Context>Bruno: Hm, war keine große Sache.</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.50" elicitor="knowledge is good"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Nun, wir müssen morgen nicht so lang in Kälte warten, weil wir wissen, wann der Bus fährt. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="OfferGood" intensity="0.80" elicitor="something good"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Übrigens gibt's heute Abend 'ne Überraschung, die dir bestimmt gefallen wird! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:Context>Bruno: Aha, was denn?</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="ConfirmOffer" intensity="0.80" elicitor="yes it is true"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ich hab' mit der Küche gesprochen und sie machen dir heute dein Lieblingsessen!  [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:Context>Bruno: Hm, hört sich gut an!</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringGoodNews" intensity="0.80" elicitor="museum issue"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: An der Rezeption hab' ich erfahren, dass es hier ein Modelleisenbahnmuseum gibt. Das interessiert dich doch! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000"/>
+  <aml:Item time="13000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodUnlikelyFutureEvent" intensity="0.50" elicitor="what the hell is going on"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ja, klar, aber wenn wir bis zum Abend Skifahren, dann ist das Museum bis dahin sicherlich geschlossen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:Context>Anne: Die Empfangsdame ist die Tochter des Museumsverwalters. Sie meint, er könnte uns morgen Abend eine Sonderführung geben, wenn du willst.</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.80" elicitor="yes it is a good day"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Super! ich sag' ihr gleich Bescheid, dass wir interessiert sind! [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

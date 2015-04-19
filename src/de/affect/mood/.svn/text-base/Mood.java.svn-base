@@ -1,0 +1,156 @@
+/*
+ * Mood.java
+ *
+ * Copyright (c) 2004, 2005, 2006, 2007, 2008, Patrick Gebhard, DFKI GmbH
+ *
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *   - Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *   - Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in 
+ *     the documentation and/or other materials provided with the 
+ *     distribution.
+ *
+ *   - Neither the name of the DFKI GmbH nor the names of its contributors
+ *     may be used to endorse or promote products derived from this software
+ *     without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+ * POSSIBILITY OF SUCH DAMAGE. 
+ */
+
+package de.affect.mood;
+
+import java.lang.IllegalArgumentException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
+
+import de.affect.mood.MoodType;
+import de.affect.mood.MoodIntensity;
+import static de.affect.util.Convert.prettyPrint;
+
+/**
+ * The <code>Mood</code> class represents mood of a character.
+ *
+ * Mood is represented as a triple of different mood characteristics,
+ * associated to the PAD-Model of Affect: pleasure, arousal, and domiance
+ *
+ * @author Patrick Gebhard
+ *
+ * @version 1.0
+ */
+public class Mood {
+
+  private final double pleasure;
+  private final double arousal;
+  private final double dominance;
+
+  /**
+   * Constructs a new <code>Mood</code> object with the
+   * specified values for each mood dimension in the PAD mood space
+   *
+   * @param pleasure the degree of pleasure
+   * @param arousal the degree of arousal
+   * @param dominance the degree of dominance
+   *
+   * @throws IllegalArgumentException if the degree is not a
+   *         real number in the interval <code>[-1.0,1.0]</code>.
+   */
+  public Mood(double pleasure, double arousal, double dominance) {
+    if (pleasure < -1.0 || pleasure > 1.0)
+      throw new IllegalArgumentException("Invalid degree of pleasure: " + pleasure);
+    if (arousal < -1.0 || arousal > 1.0)
+      throw new IllegalArgumentException("Invalid degree of arousal: " + arousal);
+    if (dominance < -1.0 || dominance > 1.0)
+      throw new IllegalArgumentException("Invalid degree of dominance: " + dominance);
+    this.pleasure = pleasure;
+    this.arousal = arousal;
+    this.dominance = dominance;
+  }
+
+  public double getPleasure() {
+    return pleasure;
+  }
+
+  public double getArousal() {
+    return arousal;
+  }
+
+  public double getDominance() {
+    return dominance;
+  }
+
+  public boolean isPleasureDominant() {
+    if ((abs(pleasure) > abs(arousal)) && (abs(pleasure) > abs(dominance))) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public boolean isArousalDominant() {
+    if ((abs(arousal) > abs(pleasure)) && (abs(arousal) > abs(dominance))) {
+       return true;
+    } else {
+      return false;
+    }
+  }
+
+  public boolean isDominanceDominant() {
+    if ((abs(dominance) > abs(pleasure)) && (abs(dominance) > abs(arousal))) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public String getMoodWord() {
+    if ((pleasure == 0.0d) && (arousal == 0.0d) && (dominance == 0.0d))
+      return (MoodType.Neutral).toString();
+    int index = 0;
+    index = (pleasure < 0.0d) ? 4 : index;
+    index = (arousal < 0.0d) ? index + 2 : index;
+    index = (dominance < 0.0d) ? index + 1 : index;
+    return (MoodType.values())[index + 1].toString();
+  }
+
+  public String getMoodWordIntensity() {
+    Double normOfMood = sqrt((pleasure*pleasure) + (arousal*arousal) + (dominance*dominance));
+    if (normOfMood == 0.0d)
+      return (MoodIntensity.neutral).toString();
+    int index = 0;
+    index = (normOfMood > 0.50d) ? 1 : index;
+    index = (normOfMood > 1.00d) ? 2 : index;
+    return (MoodIntensity.values())[index + 1].toString();
+  }
+
+  public boolean equals(Mood m) {
+    return ((pleasure == m.getPleasure()) && 
+	    (arousal == m.getArousal()) && 
+	    (dominance == m.getDominance()));
+  }
+
+  public String toString() {
+    return getMoodWordIntensity()+ " " + getMoodWord() + 
+      " (P: " + prettyPrint(pleasure) +
+      ", A: " + prettyPrint(arousal) +
+      ", D: " + prettyPrint(dominance) + ")";
+  }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne trifft Clementine. Clementine schleckt gerade ein Eis. Sie verkleckert sich die ganze Bluse.
+	Clementine und Anne mögen sich nicht</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Clementine"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Clementine"/>
+      <aml:Event type="BadEvent" intensity="0.70" elicitor="missgeschick"/>
+    </aml:AffectInput>
+    <aml:Context>Clementine: Mist, jetzt hab' ich mir mit dem Eis die Bluse versaut. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Clementine" listener="" type="Tease" intensity="0.60" elicitor="Dropped Ice"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Kein Wunder, wenn man nicht aufpasst, passiert das eben. (grinst) Ob die Flecken überhaupt rausgehen? [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Es ist Silvester. Anne und Bruno wollen ein Fleisch-Fondue machen. Anne ist noch schnell Fleisch einkaufen gegangen.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.60" elicitor="got meat"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Hallo Bruno, ich bin zurück und hab' im Banal-Markt noch Fleisch  bekommen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="AnnounceConcern" intensity="1.00" elicitor="offer rotten meat"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Hallo. Grad' kam ein Bericht im Radio, dass der Banal-Supermarkt altes Fleisch umetikettiert und als neues verkauft. Also, das ist schon bedenklich. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:Context>Anne: Klar. Aber, außer dem Banal-Markt hatte nichts mehr auf.</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEvent" intensity="0.90" elicitor="offer rotten meat"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ein blöde Verkettung schlecher Ereignisse ist das. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="7500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Provoke" intensity="0.80" elicitor="always hungry"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Genau! Du warst ja gestern zu faul um selber in die Stadt zu gehen ... [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8500">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEvent" intensity="0.80" elicitor="irresponsibleness"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ja okay. Trotzdem find' ich's doof, dass sowas mit dem Fleisch passieren kann. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="11500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Calm" intensity="0.50" elicitor="new year - new chance"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Nun beruhig' dich erstmal. Heute ist Silvester. Das Neue Jahr sollte geruhsam anfangen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14500">
+    <aml:Context>Bruno: Ich geh' Holz hacken ...</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

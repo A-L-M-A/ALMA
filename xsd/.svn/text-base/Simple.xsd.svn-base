@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="xml.affect.de" xmlns="xml.affect.de" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="Stimmungswort">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Exuberant"/>
+			<xs:enumeration value="Bored"/>
+			<xs:enumeration value="Dependent"/>
+			<xs:enumeration value="Disdainful"/>
+			<xs:enumeration value="Relaxed"/>
+			<xs:enumeration value="Anxious"/>
+			<xs:enumeration value="Docile"/>
+			<xs:enumeration value="Hostile"/>
+			<xs:enumeration value="Neutral"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

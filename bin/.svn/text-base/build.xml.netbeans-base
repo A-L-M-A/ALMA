@@ -1,0 +1,423 @@
+<?xml version="1.0"?>
+<project name="ALMA" default="main" basedir="..">
+
+<path id="classpath">
+  <pathelement path="lib"/>
+  <pathelement location="lib/jama.jar"/>
+  <pathelement location="lib/jsr173_1.0_api.jar"/>
+  <pathelement location="lib/xbean.jar"/>
+  <pathelement location="${java.home}/lib/plugin.jar"/>
+</path>
+
+<path id="jar-classpath">
+  <pathelement path="lib/affect.jar"/>
+  <pathelement location="lib/jama.jar"/>
+  <pathelement location="lib/jsr173_1.0_api.jar"/>
+  <pathelement location="lib/xbean.jar"/>
+  <pathelement location="${java.home}/lib/plugin.jar"/>
+</path>
+
+<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean">
+  <classpath refid="classpath"/>
+</taskdef>
+
+<!-- xmlbeans stuff below -->
+<target name="xmlbeans-clean">
+  <delete dir="lib/schemaorg_apache_xmlbeans"/>
+  <delete dir="lib/de/affect/xml"/>
+  <delete dir="src/schema"/>
+  <delete dir="src/de/affect/xml/impl"/>
+  <delete>
+    <fileset dir="src" defaultexcludes="yes">
+      <include name="de/affect/xml/**/*.java"/>
+      <exclude name="de/affect/xml/demo/**/*.java"/>
+      <exclude name="de/affect/xml/util/**/*.java"/>
+    </fileset>
+  </delete>
+</target>
+
+<target name="xmlbeans-src" depends="xmlbeans-clean">
+  <xmlbean schema="xsd" srcgendir="src" classgendir="lib" srconly="true" optimize="on" javasource="1.5"/>
+</target>
+
+<target name="xmlbeans" depends="xmlbeans-src">
+  <javac srcdir="src"
+         destdir="lib"
+         includes="schema/**/.java,de/affect/xml/**/*.java">
+    <classpath refid="classpath"/>
+  </javac> 
+</target>
+
+<!-- jama stuff below -->
+<target name="jama-clean">
+  <!--<delete file="lib/jama.jar"/>-->
+  <delete dir="lib/jama"/>
+</target>
+
+<target name="jama"> 
+  <mkdir dir="./lib"/>
+  <javac srcdir="src" destdir="lib" debug="on"
+         includes= "jama/**/*.java">
+    <classpath refid="classpath"/>
+  </javac>
+</target>
+
+<target name="jama-jar" depends="jama"> 
+  <jar jarfile="lib/jama.jar" basedir="lib" includes="jama/**/*"/>
+  <delete dir="lib/jama"/>
+</target>
+
+<!-- alma stuff comes here -->
+<target name="alma-clean">
+  <delete dir="lib/de/affect/appraisal"/>
+  <delete dir="lib/de/affect/compute"/>
+  <delete dir="lib/de/affect/data"/>
+  <delete dir="lib/de/affect/emotion"/>
+  <delete dir="lib/de/affect/tools"/>
+  <delete dir="lib/de/affect/gui"/>
+  <delete dir="lib/de/affect/manage"/>
+  <delete dir="lib/de/affect/util"/>
+  <delete file="lib/affect.jar"/>
+</target>
+
+<target name="version-number">
+  <!-- extract old version.ini out of jar file 
+  <unzip src="lib/affect.jar" dest="./">
+    <patternset>
+      <include name="conf/version.ini"/>
+    </patternset>
+  </unzip> -->
+  <!-- update build details -->
+  <propertyfile file="conf/version.ini">
+    <entry key="build.version" value="1.2"/>
+    <entry key="build.number" type="int" operation="+" default="0000" pattern="0000"/>
+    <entry key="build.date" type="date" value="now" pattern="dd.MM.yyyy"/>
+  </propertyfile>
+</target>
+
+<target name="alma" depends="jama,version-number">
+  <javac srcdir="src" destdir="lib" debug="on"
+         includes="de/affect/compute/**/*.java,
+                   de/affect/data/**/*.java,
+                   de/affect/tools/**/*.java,
+                   de/affect/gui/**/*.java,
+                   de/affect/manage/**/*.java,
+                   de/affect/util/**/*.java">
+    <classpath refid="classpath"/>
+    <compilerarg value="-Xlint:deprecation"/>
+    <compilerarg value="-Xlint:unchecked"/>
+  </javac>
+</target>
+
+<!-- jar file -->
+<target name="jar-fast" depends="alma">
+  <copy todir="lib/conf">
+    <fileset dir="conf">
+       <include name="*.ini"/>
+       <include name="AffectComputation.aml"/>
+       <include name="CharacterDefinition.aml"/>
+       <include name="DefaultComputationParameters.aml"/>
+       <include name="DefaultCharacterDefinition.aml"/>
+    </fileset>
+  </copy>
+  <copy todir="lib/docs">
+    <fileset dir="docs"/>
+  </copy>
+  <delete dir="lib/docs/api"/>
+  <delete dir="lib/docs/deploy"/>
+  <delete includeemptydirs="true">
+    <fileset dir="lib/docs" includes="**/*.doc"/>
+  </delete>
+  <delete file="lib/docs/alma.html"/>
+  <delete file="lib/docs/emotionscriptsquestion.html"/>
+  <delete file="lib/docs/emotiontagsscriptsquestions.html"/>
+  <delete file="lib/docs/moodscriptsquestion.html"/>
+  <delete file="lib/docs/moodtagsscriptsquestions.html"/>
+  <delete file="lib/docs/overview.html"/>
+  <delete file="lib/docs/EmotionPADMappings.txt"/>
+  <copy todir="lib/pics">
+    <fileset dir="pics">
+       <include name="*.gif"/>
+       <include name="*.jpg"/>
+    </fileset>
+  </copy>
+  <manifest file="lib/MANIFEST.MF">
+    <attribute name="Built-By" value="Patrick Gebhard"/>
+    <attribute name="Signature_version" value="2.0"/>
+    <attribute name="Class-Path" value="jama.jar jsr173_1.0_api.jar xbean.jar"/>
+    <attribute name="Main-Class" value="de.affect.manage.AffectManager"/>
+  </manifest>
+  <jar jarfile="lib/affect.jar" basedir="lib" manifest="lib/MANIFEST.MF"
+       includes="conf/**,pics/**,docs/**,scripts/**,de/**,schemaorg_apache_xmlbeans/**"/>
+  <delete file="lib/MANIFEST.MF"/>
+  <delete dir="lib/conf"/>
+  <delete dir="lib/pics"/>
+  <delete dir="lib/docs"/>
+  <delete dir="lib/scripts"/>
+</target>
+
+<target name="jar" depends="all,jar-fast"/>
+
+<!-- documentation stuff -->
+<target name="doc">
+  <javadoc sourcepath="src" classpathref="classpath" destdir="docs/api"
+           windowtitle="ALMA Java API" 
+           overview="docs/overview.html" useexternalfile="yes">
+    <doctitle><![CDATA[<h1>ALMA Java API</h1>]]></doctitle>
+    <bottom>
+      <![CDATA[<i>Copyright &#169; 2004-2006 Patrick Gebhard.</i>]]>
+    </bottom>
+    <group title="XML Interface classes" packages="de.affect.xml"/>
+    <group title="XML Interface demo classes" packages="de.affect.xml.demo"/>
+    <fileset dir="src" defaultexcludes="yes">
+      <include name="de/affect/**/*.java"/>
+      <exclude name="de/affect/xml/impl/**/*.java"/>
+    </fileset>
+  </javadoc>
+</target>
+
+<target name="doc-clean">
+  <delete dir="docs/api"/>
+</target>
+
+<!-- major build targets -->
+<target name="all" depends="xmlbeans,alma"/>
+<target name="alldoc" depends="xmlbeans,alma,doc"/>
+<target name="clean" depends="xmlbeans-clean,jama-clean,alma-clean,doc-clean">
+  <delete>
+    <fileset dir="." defaultexcludes="no" includes="**/*.*~"/>
+  </delete>
+  <delete dir="lib/de"/>
+</target>
+
+<target name="deploy" depends="jar">
+  <delete dir="deploy"/>
+  <mkdir dir="deploy"/>
+  <mkdir dir="deploy"/>
+  <mkdir dir="deploy/bin"/>
+  <mkdir dir="deploy/conf"/>
+  <mkdir dir="deploy/data"/>
+  <mkdir dir="deploy/doc"/>
+  <mkdir dir="deploy/doc/api"/>
+  <mkdir dir="deploy/lib"/>
+  <mkdir dir="deploy/src/de/affect/tools"/>
+  <mkdir dir="deploy/src/de/affect/util"/>
+  <mkdir dir="deploy/src/de/affect/xml/demo"/>
+
+  <copy file="bin/deploy/alma.bat" todir="deploy/bin"/>
+  <copy file="bin/deploy/build.xml" todir="deploy/bin"/>
+  <copy file="bin/deploy/characterbuilder.bat" todir="deploy/bin"/>
+  <copy file="bin/deploy/characterbuilder.sh" todir="deploy/bin"/>
+  <!-- TODO <chmod file="bin/deploy/characterbuilder.sh" rights="0755"/> -->
+
+  <copy file="bin/deploy/make-example.bat" todir="deploy/bin"/>
+  <copy file="bin/deploy/run-example.bat" todir="deploy/bin"/>
+  
+  <copy todir="deploy/lib">
+    <fileset dir="lib">
+       <include name="*.jar"/>
+    </fileset>
+  </copy>
+ 
+  <!-- copy the api -->
+  <copy todir="deploy/doc/api">
+    <fileset dir="docs/api"/>
+  </copy>
+  
+  <!-- copy the readme.txt and licence.txt -->
+    <copy file="docs/readme.txt" todir="deploy"/>
+    <copy file="docs/licence.txt" todir="deploy/doc"/>
+  
+  <copy file="conf/CharacterDefinition.aml" todir="deploy/conf"/>
+  <copy file="conf/AffectComputation.aml" todir="deploy/conf"/>
+
+  <!-- copy sample scripts -->
+  <copy todir="deploy/data">
+    <fileset dir="scripts">
+       <include name="*.aml"/>
+    </fileset>
+  </copy>
+  
+  <!-- copy sample java code -->
+  <copy file="docs/deploy/AffectEngine.java" todir="deploy/src"/>
+  <copy file="src/de/affect/tools/AffectScriptPlayer.java" todir="deploy/src/de/affect/tools"/>
+  <copy file="src/de/affect/util/AppraisalTag.java" todir="deploy/src/de/affect/util"/>
+  <copy file="src/de/affect/xml/demo/CreateAffectInput.java" todir="deploy/src/de/affect/xml/demo"/>
+  <copy file="src/de/affect/xml/demo/ParseAffectOutput.java" todir="deploy/src/de/affect/xml/demo"/>
+</target>
+
+<!-- stuff that has nothing to do with the compilation process -->
+<target name="run-input-example">
+  <java classname="de.affect.xml.demo.CreateAffectInput" fork="true">
+    <classpath refid="jar-classpath"/>
+  </java>
+</target>
+
+<target name="run-output-example">
+  <java classname="de.affect.xml.demo.ParseAffectOutput" fork="true">
+    <classpath refid="jar-classpath"/>
+    <arg line="xsd/AffectOutputExample.aml"/>
+  </java>
+</target>
+
+<target name="run-alma">
+  <java classname="de.affect.manage.AffectManager" fork="true">
+    <classpath refid="jar-classpath"/>
+    <arg line="conf/BasicComputation.aml conf/BasicDefinition.aml
+               false scripts/AffectInputExample.aml"/>
+  </java>
+</target>
+
+<target name="run-almagui-plain">
+  <java classname="de.affect.manage.AffectManager" fork="true">
+    <classpath refid="jar-classpath"/>
+  </java>
+</target>
+
+<target name="run-characterbuilder">
+  <java classname="de.affect.manage.AffectManager" fork="true">
+    <classpath refid="jar-classpath"/>
+    <arg line="conf/AffectComputationExample.aml conf/AffectDefinitionExample.aml
+               true scripts/AffectInputExample.aml"/>
+  </java>
+</target>
+
+<target name="run-characterbuilder-eval">
+  <java classname="de.affect.manage.AffectManager" fork="true">
+    <classpath refid="jar-classpath"/>
+    <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml
+               true scripts/AffectInputExample.aml"/>
+  </java>
+</target>
+
+<target name="run-characterbuilder-eval-profile">
+  <java classname="de.affect.manage.AffectManager" fork="true">
+    <classpath refid="jar-classpath"/>
+    <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml
+               true scripts/AffectInputExample.aml"/>
+    <jvmarg value="-agentpath:C:\Programme\NetBeans5\profiler1\lib\deployed\jdk15\windows\profilerinterface.dll=C:\Programme\NetBeans5\profiler1\lib,5140
+"/>
+  </java>
+</target>
+
+<target name="run-characterbuilder-zamb">
+  <java classname="de.affect.manage.AffectManager" fork="true">
+    <classpath refid="jar-classpath"/>
+    <arg line="conf/ZAMB-AffectComputation.aml conf/ZAMB-AffectDefinition.aml
+               true scripts/AffectInputExample.aml"/>
+  </java>
+</target>
+
+<target name="run-scriptplayer">
+  <java classname="de.affect.tools.AffectScriptPlayer" fork="true">
+    <classpath refid="jar-classpath"/>
+    <arg line="conf/AffectComputationExample.aml conf/Evaluation.aml
+               scripts/AffectScriptExample.aml"/>
+  </java>
+</target>
+
+<target name="htmlemotiontags">
+  <java classname="de.affect.tools.AffectScripts2HTML" fork="true">
+    <classpath refid="classpath"/>
+    <!-- arguments are:
+         ALMA computation Parameters
+         ALMA character Definitions
+         ALMA output dicitionary
+         ALMA output language (de|en)
+         input directory holding aml files
+         output file
+         show script file name in output (true|false)
+         show ALMA input tags in dialog lines (true|false)
+         show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
+         show question on emotional impact of the dialog on the dialog participants (true|false)
+         show question on mood impact of dialog on the dialog participants (true|false)
+     -->
+    <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/emotions docs/emotiontagsscriptsquestions.html false true false false false"/>
+  </java>
+</target>
+
+<target name="htmlmoodtags">
+  <java classname="de.affect.tools.AffectScripts2HTML" fork="true">
+    <classpath refid="classpath"/>
+    <!-- arguments are:
+         ALMA computation Parameters
+         ALMA character Definitions
+         ALMA output dicitionary
+         ALMA output language (de|en)
+         input directory holding aml files
+         output file
+         show script file name in output (true|false)
+         show ALMA input tags in dialog lines (true|false)
+         show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
+         show question on emotional impact of the dialog on the dialog participants (true|false)
+         show question on mood impact of dialog on the dialog participants (true|false)
+     -->
+    <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/moods docs/moodtagsscriptsquestions.html false true false false false"/>
+  </java>
+</target>
+
+
+<target name="gen-htmlscriptsquestionsview" depends="htmlemotiontags,htmlmoodtags">
+</target>
+
+<target name="gen-htmlemotionscriptsquestionsview">
+  <java classname="de.affect.tools.AffectScripts2HTML" fork="true">
+    <classpath refid="classpath"/>
+    <!-- arguments are:
+         ALMA computation Parameters
+         ALMA character Definitions
+         ALMA output dicitionary
+         ALMA output language (de|en)
+         input directory holding aml files
+         output file
+         show script file name in output (true|false)
+         show ALMA input tags in dialog lines (true|false)
+         show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
+         show question on emotional impact of the dialog on the dialog participants (true|false)
+         show question on mood impact of dialog on the dialog participants (true|false)
+     -->
+    <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/emotions docs/emotionscriptsquestion.html false false false true false"/>
+  </java>
+</target>
+
+<target name="gen-htmlmoodscriptsquestionsview">
+  <java classname="de.affect.tools.AffectScripts2HTML" fork="true">
+    <classpath refid="classpath"/>
+    <!-- arguments are:
+         ALMA computation Parameters
+         ALMA character Definitions
+         ALMA output dicitionary
+         ALMA output language (de|en)
+         input directory holding aml files
+         output file
+         show script file name in output (true|false)
+         show ALMA input tags in dialog lines (true|false)
+         show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
+         show question on emotional impact of the dialog on the dialog participants (true|false)
+         show question on mood impact of dialog on the dialog participants (true|false)
+     -->
+    <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/moods docs/moodscriptsquestion.html false false false false true"/>
+  </java>
+</target>
+
+<target name="gen-evalresultemplate">
+  <java classname="de.affect.tools.EvaluationResultTemplate" fork="true">
+    <classpath refid="classpath"/>
+    <!-- arguments are:
+         ALMA computation Parameters
+         ALMA character Definitions
+         ALMA output dicitionary
+         ALMA output language (de|en)
+         input directory holding aml files
+         output file
+         show script file name in output (true|false)
+         show ALMA input tags in dialog lines (true|false)
+         show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
+         show question on emotional impact of the dialog on the dialog participants (true|false)
+         show question on mood impact of dialog on the dialog participants (true|false)
+     -->
+    <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/moods docs/annotation-result.txt true true false false false"/>
+  </java>
+</target>
+
+</project>

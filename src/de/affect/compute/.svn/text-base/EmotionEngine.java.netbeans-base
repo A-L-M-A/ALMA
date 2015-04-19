@@ -1,0 +1,656 @@
+/*
+ * EmotionEngine.java
+ *
+ * Copyright (c) 2004, 2005, 2006, 2007, 2008, Patrick Gebhard, DFKI GmbH
+ *
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *   - Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *   - Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in 
+ *     the documentation and/or other materials provided with the 
+ *     distribution.
+ *
+ *   - Neither the name of the DFKI GmbH nor the names of its contributors
+ *     may be used to endorse or promote products derived from this software
+ *     without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+ * POSSIBILITY OF SUCH DAMAGE. 
+ */
+
+package de.affect.compute;
+
+import de.affect.appraisal.EEC;
+import de.affect.emotion.Emotion;
+import de.affect.emotion.EmotionHistory;
+import de.affect.emotion.EmotionType;
+import de.affect.emotion.EmotionVector;
+import de.affect.appraisal.eec.Agency;
+import de.affect.manage.AffectManager;
+import de.affect.mood.Mood;
+import de.affect.personality.Personality;
+import java.util.logging.Logger;
+import de.affect.personality.PersonalityEmotionsRelations;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Set;
+
+import static de.affect.personality.PersonalityMoodRelations.getMoodyPersonalityTraits;
+import static java.lang.Math.max;
+
+/**
+ * The <code>EmotionEngine</code> class is used to infer the emotional
+ * state of an agent based on a list of Emotion Eliciting Conditions.
+ *
+ * @author Patrick Gebhard (based on the work of Michael Kipp and Martin Klesen)
+ *
+ * @version 3.0
+ */
+public class EmotionEngine {
+  /** list of Emotion Eliciting Conditions */
+  private List<EEC> listOfEEC = new LinkedList<EEC>();
+  /** the character's personality */
+  private Personality fPersonality = null;
+  private PersonalityEmotionsRelations fPerEmoRel = null;
+  /** the emotion engine's decay function */
+  private DecayFunction fDecayFunction = null;
+  /** the current emotion eliciting conditions */
+  private EEC eventEEC = null;
+  private EEC actionEEC = null;
+  private EEC objectEEC = null;
+  private Logger log = AffectManager.log;
+  
+  /**
+   * Constructs a new <code>EmotionEngine</code> object with
+   * the specified personality for the agent doing the
+   * emotional appraisal.
+   *
+   * @param personality the agent's personality
+   * @param decayFunction the engine's emotion decay function
+   * @throws NullPointerException if the personality or the decay function
+   *                              is not specified.
+   */
+  public EmotionEngine(Personality personality, DecayFunction decayFunction) {
+    fPerEmoRel = personality.getPersonalityEmotionsRelations();
+    if (personality == null)
+      throw new NullPointerException("Personality not specified.");
+    if (decayFunction == null)
+      throw new NullPointerException("Decay function not specified.");
+    fDecayFunction = decayFunction;
+    fPersonality = personality;
+  }
+  
+  /**
+   * Adds a new element to the list of Emotion Eliciting Conditions.
+   * This method throws an <code>IllegalStateException</code> if an
+   * an EEC for event-based emotions, action-based emotions, or
+   * object-based emotions already exists to prevent the generation
+   * of emotions of the same type. This is necessary since the
+   * <code>EmotionVector</code> used to store the infered emotions
+   * contains exactly <b>one</b> emotion for each emotion type.
+   *
+   * @param eec the new Emotion Eliciting Condition.
+   *
+   * @throws NullPointerException if the Emotion Eliciting Condition
+   *                              is not specified.
+   *
+   * @throws IllegalStateException if an EEC for event-based emotions,
+   *                               action-based emotions, or object-based
+   *                               emotions already exists.
+   *
+   * @see EmotionVector
+   */
+  public void addEEC(EEC eec) {
+    if (eec == null)
+      throw new NullPointerException("Emotion Eliciting Condition not specified.");
+    if (eec.appealingness != null) // appraisal of object
+      if (objectEEC == null)
+        objectEEC = eec;
+      else
+        throw new IllegalStateException("EEC for object-based emotions already exists: " +
+            objectEEC);
+    else if (eec.praiseworthiness != null) // appraisal of action
+      if (actionEEC == null)
+        actionEEC = eec;
+      else
+        throw new IllegalStateException("EEC for action-based emotions already exists: " +
+            actionEEC);
+    else // appraisal of event
+      if (eventEEC == null)
+        eventEEC = eec;
+      else
+// 	{
+//  	// THIS IS THE CASE, IF TWO Event-based EECs (second is confirmation)
+//  	// are given as input
+// 	EEC oldEEC = eventEEC;
+// 	Object oldElicitor = oldEEC.getElicitor();
+// 	Object newElicitor = eec.getElicitor();
+// 	if (!(oldElicitor == newElicitor) && !(eec.realization != null)) //second eec is realization nof first eec.
+        throw new IllegalStateException("EEC for event-based emotions already exists: " +
+            eventEEC);
+//       }
+    listOfEEC.add(eec);
+  }
+  
+  /**
+   * Removes all elements from the list of Emotion Eliciting Conditions.
+   */
+  public void clearEEC() {
+    listOfEEC.clear();
+    eventEEC = null;
+    actionEEC = null;
+    objectEEC = null;
+  }
+  
+  /**
+   * Returns the adjusted emotion intensity according to the correlation
+   * of personality traits and emotions.
+   *
+   * @param intensity the initial emotion intensity
+   * @param type the emotion type
+   *
+   * @return the adjusted emotion intensity.
+   */
+  private double adjustIntensity(double intensity, EmotionType type, Mood mood) {
+    double result = intensity * (1 + fPerEmoRel.getPersonalityInfluence(fPersonality, type));
+    Personality temporalPersonality = getMoodyPersonalityTraits(mood);
+    //log.info("Temporal mood personality is " + temporalPersonality);
+    double moodyResult = fPerEmoRel.getPersonalityInfluence(temporalPersonality, type);
+    //log.info(type.toString() + " personality influcenced intensity= " + result + " mood influence= " + moodyResult);
+    result = result + moodyResult;
+    double baseline = fPerEmoRel.getEmotionBaseline(fPersonality, type);
+    double moodyBaseline = fPerEmoRel.getEmotionBaseline(getMoodyPersonalityTraits(mood), type);
+    baseline = baseline + moodyBaseline;
+    result = (result > 1.0d) ? 1.0d : result;
+    result = (result < baseline) ? baseline : result;
+    return result;
+  }
+  
+  /**
+   * Decays the specified emotion history using the engine's decay function.
+   * This method decays each element in the emotion history and returns the
+   * new emotional state. It generates an <code>EmotionChangeEvent</code> to
+   * signal that the emotional state has changed.
+   *
+   * @param history the emotion history
+   * @param emotions the collection used to store the emotional state
+   * @return the new emotional state.
+   * @throws NullPointerException if no history is specified.
+   * @see EmotionVector getEmotionalState(EmotionVector emotions)
+   */
+  public synchronized EmotionVector decay(EmotionHistory history,
+      EmotionVector emotions,
+      EmotionVector defaultEmotions) {
+    if (history == null)
+      throw new NullPointerException("No history specified.");
+    for (int i=0; i < history.size(); i++) {
+      for (Iterator it = history.get(i).getEmotions().iterator(); it.hasNext();) {
+        Emotion emotion = (Emotion)it.next();
+        if (emotion.getIntensity() > emotion.getBaseline()) {
+          //debug log.info("At emotion history " + i + " decaying " + emotion.getType() + "(" + prettyPrint(emotion.getIntensity()) + ")");
+          history.get(i).add(fDecayFunction.decay(emotion));
+        }
+      }
+    }
+    history.removeFirstIfInactive();
+    emotions = history.getEmotionalState(defaultEmotions);
+    return emotions;
+  }
+  
+  /**
+   * Infers all emotions based on the list of Emotion Eliciting Conditions
+   * and adds them to the specified collection. If the type of an infered
+   * emotion is not contained in the predefined set of emotion types this
+   * emotion will be ignored.
+   * <P>
+   * If a compound emotion (e.g. <code>Gratitude</code>) can be infered
+   * then the two corresponding single emotions (<code>Joy</code> and
+   * <code>Admiration</code>) are not returned as part of the result.
+   *
+   * @param emotions the emotions to which the infered one will be added
+   * @param history the emotion history
+   * @return the modified collection of emotions.
+   * @throws NullPointerException if the emotion history is not specified.
+   */
+  
+  public synchronized EmotionVector inferEmotions(EmotionVector emotions,
+      EmotionHistory history,
+      Mood mood) {
+    if (history == null) throw new NullPointerException("Emotion history not specified.");
+    if (mood == null) throw new NullPointerException("mood not specified.");
+    // temporarily generated emotions
+    List<Emotion> tempEmotions = new LinkedList<Emotion>();
+    // emotions used for compound emotions
+    Set<Emotion> usedEmotions = new HashSet<Emotion>();
+    // --------------------------------------------
+    // Resolve single emotions from groups of EECs.
+    // --------------------------------------------
+    if (listOfEEC.isEmpty()) return null;
+    for (ListIterator<EEC> allEEC = listOfEEC.listIterator(); allEEC.hasNext();) {
+      EEC eec = allEEC.next();
+      log.fine("EEC input " + eec.getElicitor());
+      EmotionType type = EmotionType.Undefined;
+      double intensity = 0.0;
+      // Well-being and Prospect-based Group:
+      if (eec.desirabilityForSelf != null) {
+        
+        if (eec.likelihood == null) {
+          type = eec.desirabilityForSelf.isDesirable() ?
+            EmotionType.Joy : EmotionType.Distress;
+          intensity = eec.desirabilityForSelf.absDegree();
+          intensity = adjustIntensity(intensity, type, mood);
+          tempEmotions.add(new Emotion(type, intensity,
+              fPerEmoRel.getEmotionBaseline(fPersonality, type), eec.elicitor));
+        } else {
+          type = eec.desirabilityForSelf.isDesirable() ?
+            EmotionType.Hope : EmotionType.Fear;
+          intensity = max(eec.desirabilityForSelf.absDegree(), eec.likelihood.absDegree());
+          intensity = adjustIntensity(intensity, type, mood);
+          tempEmotions.add(new Emotion(type, intensity,
+              fPerEmoRel.getEmotionBaseline(fPersonality, type), eec.elicitor));
+        }
+      }
+      // Fortunes-Of-Others Group:
+      if (eec.desirabilityForOther != null && eec.liking != null) {
+        if (eec.liking.isLiked())
+          type = eec.desirabilityForOther.isDesirable() ?
+            EmotionType.HappyFor : EmotionType.Pity;
+        else
+          type = eec.desirabilityForOther.isDesirable() ?
+            EmotionType.Resentment : EmotionType.Gloating;
+        intensity = max(eec.desirabilityForOther.absDegree(), eec.liking.absDegree());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), eec.elicitor));
+      }
+      // Confirmation Group:
+      if (eec.realization != null) {
+// 	// THIS IS THE CASE, IF TWO Event-based EECs (second is confirmation)
+// 	// are given as input
+// 	// is there a recently elicited relevant emotion hope or fear
+// 	for (Iterator it = tempEmotions.iterator(); it.hasNext();) {
+// 	  Emotion old = (Emotion)it.next();
+// 	  if (old.getElicitor() != null) {
+// 	    EmotionType oldType = old.getType();
+// 	    if ((oldType == EmotionType.Hope || oldType == EmotionType.Fear) &&
+// 		old.getElicitor().equals(eec.elicitor)) {
+// 	      if (eec.realization.isConfirmed())
+// 		type = (oldType == EmotionType.Hope) ?
+// 		  EmotionType.Satisfaction : EmotionType.FearsConfirmed;
+// 	      else
+// 		type = (oldType == EmotionType.Hope) ?
+// 		  EmotionType.Disappointment : EmotionType.Relief;
+// 	      intensity = max(old.getIntensity(), eec.realization.absDegree());
+// 	      intensity = adjustIntensity(intensity, type, mood);
+// 	      tempEmotions.clear();
+// 	      tempEmotions.add(new Emotion(type, intensity,
+// 					   fPerEmoRel.getEmotionBaseline(fPersonality, type),
+// 					   eec.elicitor));
+// 	    }
+// 	  }
+// 	}
+        // traverse history in reverse order, latest element first
+        for (int i=history.size()-1; i>=0; i--) {
+          List oldEmotions = history.get(i).getEmotions();
+          for (Iterator it = oldEmotions.iterator(); it.hasNext();) {
+            Emotion old = (Emotion)it.next();
+            if (old.getElicitor() != null) {
+              EmotionType oldType = old.getType();
+              if ((oldType == EmotionType.Hope || oldType == EmotionType.Fear) &&
+                  old.getElicitor().equals(eec.elicitor)) {
+                if (eec.realization.isConfirmed())
+                  type = (oldType == EmotionType.Hope) ?
+                    EmotionType.Satisfaction : EmotionType.FearsConfirmed;
+                else
+                  type = (oldType == EmotionType.Hope) ?
+                    EmotionType.Disappointment : EmotionType.Relief;
+                intensity = max(old.getIntensity(), eec.realization.absDegree());
+                intensity = adjustIntensity(intensity, type, mood);
+                tempEmotions.add(new Emotion(type, intensity,
+                    fPerEmoRel.getEmotionBaseline(fPersonality, type),
+                    eec.elicitor));
+                // set intensity of hope or fear in history to baseline
+                // if anticipated event (elicitor) has occurred (is
+                // confirmed) or has failed to occur (is disconfirmed)
+                history.get(i).add(new Emotion(oldType, old.getBaseline(), old.getBaseline(),
+                    old.getElicitor()));
+              }
+            }
+          }
+        }
+      }
+      // Attribution Group:
+      if (eec.praiseworthiness != null)	{
+        if (eec.praiseworthiness.isPraiseworthy())
+          type = (eec.character == Agency.SELF) ? EmotionType.Pride : EmotionType.Admiration;
+        else
+          type = (eec.character == Agency.SELF) ? EmotionType.Shame : EmotionType.Reproach;
+        intensity = eec.praiseworthiness.absDegree();
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), eec.elicitor));
+      }
+      // Attraction Group:
+      if (eec.appealingness != null) {
+        type = eec.appealingness.isAppealing() ? EmotionType.Liking : EmotionType.Disliking;
+        intensity = eec.appealingness.absDegree();
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), eec.elicitor));
+      }
+    } // end-for
+    // ---------------------------------------------------
+    // Resolve compound emotions according to single ones.
+    // ---------------------------------------------------
+    // Candidates for compound emotions
+    Emotion joy=null, pride=null, admiration=null, distress=null;
+    Emotion shame=null, reproach=null, liking=null, disliking = null;
+    for (Iterator it = tempEmotions.iterator(); it.hasNext();) {
+      Emotion e = (Emotion)it.next();
+      EmotionType type = e.getType();
+      if (type == EmotionType.Joy) joy = e;
+      else if (type == EmotionType.Pride) pride = e;
+      else if (type == EmotionType.Admiration) admiration = e;
+      else if (type == EmotionType.Distress) distress = e;
+      else if (type == EmotionType.Shame) shame = e;
+      else if (type == EmotionType.Reproach) reproach = e;
+      else if (type == EmotionType.Liking) liking = e;
+      else if (type == EmotionType.Disliking) disliking = e;
+    }
+    // Candidates for compound emotions elicited in earlier time
+    Emotion histJoy=null, histPride=null, histAdmiration=null, histDistress=null;
+    Emotion histShame=null, histReproach=null, histLiking=null, histDisliking = null;
+    // --------------------------------------------------------------------------------
+    // Well-being/Attribution Group:
+    // --------------------------------------------------------------------------------
+    // Checking emotion history, if a suitable emotion with the same elicitor
+    // exisits - but only if one of the needed emotion is missing.
+    // If so, use this emotion!
+    // Compount Emotion Gratification
+    histJoy = ((joy == null) && (pride != null)) ?
+      history.getEmotionByElicitor(EmotionType.Joy, pride.getElicitor()) : null;
+    histPride = ((joy != null) && (pride == null)) ?
+      history.getEmotionByElicitor(EmotionType.Pride, joy.getElicitor()) : null;
+    if ((histJoy != null) || (histPride != null)) {
+      EmotionType type = EmotionType.Gratification;
+      if (joy != null) {
+        Object elicitor = joy.getElicitor();
+        double intensity = max(joy.getIntensity(), histPride.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(joy);
+        history.removeEmotionByElicitor(histPride, elicitor);
+      }
+      if (pride != null) {
+        Object elicitor = pride.getElicitor();
+        double intensity = max(histJoy.getIntensity(), pride.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(pride);
+        history.removeEmotionByElicitor(histJoy, elicitor);
+      }
+    }
+    // current emotions elicited at the same time
+    if (joy != null && pride != null && joy.getElicitor() != null &&
+        joy.getElicitor().equals(pride.getElicitor())) {
+      //log.info("Build gratification out of current elicitors");
+      EmotionType type = EmotionType.Gratification;
+      Object elicitor = pride.getElicitor();
+      double intensity = max(joy.getIntensity(), pride.getIntensity());
+      intensity = adjustIntensity(intensity, type, mood);
+      tempEmotions.add(new Emotion(type, intensity,
+          fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+      usedEmotions.add(joy);
+      usedEmotions.add(pride);
+    }
+    // Checking emotion history, if a suitable emotion with the same elicitor
+    // exisits - but only if one of the needed emotion is missing.
+    // If so, use this emotion!
+    // Compount Emotion Gratitude
+    histJoy = ((joy == null) && (admiration != null)) ?
+      history.getEmotionByElicitor(EmotionType.Joy, admiration.getElicitor()) : null;
+    histAdmiration = ((joy != null) && (admiration == null)) ?
+      history.getEmotionByElicitor(EmotionType.Admiration, joy.getElicitor()) : null;
+    if ((histJoy != null) || (histAdmiration != null)) {
+      EmotionType type = EmotionType.Gratitude;
+      if (joy != null) {
+        Object elicitor = joy.getElicitor();
+        double intensity = max(joy.getIntensity(), histAdmiration.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(joy);
+        history.removeEmotionByElicitor(histAdmiration, elicitor);
+      }
+      if (admiration != null) {
+        Object elicitor = admiration.getElicitor();
+        double intensity = max(admiration.getIntensity(), histJoy.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(admiration);
+        history.removeEmotionByElicitor(histJoy, elicitor);
+      }
+    }
+    // current emotions elicited at the same time
+    if (joy != null && admiration != null && joy.getElicitor() != null &&
+        joy.getElicitor().equals(admiration.getElicitor())) {
+      EmotionType type = EmotionType.Gratitude;
+      Object elicitor = admiration.getElicitor();
+      double intensity = max(joy.getIntensity(), admiration.getIntensity());
+      intensity = adjustIntensity(intensity, type, mood);
+      tempEmotions.add(new Emotion(type, intensity,
+          fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+      usedEmotions.add(joy);
+      usedEmotions.add(admiration);
+    }
+    // Checking emotion history, if a suitable emotion with the same elicitor
+    // exisits - but only if one of the needed emotion is missing.
+    // If so, use this emotion!
+    // Compount Emotion Remorse
+    histDistress = ((distress == null) && (shame != null)) ?
+      history.getEmotionByElicitor(EmotionType.Distress, shame.getElicitor()) : null;
+    histShame = ((distress != null) && (shame == null)) ?
+      history.getEmotionByElicitor(EmotionType.Shame, distress.getElicitor()) : null;
+    if ((histDistress != null) || (histShame != null)) {
+      EmotionType type = EmotionType.Remorse;
+      if (distress != null) {
+        Object elicitor = distress.getElicitor();
+        double intensity = max(distress.getIntensity(), histShame.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(distress);
+        history.removeEmotionByElicitor(histShame, elicitor);
+      }
+      if (shame != null) {
+        Object elicitor = shame.getElicitor();
+        double intensity = max(shame.getIntensity(), histDistress.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(shame);
+        history.removeEmotionByElicitor(histDistress, elicitor);
+      }
+    }
+    // current emotions elicited at the same time
+    if (distress != null && shame != null && distress.getElicitor() != null &&
+        distress.getElicitor().equals(shame.getElicitor())) {
+      EmotionType type = EmotionType.Remorse;
+      Object elicitor = shame.getElicitor();
+      double intensity = max(distress.getIntensity(), shame.getIntensity());
+      intensity = adjustIntensity(intensity, type, mood);
+      tempEmotions.add(new Emotion(type, intensity,
+          fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+      usedEmotions.add(distress);
+      usedEmotions.add(shame);
+    }
+    // Checking emotion history, if a suitable emotion with the same elicitor
+    // exisits - but only if one of the needed emotion is missing.
+    // If so, use this emotion!
+    // Compount Emotion Anger
+    histDistress = ((distress == null) && (reproach != null)) ?
+      history.getEmotionByElicitor(EmotionType.Distress, reproach.getElicitor()) : null;
+    histReproach = ((distress != null) && (reproach == null)) ?
+      history.getEmotionByElicitor(EmotionType.Reproach, distress.getElicitor()) : null;
+    if ((histDistress != null) || (histReproach != null)) {
+      EmotionType type = EmotionType.Anger;
+      if (distress != null) {
+        Object elicitor = distress.getElicitor();
+        double intensity = max(distress.getIntensity(), histReproach.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(distress);
+        history.removeEmotionByElicitor(histReproach, elicitor);
+      }
+      if (reproach != null) {
+        Object elicitor = reproach.getElicitor();
+        double intensity = max(reproach.getIntensity(), histDistress.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(reproach);
+        history.removeEmotionByElicitor(histDistress, elicitor);
+      }
+    }
+    // Current emotions elicited at the same time
+    if (distress != null && reproach != null && distress.getElicitor() != null &&
+        distress.getElicitor().equals(reproach.getElicitor())) {
+      
+      EmotionType type = EmotionType.Anger;
+      Object elicitor = reproach.getElicitor();
+      double intensity = max(distress.getIntensity(), reproach.getIntensity());
+      intensity = adjustIntensity(intensity, type, mood);
+      tempEmotions.add(new Emotion(type, intensity,
+          fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+      usedEmotions.add(distress);
+      usedEmotions.add(reproach);
+    }
+    // --------------------------------------------------------------------------------
+    // Attraction/Attribution Group:
+    // --------------------------------------------------------------------------------
+    // Checking emotion history, if a suitable emotion with the same elicitor
+    // exisits - but only if one of the needed emotion is missing.
+    // If so, use this emotion!
+    // Compount Emotion Love
+    histLiking = ((liking == null) && (admiration != null)) ?
+      history.getEmotionByElicitor(EmotionType.Liking, admiration.getElicitor()) : null;
+    histAdmiration = ((liking != null) && (admiration == null)) ?
+      history.getEmotionByElicitor(EmotionType.Admiration, liking.getElicitor()) : null;
+    if ((histLiking != null) || (histAdmiration != null)) {
+      EmotionType type = EmotionType.Love;
+      if (liking != null) {
+        Object elicitor = liking.getElicitor();
+        double intensity = max(liking.getIntensity(), histAdmiration.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(liking);
+        history.removeEmotionByElicitor(histAdmiration, elicitor);
+      }
+      if (admiration != null) {
+        Object elicitor = admiration.getElicitor();
+        double intensity = max(admiration.getIntensity(), histLiking.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(admiration);
+        history.removeEmotionByElicitor(histLiking, elicitor);
+      }
+    }
+    // Current emotions elicited at the same time
+    if (liking != null && admiration != null && liking.getElicitor() != null &&
+        liking.getElicitor().equals(admiration.getElicitor())) {
+      EmotionType type = EmotionType.Love;
+      Object elicitor = admiration.getElicitor();
+      double intensity = max(liking.getIntensity(), admiration.getIntensity());
+      intensity = adjustIntensity(intensity, type, mood);
+      tempEmotions.add(new Emotion(type, intensity,
+          fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+      usedEmotions.add(liking);
+      usedEmotions.add(admiration);
+    }
+    // Checking emotion history, if a suitable emotion with the same elicitor
+    // exisits - but only if one of the needed emotion is missing.
+    // If so, use this emotion!
+    // Compount Emotion Hate
+    histDisliking = ((disliking == null) && (reproach != null)) ?
+      history.getEmotionByElicitor(EmotionType.Disliking, reproach.getElicitor()) : null;
+    histReproach = ((disliking != null) && (reproach == null)) ?
+      history.getEmotionByElicitor(EmotionType.Reproach, disliking.getElicitor()) : null;
+    if ((histDisliking != null) || (histReproach != null)) {
+      EmotionType type = EmotionType.Hate;
+      if (disliking != null) {
+        Object elicitor = disliking.getElicitor();
+        double intensity = max(disliking.getIntensity(), histReproach.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(disliking);
+        history.removeEmotionByElicitor(histReproach, elicitor);
+      }
+      if (reproach != null) {
+        Object elicitor = reproach.getElicitor();
+        double intensity = max(reproach.getIntensity(), histDisliking.getIntensity());
+        intensity = adjustIntensity(intensity, type, mood);
+        tempEmotions.add(new Emotion(type, intensity,
+            fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+        usedEmotions.add(reproach);
+        history.removeEmotionByElicitor(histDisliking, elicitor);
+      }
+    }
+    // Current emotions elicited at the same time
+    if (disliking != null && reproach != null && disliking.getElicitor() != null &&
+        disliking.getElicitor().equals(reproach.getElicitor())) {
+      EmotionType type = EmotionType.Hate;
+      Object elicitor = reproach.getElicitor();
+      double intensity = max(disliking.getIntensity(), reproach.getIntensity());
+      intensity = adjustIntensity(intensity, type, mood);
+      tempEmotions.add(new Emotion(type, intensity,
+          fPerEmoRel.getEmotionBaseline(fPersonality, type), elicitor));
+      usedEmotions.add(disliking);
+      usedEmotions.add(reproach);
+    }
+    // -----------------------------------------------------
+    // Delete single emotions, if we have got compound ones.
+    // -----------------------------------------------------
+    if (!usedEmotions.isEmpty())
+      tempEmotions.removeAll(usedEmotions);
+    // -----------------------------------------------------
+    // Update emotion vector and notify listeners.
+    // -----------------------------------------------------
+    for (Iterator it = tempEmotions.iterator(); it.hasNext();) {
+      Emotion emotion = (Emotion)it.next();
+      if (emotions.hasType(emotion.getType())) {
+        emotions.add(emotion);
+        //log.info("Elicited emotion " + emotion.getType() + " (" + prettyPrint(emotion.getIntensity()) + "/" + prettyPrint(emotion.getBaseline()) + ")");
+      } else {
+        log.warning("Elicited emotion " + emotion.getType() + " not used! Not defined as available emotion.");
+      }
+    }
+    return emotions;
+  }
+  
+}

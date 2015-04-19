@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno ist ein ausgesprochener Fan von Madonna. Er will mit Anne ihr Konzert in Berlin besuchen. Gerade telefoniert Anne mit ihrer Freundin Clementine, um Karten zu organisieren.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="GiveHope" intensity="1.00" elicitor="Eintrittskarte"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Du Bruno, ich hab grad' Clementine an der Strippe. Sie steht vor der Konzerthalle und hält Ausschau. Es gibt sicher noch Karten. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:Context>Bruno: Man, dass wäre ja klasse. Wir würden auch etwas mehr bezahlen, oder?
+		Anne: Ja, klar. Ich sag ihr Bescheid!
+		(Kurze Zeit später)</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="ConfirmFact" intensity="0.50" elicitor="Eintrittskarte"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Clementine sagt gerade, sie hat noch 2 Karten bekommen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="5500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.80" elicitor="Konzerteintritt"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="1.00" elicitor="Konzerteintritt"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne,Clementine" listener="" type="PraiseAction" intensity="0.90" elicitor="Konzerteintritt"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Wahnsinn! Nach all dem Hin- und Her, habt ihr es noch hinbekommen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:Context>Anne: Na, viel hab' ich nicht dazu beigetragen.</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Clementine" listener="" type="PraiseAction" intensity="1.00" elicitor="Anstrengung"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Also, ich hätt' das nicht mehr für möglich gehalten. Clementine war richtig auf Zack - normalerweise bekommt man für so 'was so spät keine Karten mehr. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:Context>Anne: Ja, stimmt! Auf sie ist eben Verlass.</aml:Context>
+  </aml:Item>
+  <aml:Item time="14500">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne,Clementine" listener="" type="Thank" intensity="0.50" elicitor="good girls"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Was würd' ich nur ohne euch machen. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

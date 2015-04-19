@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno hat für Annes Geburtstag ein Geschenk besorgt. Er ist eben bei ihr angekommen.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.30" elicitor="Bruno has appeared"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Schön, dass du da bist. [signal] Stoßen wir erstmal an!</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="WishGood" intensity="0.70" elicitor="Sekt zum Geburtstag"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Also - alles, alles Gute zum Geburtstag! (Gibt Anne einen Kuss auf die Wange) [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2500">
+    <aml:Context>Ich hab' hier ein kleines Geschenk für dich.</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.60" elicitor="a present"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: (Bekommt von Bruno das Geschenk) [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3500">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="AnnounceConcern" intensity="0.60" elicitor="Geschenk"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Hoffentlich gefällt es dir. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4500">
+    <aml:Context>(Anne packt das Geschenk aus)</aml:Context>
+  </aml:Item>
+  <aml:Item time="6500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Thank" intensity="0.80" elicitor="Bedanken für Geschenk"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Wow! Ein Schal. Der ist aber cool - Danke! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="DiffuseConcern" intensity="1.00" elicitor="Geschenk"/>
+    </aml:AffectInput>
+    <aml:Context>Der ist echt klasse, weil er zu meiner neuen Jacke passt. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="PosCommentObject" intensity="0.80" elicitor="Schöne Jacke, Schöner Schal"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Deswegen hat mir der Schal auch gleich so gut gefallen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10500">
+    <aml:Context>Anne: Lass uns darauf einen Schluck trinken!</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="WishGood" intensity="0.70" elicitor="Nochmal Alles Gute"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Gute Idee. Nochmals alles Gute. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13500">
+    <aml:Context>Anne: Prost! Auf den tollen Schal!</aml:Context>
+  </aml:Item>
+  <aml:Item time="16000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.50" elicitor="well all things are good"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ach, jetzt bin ich aber froh, dass er dir gefällt. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

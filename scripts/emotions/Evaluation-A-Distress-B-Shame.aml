@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno hat mit Annes Auto eingekauft. Bruno erklärt Anne, dass er das Auto demoliert hat.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="BringBadNews" intensity="0.60" elicitor="CarDamage"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Du Anne, nach dem Einkaufen hab' ich beim Ausparken nicht aufgepasst. Jetzt ist im Auto eine Delle. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Excuse" intensity="0.80" elicitor="car gets fixed"/>
+    </aml:AffectInput>
+    <aml:Context>Tut mir leid, ich werd's direkt in die Werkstatt geben. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AffectOutput xmlns="xml.affect.de" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="xml.affect.de Affect.xsd">
+	<CharacterAffect name="Anne">
+		<DominantEmotion name="Shame" value="0.8"/>
+		<Mood moodword="Docile" intensity="moderate"/>
+		<Personality openness="0.3" conscientiousness="-0.6" extraversion="0.7" agreeableness="0.4" neurotism="-0.1"/>
+	</CharacterAffect>
+	<CharacterAffect name="Bruno">
+		<DominantEmotion name="Anger" value="0.2"/>
+		<Mood moodword="Relaxed" intensity="slightly"/>
+		<Personality openness="0.8" conscientiousness="0.6" extraversion="0.4" agreeableness="0.8" neurotism="-0.7"/>
+	</CharacterAffect>
+
+	<GroupAffect name="TestGroup" characters="Anne,Bruno">
+		<OverallMood moodword="Relaxed" intensity="slightly"/>
+		<SocialIntegrity value="0.9"/>
+		<MoodSimilarities>
+			<CharacterPair first="Sven" second="User"/>
+			<CharacterPair first="Valerie" second="User"/>
+		</MoodSimilarities>
+		<MoodExtremes>
+			<Character name="Sven" difference="0.18"/>
+			<Character name="Valerie" difference="0.12"/>
+			<Character name="User" difference="0.0"/>
+		</MoodExtremes>
+	</GroupAffect>
+</AffectOutput>

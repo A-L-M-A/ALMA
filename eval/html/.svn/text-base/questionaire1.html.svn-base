@@ -1,0 +1,124 @@
+<html>
+<head>
+  <title>ALMA Fragebogen - Allgemeines</title>
+</head>
+<body>
+<span class="standard">
+<h2>Allgemeine Angaben</h2>
+<form method="post" action="/cgi-local/ema-de.cgi" enctype="application/x-www-form-urlencoded">
+<p>Geben Sie bitte Ihr Alter an:<select name="age" onchange="document.affect.addAnswer('User','age',this.value);document.affect.addAnswer('Evaluation','start',(new Date()).getTime())"><option value="99" selected="selected">Bitte ausw&auml;hlen!    
+</option><option value="18"> bis 18    
+</option><option value="30">19-30</option>
+</option><option value="45">31-45</option>
+</option><option value="65">46-65</option>
+</option><option value="90">&uuml;ber 65</option></select> Jahre
+<br><br>
+Ihr Geschlecht: <select name="sex" onchange="document.affect.addAnswer('User','sex',this.value)"><option value="99" selected="selected">Bitte ausw&auml;hlen!    
+</option><option value="f">weiblich    
+</option><option value="m">m&auml;nnlich</option></select>
+<br><br>
+Ihr Beruf: 
+<select name="beruf" onchange="document.affect.addAnswer('User','job',this.value)">
+  <option value="99" selected="selected">Bitte ausw&auml;hlen!</option>
+  <option value="student">Student(in)</option>
+  <option value="college student">Sch&uuml;ler(in)</option>
+  <option value="worker">Angestellte(r)</option>
+  <option value="freelancer">Selbstst&auml;ndige(r)</option>
+  <option value="civil servant">Beamte(r)</option>
+  <option value="researcher">Wissenschafter(in)</option>
+  <option value="housewife">Hausfrau/Hausmann</option>
+  <option value="other">Sonstiges</option>
+</select>
+<br><br>
+Ihr h&ouml;chster Schul- bzw. Studienabschluss:
+<select name="schulabschluss" onchange="document.affect.addAnswer('User','education',this.value)">
+<option value="99">Bitte ausw&auml;hlen!   
+</option><option value="secondary modern school">Hauptschule
+</option><option value="junior high school">Realschule
+</option><option value="adacemic high school">Gymnasium
+</option><option value="unfinished study">Studium (nicht abgeschlossen)
+</option><option value="finished study">abgeschlossenes Studium
+</option><option value="phd">Promotion
+</option><option value="other">Sonstiges</option></select>
+<h2>Allgemeine Fragen zu Gef&uuml;hlen</h2>
+<em>Ist Ihnen die Unterscheidung zwischen kurzzeitigen Gef&uuml;hlen (Emotionen) und mittelfristigen Gef&uuml;hlen (Stimmung) bekannt?</em><br>
+<table width="490">
+  <tr>
+    <td class="standard" width="70">gar nicht</td>
+    <td class="standard" width="70">
+      <input name="knowemotionmood" value="1" type="radio" onclick="document.affect.addAnswer('User','knowemotionmood','1')">
+    </td>
+    <td class="standard" width="70">
+      <input name="knowemotionmood" value="2" type="radio" onclick="document.affect.addAnswer('User','knowemotionmood','2')">
+    </td>
+    <td class="standard" width="70">
+      <input name="knowemotionmood" value="3" type="radio" onclick="document.affect.addAnswer('User','knowemotionmood','3')">
+    </td>
+    <td class="standard" width="70">
+      <input name="knowemotionmood" value="4" type="radio" onclick="document.affect.addAnswer('User','knowemotionmood','4')">
+    </td>
+    <td class="standard" width="70">
+      <input name="knowemotionmood" value="5" type="radio" onclick="document.affect.addAnswer('User','knowemotionmood','5')">
+    </td>
+    <td class="standard" width="70">sehr</td>
+  </tr>
+</table>
+<br><br>
+<em>Wie gut glauben Sie Emotionen und Stimmungen anderer beurteilen zu k&ouml;nnen?</em><br>
+<table width="490">
+  <tr>
+    <td class="standard" width="70">gar nicht</td>
+    <td class="standard" width="70">
+      <input name="judgeemotionmood" value="1" type="radio" onclick="document.affect.addAnswer('User','judgeemotionmood','1')">
+    </td>
+    <td class="standard" width="70">
+      <input name="judgeemotionmood" value="2" type="radio" onclick="document.affect.addAnswer('User','judgeemotionmood','2')">
+    </td>
+    <td class="standard" width="70">
+      <input name="judgeemotionmood" value="3" type="radio" onclick="document.affect.addAnswer('User','judgeemotionmood','3')">
+    </td>
+    <td class="standard" width="70">
+      <input name="judgeemotionmood" value="4" type="radio" onclick="document.affect.addAnswer('User','judgeemotionmood','4')">
+    </td>
+    <td class="standard" width="70">
+      <input name="judgeemotionmood" value="5" type="radio" onclick="document.affect.addAnswer('User','judgeemotionmood','5')">
+    </td>
+    <td class="standard" width="70">sehr</td>
+  </tr>
+</table>
+<br><br>
+<em>Wie gut kennen Sie sich in wissenschaftlicher Hinsicht im Gebiet von Emotionen und Stimmungen aus?</em><br>
+<table width="490">
+  <tr>
+    <td class="standard" width="70">gar nicht</td>
+    <td class="standard" width="70">
+      <input name="emotionmoodresearcher" value="1" type="radio" onclick="document.affect.addAnswer('User','emotionmoodresearcher','1')">
+    </td>
+    <td class="standard" width="70">
+      <input name="emotionmoodresearcher" value="2" type="radio" onclick="document.affect.addAnswer('User','emotionmoodresearcher','2')">
+    </td>
+    <td class="standard" width="70">
+      <input name="emotionmoodresearcher" value="3" type="radio" onclick="document.affect.addAnswer('User','emotionmoodresearcher','3')">
+    </td>
+    <td class="standard" width="70">
+      <input name="emotionmoodresearcher" value="4" type="radio" onclick="document.affect.addAnswer('User','emotionmoodresearcher','4')">
+    </td>
+    <td class="standard" width="70">
+      <input name="emotionmoodresearcher" value="5" type="radio" onclick="document.affect.addAnswer('User','emotionmoodresearcher','5')">
+    </td>
+    <td class="standard" width="70">sehr</td>
+  </tr>
+</table>
+
+<table width="800">
+ <tr>
+    <td class="standard">
+      <br>
+       <b>Bevor die Simulation von Gef&uuml;hlen gezeigt wird, m&ouml;chten wir Sie
+       bitten einige Detailfragen zu Emotionen und Stimmungen zu beantworten</b>
+    </td>
+  </tr>
+</table>
+</span>
+</body>
+</html>

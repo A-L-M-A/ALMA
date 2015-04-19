@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Item time="0">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="Die Sonne scheint" intensity="1.00" type="GoodEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="100">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="Es regnet" intensity="1.00" type="BadEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="200">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="Es wird Regnen" intensity="0.70" type="BadLikelyFutureEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="300">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="Es wird Regnen" intensity="0.50" type="EventConfirmed"/>
+    </aml:AffectInput>
+  </aml:Item>
+</aml:AffectScript>

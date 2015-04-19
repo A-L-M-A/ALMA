@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne bittet Bruno sich den Durchlauferhitzer in der Küche anzusehen.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="BadEvent" intensity="0.30" elicitor="no warm water"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Bruno, du das Wasser in der Küche wird nicht mehr warm. [signal] Kannst du mal schauen, ob man am Durchlauferhitzer irgendwas sieht?</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="AnnounceConcern" intensity="0.80" elicitor="electric shock"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Klar, mach ich ... Wo ist denn der Sicherungskasten? Ich will nur schnell die Sicherung 'rausdrehen. Sonst könnt' ich ja 'nen Stromschlag bekommen! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:Context>Anne: Ach, das geht auch ohne, mein Nachbar macht das auch so!</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="ConfirmConcern" intensity="1.00" elicitor="electric shock"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Wenn du meinst, ich probier's mal. (Hebt das Gehäuse vom Durchlauferhitzer an) Aua, mist, jetzt hab' ich doch ein Stromschlag bekommen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Chide" intensity="0.90" elicitor="dumb work leads to electric shock"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Hey, kannst Du nicht vorsichtig sein. Komm, lass lieber mich das machen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Excuse" intensity="1.00" elicitor="dumb work leads to electric shock"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ja, tut mir leid. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="AnnounceConcern" intensity="0.90" elicitor="dangerous thing"/>
+    </aml:AffectInput>
+    <aml:Context>Pass aber auf. Ich denke irgendwas mit der Verkabelung stimmt nicht, auf dem Gehäuse ist Strom drauf! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="ConfirmConcern" intensity="1.00" elicitor="dangerous thing"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: (Greift vorsichtig das Gehäuse vom Durchlauferhitzer an) Au, da ist wirklich Strom drauf. So ein Mist! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:Context>Bruno: Siehst Du. Lass lieber die Finger weg. Komm', wir rufen den Hausmeister an. Soll er sich darum kümmern.</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:Context>Anne: Gute Idee.</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

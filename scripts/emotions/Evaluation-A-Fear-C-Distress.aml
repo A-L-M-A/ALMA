@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Clementine ist Annes Chefin. Anne ist seit 1 Woche angestellt. Clementine beschuldigt Anne, dass sie ihre Arbeit zu langsam erledigt.
+	Clementine und Anne mögen sich nicht</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Clementine"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Clementine"/>
+      <aml:Act addressee="Anne" listener="" type="Chide" intensity="0.80" elicitor="Bad Work"/>
+    </aml:AffectInput>
+    <aml:Context>Clementine: Wenn du so langsam weiterarbeitest, werden wir nie fertig. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

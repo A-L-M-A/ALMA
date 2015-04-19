@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne ist Professorin für Experimental-Physik. Bruno hört ihre Vorlesung und hat im Anschluss einige Fragen.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:Context>Bruno: Kann man zur Berechung der Amplitudenhöhe einer Welle nicht einfach die Wellengleichung dreimal ableiten?</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Chide" intensity="0.80" elicitor="wrong thesis"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Wie kommen Sie denn darauf? Weder die Ableitung nach Zeit oder Ort bringen da was! Das sollten Sie besser wissen, wenn Sie meine Vorlesung regelmäßig besucht haben. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Defend" intensity="0.30" elicitor="wrong thesis"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ich bin erst seit 2 Wochen dabei und deswegen noch etwas im Stoff zurück. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Excuse" intensity="1.00" elicitor="wrong thesis"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ah, gut, okay, dann können Sie dass nicht wissen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:Context>Bruno: Interessant ist aber, wenn sich die Feinstruktur-Konstante nur um 5% ändern würde, könnte man wesentlich bessere Solarzellen aus Silizium herstellen.</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="AnnounceConcern" intensity="1.00" elicitor="wrong thesis about natural consts"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Was behaupten Sie da? Naturkonstanten ändern sich nicht! Sie sollten mal darüber nachdenken, ob Physik das Richtige für Sie ist. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Defend" intensity="0.30" elicitor="wrong thesis about natural consts"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Aber, ich hab' im Scientific American einen Artikel von Barrow und Webb gelesen, nachdem Naturkonstanten Funktionen der Zeit sein könnten. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="DiffuseConcern" intensity="1.00" elicitor="wrong thesis about natural consts"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Hm, das ist interessant. Gar nicht mal so dumm. Hab' Sie wohl falsch eingeschätzt.  [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Object type="NiceThing" intensity="1.00" elicitor="new theorie"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: In diesem Zusammenhang find ich die M-StringTheorie einfach genial. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Object type="NiceThing" intensity="0.70" elicitor="new theorie"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ja, in der Tat. Damit lassen sich die meisten Phänomene gut erklären. [signal] Wenn Sie dazu Literatur haben wollen, kann ich ihnen dieses Werk hier empfehlen. (Greift nach einem Buch)</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:Context>Bruno: Danke. Ich werd's mir über die Feiertage durchlesen.</aml:Context>
+  </aml:Item>
+  <aml:Item time="16000">
+    <aml:Context>Anne: Okay, viel Spaß damit.</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

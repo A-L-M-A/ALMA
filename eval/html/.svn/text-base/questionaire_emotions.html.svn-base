@@ -1,0 +1,68 @@
+<html>
+   <head>
+      <title>Fragebogen - Emotionen</title>
+   </head>
+   <body>
+      <table cellspacing="0px" width="800">
+        <tr>
+          <td class="standard" height="25px">
+            <h2>Simulation von Emotionen</h2>
+            <i>Emotionen</i> stehen f&uuml;r kurzfristige Gef&uuml;hlszust&auml;nde. In einer 
+            Dialogsituation soll die Entstehung von Emotionen bei <i>Anne</i> 
+            und <i>Bruno</i> bewertet werden. Dabei wird davon ausgegangen, dass 
+            bestimmte &Auml;u&szlig;erungen Emotionen ausl&ouml;sen.<br>
+            <h2>Format der Dialogsituation und Vorgehensweise</h2>
+            Das Format der folgenden Dialogsituationen besteht aus 2 Teilen:<br><br>
+            1. Einer <i>Situationsbeschreibung</i>, in der kurz die Situation von
+            Anne und Bruno erl&auml;utert wird und<br><br>
+            2. &Auml;u&szlig;erungen von Anne oder Bruno, die in dieser Situation stattfinden.
+            Zum Beispiel:
+          </td>
+        </tr>
+        <tr>
+          <td id="explain" height="35px" align="center">
+            Bruno sagt zu Anne: Herzlichen Gl&uuml;ckwunsch zur Bef&ouml;rderung!
+          </td>
+        </tr>
+        <tr>
+          <td class="standard" height="25px">
+            Der Teil der &Auml;u&szlig;erung, der Emotionen ausl&ouml;st, wird wie folgt dargestellt:
+          </td>
+        </tr>
+        <tr>
+          <td id="explain" height="35px" align="center">
+            <b>Bruno</b>: <b>[Begl&uuml;ckw&uuml;nscht Anne]</b>
+          </td>
+        </tr>
+        <tr>
+          <td class="standard" height="25px">
+            Die in der Untersuchung vorkommenden &Auml;u&szlig;erungen enthalten beide Informationen:
+          </td>
+        </tr>
+        <tr>
+          <td id="explain" height="35px" align="center">
+            <b>Bruno</b>: Herzlichen Gl&uuml;ckwunsch zur Bef&ouml;rderung! <b>[Begl&uuml;ckw&uuml;nscht Anne]</b>
+          </td>
+        </tr>
+        <tr>
+          <td class="standard">
+            <br>
+            Die Gef&uuml;hls-Simulation wird mit dem Button <input type="button" 
+            name="demoaffectcalc" value="Auswirkungen berechnen" height="20px"/> gestartet.
+            Nach kurzer Zeit, in der das Sprechen der &Auml;u&szlig;erung durch Ausgrauen
+            der selbigen angedeutet wird, erscheinen die erzeugten Emotionen (rot)
+            auf der linken Seite. Diese verschwinden nach einiger Zeit wieder - 
+            genau wie Emotionen beim Menschen.
+            <br><br>
+            Im Anschluss daran werden sie gefragt, wie passend/unpassend sie die
+            ausgel&ouml;sten Emotionen (nicht jedoch deren Dauer!) bei Anne und Bruno finden.  
+          </td>
+        </tr>
+        <tr>
+         <td class="standard">
+           <br><b>Auf der n&auml;chsten Seite beginnt die Simulation von Emotionen</b>
+         </td>
+       </tr>
+     </table>
+  </body>
+</html>

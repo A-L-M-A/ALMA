@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+  <title>Elicitation of Emotions by Appraisal Tags</title>
+  <style type="text/css">
+  <!--
+    body  { font-size:12pt;
+            font-family:Helvetica,Arial,sans-serif;}
+    ul,li { font-size:12pt;
+            font-family:Helvetica,Arial,sans-serif;}
+    -->
+  </style>
+</head>
+<body bgcolor="white">
+<table>
+      <tr>
+	<td width="100%" align="left">
+          <h1>Elicitation of Emotions by Appraisal Tags</h1>
+        </td>
+	<td width="80px">&nbsp;</td>
+	<td align="right"><a href="index.html"><img border="0"
+	      src="docs/pics/upto.gif"></a></td>
+      </tr>
+</table>
+
+<table>
+ <tr>
+  <td><h2>Appraisal Tag</h2>
+  </td>
+  <td>&nbsp;</td>
+  <td><h2>Emotion</h2>
+  </td>
+ </tr>
+ <tr>
+  <td>GoodEvent
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Joy
+  </td>
+ </tr>
+ <tr>
+  <td>
+  GoodEventForGoodOther
+  </td>
+  <td>&rArr;</td>
+  <td>
+  HappyFor
+  </td>
+ </tr>
+ <tr>
+  <td>
+  GoodEventForBadOther
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Resentment
+  </td>
+ </tr>
+ <tr>
+  <td>
+  BadEvent
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Distress
+  </td>
+ </tr>
+ <tr>
+  <td>
+  BadEventForGoodOther
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Pity
+  </td>
+ </tr>
+ <tr>
+  <td>
+  BadEventForBadOther
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Gloating
+  </td>
+ </tr>
+ <tr>
+  <td>
+  GoodLikelyFutureEvent
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Hope
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;&nbsp; + EventConfirmed
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Satisfaction
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;&nbsp; + EventDisconfirmed
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Disappointment
+  </td>
+ </tr>
+ <tr>
+  <td>
+  GoodUnlikelyFutureEvent
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Hope
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;&nbsp; + EventConfirmed
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Satisfaction
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;&nbsp; + EventDisconfirmed
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Disappointment
+  </td>
+ </tr>
+ <tr>
+  <td>
+  BadLikelyFutureEvent
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Fear
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;&nbsp; + EventConfirmed
+  </td>
+  <td>&rArr;</td>
+  <td>
+  FearsConfirmed
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;&nbsp; + EventDisconfirmed
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Relief
+  </td>
+ </tr>
+ <tr>
+  <td>
+  BadUnlikelyFutureEvent
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Fear
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;&nbsp; + EventConfirmed
+  </td>
+  <td>&rArr;</td>
+  <td>
+  FearsConfirmed
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;&nbsp; + EventDisconfirmed
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Relief
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;
+  </td>
+  <td>&nbsp;</td>
+  <td>
+  &nbsp;
+  </td>
+ </tr>
+ <tr>
+  <td>
+  GoodActSelf
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Pride
+  </td>
+ </tr>
+ <tr>
+  <td>
+  GoodActOther
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Admiration
+  </td>
+ </tr>
+ <tr>
+  <td>
+  BadActSelf
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Shame
+  </td>
+ </tr>
+ <tr>
+  <td>
+  BadActOther
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Reproach
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;
+  </td>
+  <td>&nbsp;</td>
+  <td>
+  &nbsp;
+  </td>
+ </tr>
+ <tr>
+  <td>
+  GoodEvent + GoodActSelf
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Gratification
+  </td>
+ </tr>
+ <tr>
+  <td>
+  GoodEvent + GoodActOther
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Gratitude
+  </td>
+ </tr>
+ <tr>
+  <td>
+  BadEvent + BadActSelf
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Remorse
+  </td>
+ </tr>
+ <tr>
+  <td>
+  BadEvent + BadActOther
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Anger
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;
+  </td>
+  <td>&nbsp;</td>
+  <td>
+  &nbsp;
+  </td>
+ </tr>
+ <tr>
+  <td>
+  NiceThing
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Liking
+  </td>
+ </tr>
+ <tr>
+  <td>
+  NastyThing
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Disliking
+  </td>
+ </tr>
+ <tr>
+  <td>
+  &nbsp;
+  </td>
+  <td>&nbsp;</td>
+  <td>
+  &nbsp;
+  </td>
+ </tr>
+ <tr>
+  <td>
+  GoodActOther + NiceThing
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Love
+  </td>
+ </tr>
+ <tr>
+  <td>NastyThing
+  </td>
+  <td>&rArr;</td>
+  <td>
+  Hate
+  </td>
+ </tr>
+</table>
+    <hr>
+    <span style="font-size:8pt"> ALMA Help - Version 1.3 -
+      07.05.2008<br> Author: Patrick Gebhard
+    </span>
+  </body>
+</html>

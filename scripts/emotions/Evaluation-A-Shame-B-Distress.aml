@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Bruno sind Wanderfreunde. Anne hat Brunos Wanderpokal kaputt gemacht.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="RevealGuild" intensity="1.00" elicitor="Bad Situation"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Du Bruno, mir ist gerade dein Karatepokal aus Versehen kaputt gegangen. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

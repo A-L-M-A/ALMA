@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Bruno sind beim Pferderennen. Anne erfährt durch Bruno, dass das Pferd, auf das sie gewettet hat, nicht gewonnen hat.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodUnlikelyFutureEvent" intensity="0.50" elicitor="Horse Race Prize"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Wenn ich jetzt beim Pferderennen gewinne, kann ich endlich eine Weltreise machen! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="BringBadNews" intensity="0.60" elicitor="Horse Race Prize"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Dein Pferd hat leider nicht gewonnen. Schade. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

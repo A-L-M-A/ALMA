@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Item time="0">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Act elicitor="Beispiel" intensity="0.40" type="BadJoke" listener="User" addressee="Valerie"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Valerie"/>
+      <aml:Act elicitor="Beispiel" intensity="0.70" type="Calm" listener="User" addressee="Sven"/>
+    </aml:AffectInput>
+  </aml:Item>
+</aml:AffectScript>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno hat sich die linke Hand kompliziert gebrochen und wurde operiert. Eben kommt die Ärztin ins Krankenzimmer.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.60" elicitor=""/>
+    </aml:AffectInput>
+    <aml:Context>Ärztin: Ah, sehr gut. Sie sind wach! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="0.90" elicitor="hand seems to be okay"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Wie ist denn die Operation verlaufen? Meine Hand fühlt sich gut an! Ich glaub', ich werd' sie wieder benutzen können.  [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringGoodNews" intensity="0.80" elicitor="all at its place"/>
+    </aml:AffectInput>
+    <aml:Context>Ärztin: Wir haben ganze 3 Stunden gebraucht, um alles wieder an seinen Platz zu tun. Aber, Sie werden Ihre Hand später wieder voll bewegen  können. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:Context>Bruno: Oh je, das hört sich gefährlich an!</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Encourage" intensity="0.80" elicitor="training"/>
+    </aml:AffectInput>
+    <aml:Context>Ärztin: Ich denk' Sie haben verdammt Glück gehabt und es werden auch keine Schäden zurückbleiben wenn Sie sich ein wenig gedulden und trainieren! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Thank" intensity="0.80" elicitor="all is good"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Puh, da fällt mir ein Stein vom Herzen. Danke! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:Context>Ärztin: Keine Ursache, das ist mein Job! Wichtig ist, dass Sie Ihren Arm nicht so viel bewegen!</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:Context>Bruno: Mach' ich ... genau so, wie Sie's sagen. Was meinen Sie, wie lang' ich ihn ruhig halten muss?</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="GiveHope" intensity="0.70" elicitor="4 weeks to go"/>
+    </aml:AffectInput>
+    <aml:Context>Ärztin: Erstmal eine Woche. Wenn alles gut läuft, kommt der Gips in 6 Wochen weg. Dann können Sie mit der Krankengymnastik anfangen. Ich drück' Ihnen die Daumen! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Thank" intensity="0.80" elicitor="last words"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Hm, okay ... also, nochmals vielen Dank für Ihr Bemühen! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="16000">
+    <aml:Context>(Anne macht sich Notizen)</aml:Context>
+  </aml:Item>
+  <aml:Item time="17000">
+    <aml:Context>Ärztin: Also, ich schau' morgen wieder nach Ihnen.</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

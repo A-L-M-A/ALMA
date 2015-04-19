@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno räumt die Festplatte seines Computers auf. Anne schaut gerade vorbei.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEvent" intensity="0.80" elicitor="lost vacation photos"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: So ein Mist, Windows hat beim Aufräumen der Festplatte die Urlaubsbilder von Mallorca gelöscht. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Calm" intensity="0.40" elicitor="may be not lost"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ach, das ist doch kein Problem. Die sind doch bestimmt  noch im Papierkorb. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="AnnounceConcern" intensity="0.80" elicitor="lost or not that's the question"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Meinst Du? Aber, wenn nicht, was mach' ich dann? Die bekomm' ich ja nicht wieder. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:Context>Anne: Kein Ahnung, ich kenn` mich nicht damit aus.</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:Context>(Bruno schaut nach, ob sich die Fotos im Papierkorb des Computers befinden)</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEvent" intensity="0.90" elicitor="vacation photos are lost!"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: So ein Mist, wie's aussieht, sind die weg! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Accuse" intensity="0.80" elicitor="lost photos"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Oh nein! Die schönen Fotos. Du und deine blöde  Aufräumwut. Toll! Ich hab's dir ja schon immer gesagt, dass das nicht normal ist. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Condemn" intensity="0.40" elicitor="bad things happen"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ach lass, mich in Ruhe. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

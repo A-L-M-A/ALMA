@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Clementine beleidigt rüde Anne wegen einer von ihr zuvor getätigten Äußerung. Bruno, der Clementien gar nicht mag, beobachtet die Situation.
+	Clementine und Anne mögen sich nicht</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Clementine"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Clementine"/>
+      <aml:Act addressee="Anne" listener="Bruno" type="Insult" intensity="0.60" elicitor="Something indifferent"/>
+    </aml:AffectInput>
+    <aml:Context>Clementine: Anne, am besten machst du nur den Mund auf, wenn ich nicht dabei bin. Was ich sage hat wenigstens immer Sinn; bei dir kommt nur Mist raus. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

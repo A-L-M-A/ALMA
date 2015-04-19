@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Clementine präsentiert ihr neues Auto.
+	Clementine und Anne mögen sich nicht</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Clementine"/>
+      <aml:Event type="GoodEvent" intensity="0.80" elicitor="Introduction New Car"/>
+    </aml:AffectInput>
+    <aml:Context>Clementine: (denkt) So ein tolles Auto muss man einfach zeigen. Am besten so, dass es jeder sehen kann. Ach, da ist schon Anne, ... [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Clementine"/>
+      <aml:Act addressee="Anne" listener="" type="Boast" intensity="0.90" elicitor="Introduction New Car"/>
+    </aml:AffectInput>
+    <aml:Context>sagt: Schau mal Anne, mein neues Auto. Hab's eben erst abgeholt. Hat Ledersitze aus echtem Argentinischem Rindsleder! [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

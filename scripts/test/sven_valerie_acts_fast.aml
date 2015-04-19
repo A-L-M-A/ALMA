@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Item time="0">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Act addressee="Valerie" listener="" type="Attack" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="50">
+    <aml:AffectInput>
+      <aml:Character name="Valerie"/>
+      <aml:Act addressee="Sven" listener="" type="Calm" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="100">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Act addressee="Valerie" listener="" type="Attack" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="150">
+    <aml:AffectInput>
+      <aml:Character name="Valerie"/>
+      <aml:Act addressee="Sven" listener="" type="Calm" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="200">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Act addressee="Valerie" listener="" type="Attack" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="250">
+    <aml:AffectInput>
+      <aml:Character name="Valerie"/>
+      <aml:Act addressee="Sven" listener="" type="Calm" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="300">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Act addressee="Valerie" listener="" type="Attack" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="350">
+    <aml:AffectInput>
+      <aml:Character name="Valerie"/>
+      <aml:Act addressee="Sven" listener="" type="Calm" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="400">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Act addressee="Valerie" listener="" type="Attack" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="450">
+    <aml:AffectInput>
+      <aml:Character name="Valerie"/>
+      <aml:Act addressee="Sven" listener="" type="Calm" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="500">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Act addressee="Valerie" listener="" type="Attack" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="550">
+    <aml:AffectInput>
+      <aml:Character name="Valerie"/>
+      <aml:Act addressee="Sven" listener="" type="Calm" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="600">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Act addressee="Valerie" listener="" type="Attack" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="650">
+    <aml:AffectInput>
+      <aml:Character name="Valerie"/>
+      <aml:Act addressee="Sven" listener="" type="Calm" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+  </aml:Item>
+</aml:AffectScript>

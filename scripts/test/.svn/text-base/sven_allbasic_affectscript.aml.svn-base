@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Item time="0">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="" intensity="1.00" type="GoodEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="" intensity="1.00" type="BadEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="" intensity="1.00" type="GoodEventForGoodOther"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="" intensity="1.00" type="GoodEventForBadOther"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="" intensity="1.00" type="BadEventForBadOther"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="" intensity="1.00" type="BadEventForGoodOther"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="18000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="A" intensity="1.00" type="GoodLikelyFutureEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="21000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="A" intensity="1.00" type="EventDisconfirmed"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="24000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="B" intensity="1.00" type="GoodLikelyFutureEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="27000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="B" intensity="1.00" type="EventConfirmed"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="30000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="C" intensity="1.00" type="GoodUnlikelyFutureEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="33000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="C" intensity="1.00" type="EventDisconfirmed"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="36000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="D" intensity="1.00" type="GoodUnlikelyFutureEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="39000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="D" intensity="1.00" type="EventConfirmed"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="42000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="E" intensity="1.00" type="BadLikelyFutureEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="45000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="E" intensity="1.00" type="EventDisconfirmed"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="48000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="F" intensity="1.00" type="BadLikelyFutureEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="51000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="F" intensity="1.00" type="EventConfirmed"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="54000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="G" intensity="1.00" type="BadUnlikelyFutureEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="57000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="G" intensity="1.00" type="EventDisconfirmed"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="60000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="H" intensity="1.00" type="BadUnlikelyFutureEvent"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="63000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Event elicitor="H" intensity="1.00" type="EventConfirmed"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="66000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Action elicitor="I" intensity="1.00" type="GoodActSelf"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="69000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Action elicitor="J" intensity="1.00" type="BadActSelf"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="72000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Action elicitor="K" intensity="1.00" type="GoodActOther"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="75000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Action elicitor="L" intensity="1.00" type="BadActOther"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="78000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Object elicitor="" intensity="1.00" type="NiceThing"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="81000">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Object elicitor="" intensity="1.00" type="NastyThing"/>
+    </aml:AffectInput>
+  </aml:Item>
+</aml:AffectScript>

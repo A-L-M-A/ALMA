@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Bruno sind mit dem Auto unterwegs in die Stadt, um sich dort ein Theaterstück anzusehen.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadLikelyFutureEvent" intensity="0.50" elicitor="Kaputter Motor"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ich habe vorhin die Zündkerzen ausgewechselt. Das in der Werkstatt machen zu lassen ist ganz schön teuer. Aber irgendwie klingt der Motor jetzt komisch. Klingt fast so, als würde er bald seinen Geist aufgeben. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="1500">
+    <aml:Context>(Kurze Zeit später)</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="EventConfirmed" intensity="1.00" elicitor="Kaputter Motor"/>
+    </aml:AffectInput>
+    <aml:Context>Du Anne, das Motorgeräusch wird schlimmer. So können wir nicht weiterfahren. Der Motor ist kaputt. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Action type="BadActSelf" intensity="0.70" elicitor="Motor durch meine Sache zerstört"/>
+    </aml:AffectInput>
+    <aml:Context>Scheint so, dass ich da Mist gebaut hab'. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="ChargeStupidity" intensity="0.80" elicitor="Verantwortlichkeit"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Mensch, man bastelt auch nicht am Motor rum, wenn man keine Ahnung davon hat! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="ConcedeStupidity" intensity="0.90" elicitor="Verantwortlichkeit"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ich dachte, so schwer kann das nicht sein. Aber du hast ja Recht. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Chide" intensity="0.70" elicitor="Konsequenzen für Kinder"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Sag' mal, hast Du Dir mal die Konsequenzen überlegt. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="BadEvent" intensity="0.50" elicitor="no theater today"/>
+    </aml:AffectInput>
+    <aml:Context>Jetzt kommen wir nicht mehr rechtzeitig zum Theater.</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Excuse" intensity="0.60" elicitor="Konsequenzen für Kinder"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Es tut mir leid, ich ruf' gleich mal die Werkstatt an, ob die uns abschleppen können und ein Ersatzauto haben. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="ThreatenBad" intensity="0.50" elicitor="Ordnung herstellen"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ja, tu' das! Den Theaterabend können wir jetzt wohl knicken. Schau bloß, dass du das wieder gut machst! Sonst kannst Du was erleben! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Excuse" intensity="0.80" elicitor="Ordnung herstellen"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ja, mach' ich. Ich hab's doch nur gut gemeint. Tut mir leid. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

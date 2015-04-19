@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno ist bei Anne zum Mittagessen.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:Context>Anne: Bruno gehst du bitte in den Keller und holst uns eine Flasche Wasser?</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:Context>Bruno: Kein Problem.</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="AnnounceConcern" intensity="1.00" elicitor="broken light"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ach ja, sei auf der Kellertreppe vorsichtig. Gestern ist das Licht ausgefallen und ich wär' fast die Treppe runter gefallen! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:Context>Bruno: Okay, ich pass' auf!</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:Context>(Bruno geht in den Keller, und ...)</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="ConfirmConcern" intensity="1.00" elicitor="broken light"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: (ruft) Mist, das Licht ist wieder ausgegangen! Jetzt steh' ich da im Dunkeln. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:Context>Anne: (ruft) Du musst nur die Sicherung wieder 'reindrücken. Der Sicherungskasten ist am Ende der Treppe.</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="DenyOwnConfidence" intensity="1.00" elicitor="paralyzation"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: (ruft) Anne, ich kann überhaupt nichts sehen. So kann ich da nicht weitergegen! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:Context>Anne: Warte! Ich hol' die Taschenlampe!</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="ProvideHelp" intensity="0.70" elicitor="rescue mission"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Warte! Ich hol' die Taschenlampe! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:Context>(Nach einiger Zeit)</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:Context>Anne: Hier ist sie. Jetzt nur die Sicherung wieder reindrücken ...  Alles klar, wir haben wieder Licht.</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Action type="BadActSelf" intensity="1.00" elicitor="could not move"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Oh je, das ist mir total peinlich, dass ich wie gelähmt da stand. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="16500">
+    <aml:Context>Anne: Schon okay. Komm' erstmal mit hoch.</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno geht zur 18-Jahre-Geburstagsparty von Anne im Jugendheim.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="0.40" elicitor=""/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: (denkt) Ich freu' mich schon richtig auf die Schüler-Band "The Barkeepers". Deren Sound ist einfach klasse! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:Context>Anne: Ah, hallo Bruno, komm 'rein!</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Thank" intensity="0.50" elicitor="kissing their hellos"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Hallo Anne. Danke für die Einladung! [signal] Und? Hast du's hinbekommen, dass die "Barkeepers" spielen?</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringBadNews" intensity="1.00" elicitor=""/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ach, dass war ein Drama. Sie haben in letzter Minute abgesagt. Blöd, du magst die doch auch! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:Context>Bruno: Tja, das ist Schade.</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:Context>Anne: Sogar mehr als Schade!</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Console" intensity="1.00" elicitor="it can be better"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ach, es wird auch sicher so ganz witzig. Da bin ich mir sicher. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:Context>Anne: Ja, klar.</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="0.90" elicitor="what is meant"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Du, was anderes, weißt du, wo Clementine ist? Sie wollte mir etwas sagen, was nur für mich bestimmt ist. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringBadNews" intensity="1.00" elicitor="an unexpected illness"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Clementine hat 'ne Erkältung  und liegt im Bett. Ihre Mutter hat vorhin angerufen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:Context>Bruno: Hm, na ja, da kann man nix machen. Ich setz' mich dann mal auf die Couch.</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:Context>Anne: Ja, tu' das. Ich schau mal nach den anderen.</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

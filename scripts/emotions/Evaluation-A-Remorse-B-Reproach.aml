@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne ist im Supermarkt beim Stehlen von CDs erwischt worden. Sie ist von der Polizei nach Hause gefahren worden. Die Nachbarn haben es mitbekommen. Anne beichtet Bruno alles.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="BadEvent" intensity="0.40" elicitor="Get caught stealing"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Bruno, mir ist's total peinlich, dass die Polizei mich nach Hause gefahren hat. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Regret" intensity="0.70" elicitor="Get caught stealing"/>
+    </aml:AffectInput>
+    <aml:Context>Es tut mir leid, dass ich geklaut habe. Aber irgendwie konnt' ich nicht anders. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

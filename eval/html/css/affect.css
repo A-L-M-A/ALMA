@@ -1,0 +1,27 @@
+a:link      { color:#EE0000;font-weight:bold;text-decoration:none; }
+a:visited   { color:#EE0000;font-weight:bold;text-decoration:none; }
+a:hover     { color:#EE0000;font-weight:bold;text-decoration:none; }
+a:active    { color:#EE0000;font-weight:bold;text-decoration:none; }
+
+div         { font-family:Arial,sans-serif; font-size:16pt; }
+div#content { font-family:Arial,sans-serif; font-size:12pt; }
+table       { border:0px solid #000;border-spacing:2px;background-color:#F3F3F3 }
+tr          { border:0px solid #000;border-spacing:2px;background-color:#white }
+td#explain  { border:0px solid #000;border-spacing:0px;background-color:#E3E3E3;font-size:16px }
+td#emo      { border:0px solid #000;border-spacing:0px;font-family:Arial,sans-serif;font-weight:bold;color:#CF420B;background-color:#E3E3E3;font-size:10pt; }
+td#mood      { border:0px solid #000;border-spacing:0px;font-family:Arial,sans-serif;font-weight:bold;color:#E1CB12;background-color:#E3E3E3;font-size:10pt; }
+th          { border:0px solid #000;border-spacing:0px;font-family:Arial,sans-serif;font-size:10pt;background-color:#E3E3E3 }
+td          { border:0px solid #000;border-spacing:0px;font-family:Arial,sans-serif; font-size:10pt; }
+
+.standard   { color:#000000;font-weight:normal;font-size:16px }
+.question   { color:#000000;font-weight:normal;font-style:italic;font-size:16px }
+.grayback   { background-color:#E3E3E3 }
+
+.emot       { color:#CF420B;font-weight:bold; }
+.default    { color:#000000;font-weight:bold; }
+.defmood    { font-weight:bold; }
+.mood       { color:#E1CB12;font-weight:bold; }
+.tendency   { color:#00BA01;font-weight:bold; }
+
+.inactive   { color:#000000; }
+.active     { color:#e2e2e2; }

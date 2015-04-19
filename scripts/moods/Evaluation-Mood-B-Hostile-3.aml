@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno ist Abteilungsleiter in einer Werbefirma. Er hat Anne die morgige Produktpräsentation übertragen. Am Abend zuvor schaut sich Bruno an, was Anne vorbereitet hat.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:Context>Anne: ... und damit ende ich mit Einsteins Worten - keep it simple, but not too!</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Attack" intensity="0.80" elicitor="Schlechte Präsentation"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Puh, das war jetzt wohl nicht dein Ernst? [signal] Hast du noch was anderes vorbereitet?</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Defend" intensity="0.80" elicitor="Schlechte Präsentation"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Nein. Ich hab es vorher den anderen gezeigt und die fanden es gar nicht schlecht! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Condemn" intensity="0.60" elicitor="Gesamtwerk ist schlecht"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Bitte? Das was du da zusammengebraut hast, kann man so nicht abgeben. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:Context>Anne: Nun, ich ...</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Object type="NastyThing" intensity="0.40" elicitor="Gesamtwerk ist schlecht"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Diese längst ausgemusterte Präsentationsvorlage will doch keiner mehr sehen! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:Context>Anne: Aber, ...</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Attack" intensity="0.80" elicitor="Nachtarbeit"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Wegen dir müssen wir jetzt die ganze Nacht durcharbeiten, um das ordentlich zu machen! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEvent" intensity="0.90" elicitor="Nachtarbeit"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: (denkt) Mist. Der gemütliche Fernsehabend mit meiner Frau ist damit gestorben. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

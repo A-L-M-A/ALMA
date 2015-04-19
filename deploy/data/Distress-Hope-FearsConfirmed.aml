@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context/>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="10">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="BadEvent" intensity="0.80" elicitor="1"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="10">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="0.50" elicitor="2"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="10">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="BadLikelyFutureEvent" intensity="1.00" elicitor="F"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="20">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="EventConfirmed" intensity="1.00" elicitor="F"/>
+    </aml:AffectInput>
+  </aml:Item>
+</aml:AffectScript>

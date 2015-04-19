@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno is reorganizing his computer hard drive by letting Microsoft Windows removing unneeded files. Anne just shows up.
+
+This script demonstrates how Bruno's mood moves from slightly Relaxed to sligthly Hostile, because of the actions/events he experiences.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEvent" intensity="0.80" elicitor="lost vacation photos"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Crap, Windows has killed all pictures of our last summer holiday at Mallorca. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Calm" intensity="0.40" elicitor="may be not lost"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Don`t panic, you`ll find them surely in the waste bin. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="AnnounceConcern" intensity="0.80" elicitor="lost or not - that's the question"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Are you sure? But what if not, what I`m doing then ... they will be lost forever! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:Context>Anne: Well, I`ve no clue, I`m not the computer expert.</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:Context>(Bruno tries to recover the files by restoring the files of the waste bin)</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEvent" intensity="0.90" elicitor="vacation photos are lost!"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: No, damn it! All the pictures gone ... and there`s no way to get them back! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Accuse" intensity="0.80" elicitor="lost photos"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Oh no, all our pictures are lost! You are a clean up maniac. I always told you that this will led some days to something bad. Well, and that´s just happened. Wonderful!  [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Condemn" intensity="0.40" elicitor="bad things happen"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Get of my back! [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project name="ALMA Example" default="main" basedir="..">
+
+<path id="classpath">
+  <pathelement path="lib"/>
+  <pathelement location="lib/affect.jar"/>
+  <pathelement location="lib/jama.jar"/>
+  <pathelement location="lib/jsr173_1.0_api.jar"/>
+  <pathelement location="lib/xbean.jar"/>
+  <pathelement location="${java.home}/lib/plugin.jar"/>
+</path>
+
+<!-- alma example stuff comes here -->
+<target name="clean">
+  <delete file="lib/AffectExample.class"/>
+</target>
+
+<target name="make-example" depends="clean">
+  <javac srcdir="src" destdir="lib" debug="on"
+         includes="*.java">
+    <classpath refid="classpath"/>
+    <compilerarg value="-Xlint:deprecation"/>
+    <compilerarg value="-Xlint:unchecked"/>
+  </javac>
+</target>
+
+<target name="run-example">
+  <java classname="AffectEngine" fork="true">
+    <classpath refid="classpath"/>
+  </java>
+</target>
+
+</project>

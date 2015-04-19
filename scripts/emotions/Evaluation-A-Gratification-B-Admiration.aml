@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne ist stolz auf ihre erfolgreiche Mithilfe in einem Projekt, das sich für die Verbesserung der Lebensverhältnisse von Menschen in der dritten Welt einsetzt.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.40" elicitor="GoodProject"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ich hätt' nicht gedacht, dass wir durch unsere Hilfsaktion so vielen Leuten helfen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="PraiseAction" intensity="0.70" elicitor="GoodProject"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ich habe auch gehört, dass das Projekt, an dem du mithilfst, ein voller Erfolg ist und vielen Menschen hilft. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

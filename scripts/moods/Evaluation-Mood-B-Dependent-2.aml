@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno und Anne besprechen, wie sie aus ihrer schlechten finanziellen Lage herauskommen können.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="BadEvent" intensity="0.70" elicitor="no money"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Irgendwie nervt mich, dass wir am Monatsende haben gar kein Geld mehr übrig haben. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="BringGoodNews" intensity="0.60" elicitor="chance to get some money"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Du, das Finanzamt hat geschrieben. Wir bekommen 300 EUR zurück. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:Context>Anne: Das sind ja mal gute Neuigkeiten.</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Admire" intensity="0.80" elicitor="trustfull partner "/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ich weiß gar nicht, wie ich's sagen soll. Aber dadurch, dass du jetzt ganztags arbeitest, sieht's gar nicht so schlecht aus! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="GiveHope" intensity="0.90" elicitor="better future"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Wir sind doch für einander da! Bestimmt findest du demnächst auch eine bessere Arbeit. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Thank" intensity="0.70" elicitor="hard working wife"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Danke! Trotzdem, weil du dich so einsetzt, können wir unser Auto behalten. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:Context>Anne: Ja klar, stimmt schon.</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="1.00" elicitor="possible work"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Der Job bei Bauer Meier hört sich schon gut an. Er meint, wenn die Auftragslage so bleibt, kann er mich nächsten Monat als Fahrer einstellen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="GiveHope" intensity="0.60" elicitor="pray to god"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Na, ich drück' dir jedenfalls die Daumen! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:Context>Bruno: Mal sehen, was die nächste Woche bringt.</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

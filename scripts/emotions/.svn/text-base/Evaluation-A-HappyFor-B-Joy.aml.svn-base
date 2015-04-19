@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.70" elicitor="LottoPrize"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Hey Anne, ich kann's kaum fassen! Ich hab' 5 Richtige im Lotto. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="WishGood" intensity="0.60" elicitor="LottoPrize"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Glückwunsch! Jetzt kann's ja losgeh'n mit der Weltreise. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

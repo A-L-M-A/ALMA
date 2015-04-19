@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Bruno gehen beide in die 10 Klasse und machen einen Tanzkurz. Anne findet Bruno sexy und ist von Brunos Tanzkünsten total angetan.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Object type="NiceThing" intensity="0.60" elicitor="Nice Guy Bruno"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: (denkt) Bruno sieht verdammt gut aus in seinem neuen Anzug. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Admire" intensity="0.70" elicitor="Nice Guy Bruno"/>
+    </aml:AffectInput>
+    <aml:Context>sagt: Wenn du so mit mir tanzt, vergesse ich alle Probleme. Ich fühle mich bei dir so sicher. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

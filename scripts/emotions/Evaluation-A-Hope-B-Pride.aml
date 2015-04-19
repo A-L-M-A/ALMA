@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno unterstützt Anne wegen der anstehenden Matheklausur.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="GiveHope" intensity="1.00" elicitor=" math test"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Anne, ich weiß du hast dich gut vorbereitet. Ich bin mir sicher, dass du  die Matheklausur bestehst.  [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

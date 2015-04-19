@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Die Genforscher Anne und Bruno arbeiten an der Identifizierung einer Gensequenz, die den Alterungsprozess steuert. Eben treffen die Kontroll-Ergebnisse der anderen drei Forschergruppen per Fax ein.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodUnlikelyFutureEvent" intensity="0.80" elicitor="can it be true"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ich bin wirklich gespannt, ob unsere Ergebnisse von allen anderen Forschern bestätigt werden. Unwahrscheinlich, aber das wär's ja. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringGoodNews" intensity="0.70" elicitor="first confirmation"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Also, die Münchner Forscher bestätigen unsere Ergebnisse. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.70" elicitor="first confirmation"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Das ist gut! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="AnnounceConcern" intensity="0.70" elicitor="other confirmations"/>
+    </aml:AffectInput>
+    <aml:Context>Es müssen aber alle die Ergebnisse nachvollziehen können. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Admire" intensity="0.70" elicitor="good work"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ja, abwarten. Egal wie's auch kommen mag, deine Erkenntnisse werden in die Geschichte eingehen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Admire" intensity="0.80" elicitor="good work"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Du hast aber einen mindestens genauso großen Anteil daran. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:Context>(Kurze Zeit später treffen die restlichen Faxe ein)</aml:Context>
+  </aml:Item>
+  <aml:Item time="11000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringGoodNews" intensity="0.80" elicitor="other confirmations"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Da schau, auch die New Yorker und die Pariser Forschergruppe kommen auf dasselbe Ergebnis. Wir haben's geschafft! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="1.00" elicitor="all is good"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ich kann's nicht glauben. Das ist ja wie Weihnachten und Ostern zusammen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Thank" intensity="0.70" elicitor="given chance"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ich dank' dir, dass du mich überhaupt in die Forschungsgruppe aufgenommen hast. Ohne dich hätt' ich nie an solch einem spannenden Thema forschen können. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.90" elicitor="lets party"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Gern geschehen! Das muss gefeiert werden. [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

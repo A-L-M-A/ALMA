@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Da Clementine Brunos Frau ist, hat Anne sie auch zu ihrer Geburtstagsfeier eingeladen. Bruno hat Wein verschüttet und nun ist der Teppich davor total versaut.
+Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="BadEvent" intensity="0.40" elicitor="Ruined carpet"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Oh, mein schöner Teppich. Der ist total ruiniert. Die Weinflecken bekomme ich nie mehr raus! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Chide" intensity="0.90" elicitor="Ruined carpet"/>
+    </aml:AffectInput>
+    <aml:Context>Mensch Bruno, hast du nicht aufpassen können. Wegen deiner Schusseligkeit muss ich mir jetzt einen neuen Teppich kaufen! [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

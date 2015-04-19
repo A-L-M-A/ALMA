@@ -1,0 +1,115 @@
+/*
+ * AlmaConfigPanel.java
+ *
+ * Copyright (c) 2004 by Patrick Gebhard
+ * All rights reserved.
+ *
+ */
+package de.affect.gui;
+
+import java.awt.*;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.*;
+
+import java.util.*;
+import java.text.DecimalFormat;
+import java.io.File;
+import java.io.IOException;
+import java.lang.IllegalArgumentException;
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.text.*;
+import java.util.logging.Logger;
+
+import javax.swing.border.Border;
+import static javax.swing.BorderFactory.createEmptyBorder;
+import static javax.swing.BorderFactory.createLineBorder;
+import static javax.swing.BorderFactory.createCompoundBorder;
+import static javax.swing.BorderFactory.createTitledBorder;
+import static java.awt.Font.BOLD;
+import static java.awt.Font.PLAIN;
+
+import org.apache.xmlbeans.XmlException;
+
+import de.affect.compute.DecayFunction;
+import de.affect.compute.ExponentialDecayFunction;
+import de.affect.compute.LinearDecayFunction;
+import de.affect.compute.TangensHyperbolicusDecayFunction;
+import de.affect.manage.AffectManager;
+import de.affect.manage.CharacterManager;
+import static de.affect.data.AffectConsts.*;
+import static de.affect.gui.AlmaGUI.sDefaultTextFont;
+import static de.affect.gui.AlmaGUI.sDefaultTitleFont;
+import static de.affect.gui.AlmaGUI.sBORDERLINE;
+import static de.affect.gui.Helpers.bigButtonSize;
+import static de.affect.gui.Helpers.createHelpers;
+import static de.affect.gui.Helpers.getFillerBox;
+import static de.affect.gui.Helpers.largeDescriptionsSize;
+import static de.affect.gui.Helpers.minuteLabels;
+import static de.affect.gui.Helpers.decadeMinuteLabels;
+import static de.affect.gui.Helpers.milliSecondsLabel;
+import static de.affect.gui.Helpers.makeJSliderHorizontal;
+
+/** 
+ * The class <code>AlmaConfigPanel</code> provides an graphicsal interfaces for
+ * all computing relevant variables 
+ * 
+ * This code relys on the xml bean classes created with xmlbeans v1.3
+ * from the Affect.xsd schema, which is part of this distribution.
+ *
+ * @author Patrick Gebhard
+ *
+ * @version 1.0
+ */
+public class AlmaConfigPanel extends JPanel implements ActionListener {
+
+  private static AffectManager.InterfaceHolder affectManager = AffectManager.sInterface;
+  private Logger log = Logger.global;
+  private JButton applyButton = new JButton("Apply");
+  private SliderListener sliderListener = null;
+
+  public AlmaConfigPanel(File compSpecs) throws IOException, XmlException {
+
+    createHelpers();
+    sliderListener = new SliderListener();
+    // Build Dialog
+    JPanel configPanel = new JPanel();
+    // Emotion Decay
+    // Tie config panels together
+    configPanel.setLayout(new BoxLayout(configPanel, BoxLayout.Y_AXIS));
+    // Buttons
+    JPanel buttonPanel = new JPanel();
+    applyButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+    applyButton.setAlignmentY(Component.CENTER_ALIGNMENT);
+    applyButton.setMinimumSize(bigButtonSize);
+    applyButton.setPreferredSize(bigButtonSize);
+    applyButton.setMaximumSize(bigButtonSize);
+    applyButton.setActionCommand("apply_values");
+    applyButton.setEnabled(false);
+    applyButton.addActionListener(this);
+    buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+    buttonPanel.add(getFillerBox(0, 0, 5000, 5000));
+    buttonPanel.add(applyButton);
+    // Tie all together
+    this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    this.add(configPanel);
+    this.add(Box.createRigidArea(new Dimension(4, 4)));
+    this.add(buttonPanel);
+  }
+
+  /** Listens to the slider. */
+  class SliderListener implements ChangeListener {
+    public void stateChanged(ChangeEvent e) {
+      // ((JSlider)e.getSource()).setSnapToTicks(true);
+//       JSlider slider = (JSlider)e.getSource();
+//       applyButton.setEnabled(true);
+    }
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    if (e.getActionCommand().equals("apply_values")) {
+      applyButton.setEnabled(false);
+    }
+  }
+}

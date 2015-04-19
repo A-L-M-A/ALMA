@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno ist der Sekretär von Anne. Anne leitet die Hautcremeabteilung eines großen Körperpflege-Konzerns. Sie hat ihm gestern aufgetragen die Liste der besten Abnehmer ihres Produktes zusammenzustellen.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Accuse" intensity="0.50" elicitor="bad work"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Bruno, die Liste der Abnehmer, die Sie gestern gemacht haben, ist nicht vollständig. Ich hoffe, das war ein Versehen und ist kein Zeichen von Schlampigkeit? [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:Context>Bruno: Ich kümmere mich direkt darum.</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="RetractAccuse" intensity="1.00" elicitor="bad work"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Ach, lassen Sie mal. Das können Sie morgen noch machen. Ich weiß ja, dass Sie normalerweise gute Arbeit machen. [signal] Wir feiern erstmal!</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:Context>Bruno: Hm ... Aha, warum? Was ist passiert?</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.80" elicitor="manager of the month"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Nun, ich bin Managerin des Monats geworden. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="WishGood" intensity="1.00" elicitor="news about the manager of the month"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Na, das ist mal eine gute Neuigkeit! Herzlichen Glückwunsch! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="7000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Thank" intensity="0.40" elicitor="congratulaion "/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Danke. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Object type="NiceThing" intensity="0.60" elicitor="new skin creme"/>
+    </aml:AffectInput>
+    <aml:Context>Bei dem neuen Produkt, das wir verkaufen ist das auch kein Wunder! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Object type="NiceThing" intensity="1.00" elicitor="new skin creme"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ach, Sie meinen die neue Männer-Clear-Skin-Creme. Ja, die find' ich auch hervorragend. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.70" elicitor="free food for all"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Am besten Sie bestellen gleich ein paar Häppchen beim Party-Service und schreiben der Abteilung eine E-Mail, dass wir gleich was zu feiern haben. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:Context>Bruno: Alles klar, mach' ich!</aml:Context>
+  </aml:Item>
+  <aml:Item time="13000">
+    <aml:Context>Anne: Dann bis gleich.</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

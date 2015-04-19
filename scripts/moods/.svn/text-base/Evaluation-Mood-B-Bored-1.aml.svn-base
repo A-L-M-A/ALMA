@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Es steht die Wahl des nächsten Schulsprechers an. Bruno hat sich als Kandidat aufstellen lassen. Kurz nach der Wahl trifft Bruno auf Anne die Wahlleiterin.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="100">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="0.90" elicitor="Schulsprecherwahl"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: (denkt) Alle meine Freunde haben mich gewählt. Das sieht so aus als ob ich der neue Schulsprecher werden würde. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:Context>Bruno: Hast du schon die Ergebnisse?
+		Anne: Ja, die ersten Hochrechnungen sind eben eingetroffen.
+		Bruno: Na sag' schon, wie sieht's aus?</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringBadNews" intensity="1.00" elicitor="Schulsprecherwahl"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Nun, wie soll ich's sagen ... es sieht schlecht für dich aus. [signal] Clementine liegt in Führung.</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodLikelyFutureEvent" intensity="0.90" elicitor="Anzahl der Stimmen"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Hm, aber sicherlich nur knapp und ich hab' noch gute Chancen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="BringBadNews" intensity="1.00" elicitor="Anzahl der Stimmen"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Wie's aussieht eher nicht. Du hast 20, sie hat 312 Stimmen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10500">
+    <aml:Context>Bruno: Was, nur so wenig.</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="CompareWithBetter" intensity="1.00" elicitor="Clementine ist beliebter"/>
+    </aml:AffectInput>
+    <aml:Context>Tja, da komm' ich nicht dagegen an. Sie ist wohl viel besser und beliebter als ich! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14000">
+    <aml:Context>Anne: Also ... ja, was diese Wahl angeht schon.</aml:Context>
+  </aml:Item>
+  <aml:Item time="16000">
+    <aml:Context>Bruno: Hm ja, so ist's eben ...</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

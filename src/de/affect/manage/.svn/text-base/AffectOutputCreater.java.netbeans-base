@@ -1,0 +1,273 @@
+/*
+ * AffectOutputCreater.java
+ *
+ * Copyright (c) 2004 by Patrick Gebhard
+ * All rights reserved.
+ *
+ */
+package de.affect.manage;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.List;
+
+import static de.affect.util.Convert.doubleValue;
+import static de.affect.util.Convert.prettyPrint;
+import static de.affect.util.Convert.valueDescription;
+import static de.affect.data.AffectConsts.*;
+import static de.affect.emotion.EmotionType.*;
+import static de.affect.personality.PersonalityEmotionsRelations.*;
+import static de.affect.personality.PersonalityMoodRelations.*;
+import static de.affect.emotion.EmotionsPADRelation.*;
+
+import de.affect.emotion.Emotion;
+import de.affect.mood.Mood;
+import de.affect.manage.CharacterManager;
+import de.affect.xml.CharacterType;
+import de.affect.xml.PersonalityType;
+import de.affect.xml.MoodType;
+import de.affect.xml.MoodWord;
+import de.affect.xml.EmotionType;
+import de.affect.xml.EmotionName;
+import de.affect.xml.EventTypes;
+import de.affect.xml.ActionTypes;
+import de.affect.xml.ObjectTypes;
+import de.affect.xml.Intensity;
+import de.affect.xml.AffectOutputDocument;
+import de.affect.xml.AffectOutputDocument.AffectOutput;
+import de.affect.xml.AffectOutputDocument.AffectOutput.*;
+import de.affect.xml.AffectOutputDocument.AffectOutput.GroupAffect;
+import de.affect.xml.AffectOutputDocument.AffectOutput.GroupAffect.*;
+
+public class AffectOutputCreater {
+
+  protected AffectOutputCreater() {
+  }
+
+  public static String getAffectLogEntry(Hashtable<String, CharacterManager> characters,
+          Hashtable<String, GroupManager> groups) {
+    StringBuffer sb = new StringBuffer();
+    DecimalFormat form = new DecimalFormat("0.0000");
+    DecimalFormatSymbols formSymbols = new DecimalFormatSymbols();
+    formSymbols.setDecimalSeparator('.');
+    form.setDecimalFormatSymbols(formSymbols);
+    if (characters != null) {
+      for (Enumeration<String> cEnum = characters.keys(); cEnum.hasMoreElements();) {
+        CharacterManager character = characters.get(cEnum.nextElement());
+        sb.append(character.getName()).append("\t");
+        Emotion domEmotion = character.getCurrentEmotions().getDominantEmotion();
+        double intensity = domEmotion.getIntensity();
+        double baseline = domEmotion.getBaseline();
+        sb.append(domEmotion.getType().toString()).append("\t");
+        sb.append(form.format(intensity)).append("\t");
+        sb.append(form.format(baseline)).append("\t");
+        sb.append(character.getCurrentMood().getMoodWordIntensity()).append(" ");
+        sb.append(character.getCurrentMood().getMoodWord()).append("\t");
+        sb.append(character.getCurrentMoodTendency().getMoodWordIntensity()).append(" ");
+        sb.append(character.getCurrentMoodTendency().getMoodWord()).append("\t");
+      }
+    }
+    //TODO group mood key values
+    if (groups != null) {
+      for (Enumeration<String> gEnum = groups.keys(); gEnum.hasMoreElements();) {
+        GroupManager group = groups.get(gEnum.nextElement());
+        sb.append(group.getName()).append("\t");
+        sb.append(group.getCurrentMood().getMoodWordIntensity()).append(" ");
+        sb.append(group.getCurrentMood().getMoodWord()).append("\t");
+        sb.append(valueDescription(group.getSocialIntegrity())).append("\t");
+        sb.append(group.getCharactersInSimilarMood()).append("\t");
+        String charactersInExtremeMood = "";
+        List<CharacterManager> inExtremeMood = group.getCharactersInExtremeMood();
+        synchronized (inExtremeMood) {
+          for (CharacterManager cm : inExtremeMood) {
+            charactersInExtremeMood += cm.getName() +
+                    " (" + prettyPrint(cm.getDistancetoDefaultMood()) + ") ";
+          }
+        }
+        sb.append(charactersInExtremeMood).append("\t");
+        ;
+      }
+    }
+    sb.append("\n");
+    return sb.toString();
+  }
+
+  public static synchronized String getAffectOutputInfo(Hashtable<String, CharacterManager> characters,
+          Hashtable<String, GroupManager> groups) {
+    StringBuffer sb = new StringBuffer();
+    DecimalFormat form = new DecimalFormat("0.0000");
+    DecimalFormatSymbols formSymbols = new DecimalFormatSymbols();
+    formSymbols.setDecimalSeparator('.');
+    form.setDecimalFormatSymbols(formSymbols);
+    if (characters != null) {
+      for (Enumeration<String> cEnum = characters.keys(); cEnum.hasMoreElements();) {
+        CharacterManager character = characters.get(cEnum.nextElement());
+        sb.append(character.getName()).append(", ");
+        Emotion domEmotion = character.getCurrentEmotions().getDominantEmotion();
+        double intensity = domEmotion.getIntensity();
+        double baseline = domEmotion.getBaseline();
+        sb.append(domEmotion.getType().toString()).append(" (");
+        sb.append(form.format(intensity)).append("/");
+        sb.append(form.format(baseline)).append("), ");
+        sb.append(character.getCurrentMood().getMoodWordIntensity()).append(" ");
+        sb.append(character.getCurrentMood().getMoodWord()).append("\nINFO: ");
+        sb.append(character.getCurrentMoodTendency().getMoodWordIntensity()).append(" ");
+        sb.append(character.getCurrentMoodTendency().getMoodWord()).append("\nINFO: ");
+      }
+    }
+    if ((groups != null) && (groups.size() > 0)) {
+      for (Enumeration<String> gEnum = groups.keys(); gEnum.hasMoreElements();) {
+        GroupManager group = groups.get(gEnum.nextElement());
+        sb.append(group.getName()).append(", ");
+        sb.append(group.getCurrentMood().getMoodWordIntensity()).append(" ");
+        sb.append(group.getCurrentMood().getMoodWord());
+        sb.append(", Social integrity ");
+        sb.append(valueDescription(group.getSocialIntegrity())).append("\nINFO: ");
+        sb.append("\tsimilar mood:\t").append(group.getCharactersInSimilarMood());
+        sb.append("\nINFO: ");
+        String charactersInExtremeMood = "";
+        List<CharacterManager> inExtremeMood = group.getCharactersInExtremeMood();
+        synchronized (inExtremeMood) {
+          for (CharacterManager cm : inExtremeMood) {
+            charactersInExtremeMood += cm.getName() +
+                    " (" + prettyPrint(cm.getDistancetoDefaultMood()) + ") ";
+          }
+        }
+        sb.append("\textreme mood:\t").append(charactersInExtremeMood);
+        sb.append("\nINFO: ");
+      }
+    }
+    return sb.toString();
+  }
+
+  public static synchronized AffectOutputDocument getAffectOutputDocument(Hashtable<String, CharacterManager> characters,
+          Hashtable<String, GroupManager> groups) {
+    AffectOutputDocument aoDoc = AffectOutputDocument.Factory.newInstance();
+    // Groups
+    AffectOutput aOutput = AffectOutput.Factory.newInstance();
+    if ((groups != null) && (groups.size() > 0)) {
+      ArrayList<GroupAffect> groupAffectList = new ArrayList<GroupAffect>();
+      for (Enumeration<String> cEnum = groups.keys(); cEnum.hasMoreElements();) {
+        int groupNum = 1;
+        GroupManager group = groups.get(cEnum.nextElement());
+        GroupAffect groupAffect = GroupAffect.Factory.newInstance();
+        groupAffect.setName(group.getName());
+        String groupCharacters = "";
+        for (CharacterManager character : group.getCharacters()) {
+          groupCharacters += character.getName() + ",";
+        }
+        groupCharacters.substring(0, groupCharacters.length() - 1);
+        groupAffect.setCharacters(groupCharacters);
+        OverallMood overallMood = OverallMood.Factory.newInstance();
+        Mood groupMood = group.getCurrentMood();
+        overallMood.setMoodword(MoodWord.Enum.forString(groupMood.getMoodWord()));
+        overallMood.setIntensity(MoodType.Intensity.Enum.forString(groupMood.getMoodWordIntensity()));
+        overallMood.setPleasure(groupMood.getPleasure());
+        overallMood.setArousal(groupMood.getArousal());
+        overallMood.setDominance(groupMood.getDominance());
+        SocialIntegrity socialIntegrity = SocialIntegrity.Factory.newInstance();
+        socialIntegrity.setValue(prettyPrint(group.getSocialIntegrity()));
+
+        MoodSimilarities moodSimilarities = MoodSimilarities.Factory.newInstance();
+        boolean first = true;
+        MoodSimilarities.CharacterPair characterPair = null;
+        for (String character : group.getCharacterArrayInSimilarMood()) {
+          if (first) {
+            characterPair = moodSimilarities.addNewCharacterPair();
+            if (character.equals("none")) {
+              characterPair.setFirst("none");
+              characterPair.setSecond("none");
+            } else {
+              characterPair.setFirst(character);
+            }
+            first = false;
+          } else {
+            characterPair.setSecond(character);
+            groupAffect.setMoodSimilarities(moodSimilarities);
+            first = true;
+          }
+        }
+        MoodExtremes moodExtremes = MoodExtremes.Factory.newInstance();
+        List<CharacterManager> inExtremeMood = group.getCharactersInExtremeMood();
+        synchronized (inExtremeMood) {
+          for (CharacterManager cm : inExtremeMood) {
+            MoodExtremes.Character character = moodExtremes.addNewCharacter();
+            character.setName(cm.getName());
+            character.setDifference(cm.getDistancetoDefaultMood());
+          }
+        }
+        groupAffect.setMoodExtremes(moodExtremes);
+        groupAffectList.add(groupAffect);
+      }
+      aOutput.setGroupAffectArray(groupAffectList.toArray(new GroupAffect[1]));
+    }
+    // Characters
+    if (characters != null) {
+      ArrayList<CharacterAffect> characterAffectList = new ArrayList<CharacterAffect>();
+      for (Enumeration<String> cEnum = characters.keys(); cEnum.hasMoreElements();) {
+        int charNum = 1;
+        CharacterManager character = characters.get(cEnum.nextElement());
+        CharacterAffect characterAffect = CharacterAffect.Factory.newInstance();
+        characterAffect.setName(character.getName());
+        // add the character´s personality parameters
+        AffectOutput.CharacterAffect.Personality personality =
+                AffectOutput.CharacterAffect.Personality.Factory.newInstance();
+        personality.setDerived(character.isDerivedPersonality());
+        personality.setOpenness(character.getPersonality().getOpenness());
+        personality.setConscientiousness(character.getPersonality().getConscientiousness());
+        personality.setExtraversion(character.getPersonality().getExtraversion());
+        personality.setAgreeableness(character.getPersonality().getAgreeableness());
+        personality.setNeurotism(character.getPersonality().getNeurotism());
+        characterAffect.setPersonality(personality);
+        // add the character´s current mood state
+        MoodType mood = MoodType.Factory.newInstance();
+        Mood charactersMood = character.getCurrentMood();
+        mood.setMoodword(MoodWord.Enum.forString(charactersMood.getMoodWord()));
+        mood.setIntensity(MoodType.Intensity.Enum.forString(charactersMood.getMoodWordIntensity()));
+        mood.setPleasure(charactersMood.getPleasure());
+        mood.setArousal(charactersMood.getArousal());
+        mood.setDominance(charactersMood.getDominance());
+        characterAffect.setMood(mood);
+        MoodType moodTendency = MoodType.Factory.newInstance();
+        Mood charactersMoodTendency = character.getCurrentMoodTendency();
+        moodTendency.setMoodword(MoodWord.Enum.forString(charactersMoodTendency.getMoodWord()));
+        moodTendency.setIntensity(MoodType.Intensity.Enum.forString(charactersMoodTendency.getMoodWordIntensity()));
+        moodTendency.setPleasure(charactersMoodTendency.getPleasure());
+        moodTendency.setArousal(charactersMoodTendency.getArousal());
+        moodTendency.setDominance(charactersMoodTendency.getDominance());
+        characterAffect.setMoodTendency(moodTendency);
+        MoodType defaultMood = MoodType.Factory.newInstance();
+        Mood charactersDefaultMood = character.defaultMood();
+        defaultMood.setMoodword(MoodWord.Enum.forString(charactersDefaultMood.getMoodWord()));
+        defaultMood.setIntensity(MoodType.Intensity.Enum.forString(charactersDefaultMood.getMoodWordIntensity()));
+        defaultMood.setPleasure(charactersDefaultMood.getPleasure());
+        defaultMood.setArousal(charactersDefaultMood.getArousal());
+        defaultMood.setDominance(charactersDefaultMood.getDominance());
+        characterAffect.setDefaultMood(defaultMood);
+        EmotionType emotion = EmotionType.Factory.newInstance();
+        Emotion domEmotion = character.getCurrentEmotions().getDominantEmotion();
+        double intensity = domEmotion.getIntensity();
+        double baseline = domEmotion.getBaseline();
+        if (intensity != baseline) {
+          DecimalFormat form = new DecimalFormat("0.00");
+          DecimalFormatSymbols formSymbols = new DecimalFormatSymbols();
+          formSymbols.setDecimalSeparator('.');
+          form.setDecimalFormatSymbols(formSymbols);
+          emotion.setName(EmotionName.Enum.forString(domEmotion.getType().toString()));
+          emotion.setValue(form.format(intensity));
+        } else {
+          emotion.setName(EmotionName.Enum.forString("Undefined"));
+          emotion.setValue("0.00");
+        }
+        characterAffect.setDominantEmotion(emotion);
+        characterAffectList.add(characterAffect);
+      }
+      aOutput.setCharacterAffectArray(characterAffectList.toArray(new CharacterAffect[1]));
+    }
+    aoDoc.setAffectOutput(aOutput);
+    return aoDoc;
+  }
+}

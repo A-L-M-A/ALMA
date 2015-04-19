@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne schreibt einen Antwortbrief an eine Versicherung.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="BadEventForBadOther" intensity="1.00" elicitor="Fehler von Anne"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: (denkt) Tja, wenn Anne so rumtrödelt, kann sie heute den Brief an die Versicherung nicht mehr abschicken. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="RequestHelp" intensity="0.50" elicitor="Hilfe bei Formatierung"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Mist, ich bekomm' das mit der Formatierung einfach nicht hin. Kannst du mir dabei helfen? [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="ProvideHelp" intensity="0.90" elicitor="Hilfe bei Formatierung"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ja, klar, keine Sorge. Ich helf' dir doch gerne! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:Context>(Bruno arbeitet)</aml:Context>
+  </aml:Item>
+  <aml:Item time="9000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="RequestHelp" intensity="0.60" elicitor="Hilfe bei Formulierung"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Könntest du auch ein Auge auf die Formulierung werfen [signal], da bin ich mir echt unsicher, ob man das so schreiben kann.</aml:Context>
+  </aml:Item>
+  <aml:Item time="10000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="ProvideHelp" intensity="0.90" elicitor="Hilfe bei Formulierung"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Ja, klar. [signal] Also, ich würde noch eine Betreffzeile einbauen, dann ist es perfekt. Warte mal, ich mach's grad ...</aml:Context>
+  </aml:Item>
+  <aml:Item time="12000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.60" elicitor="Formulierung fertig"/>
+    </aml:AffectInput>
+    <aml:Context>So, bin eben fertig geworden. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="13500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Thank" intensity="0.70" elicitor="Formulierung fertig"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Du bist ein Schatz. [signal] Dafür geb' ich dir einen aus. Wie wär's mit einer Pizza beim Italiener?</aml:Context>
+  </aml:Item>
+  <aml:Item time="15000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Event type="GoodEvent" intensity="0.60" elicitor="Ausgegebenes Essen"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Gebongt! Daran könnte ich mich gewöhnen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="16500">
+    <aml:Context>Anne: Also, dann lass uns gehen.</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

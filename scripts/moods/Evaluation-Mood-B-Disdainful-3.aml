@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Anne und Bruno besitzen eine Eigentumswohnung in einem Vier-Parteien-Haus. Bruno war bei der Eigentümerversammlung.</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:Context>Anne: Hallo Bruno, hier bin ich. Na, wie war's?</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="PointToUgliness" intensity="1.00" elicitor="bright pink color"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Oh Gott, schlimm! Das helle Rosa wird die neue Hausfarbe. Ich fass' es nicht. Das ist absolut hässlich für ein Haus. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="3000">
+    <aml:Context>Anne: Oh nein. Konntest du das nicht abwenden?</aml:Context>
+  </aml:Item>
+  <aml:Item time="4000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Action type="BadActOther" intensity="0.70" elicitor="other people do wrong"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Leider nicht, die anderen wollten das so. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="5000">
+    <aml:Context>Anne: Ach, vielleicht ist das Rosa doch nicht so schlecht?</aml:Context>
+  </aml:Item>
+  <aml:Item time="6000">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Attack" intensity="0.70" elicitor="backstab"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Bitte, ich hör' wohl nicht recht? Bist du jetzt auch verrückt geworden?  [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="8000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Blame" intensity="0.70" elicitor="fight position"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Hey, ich bin nicht Schuld dran. Du hättest vehementer auftreten können! [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="9500">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Defend" intensity="0.50" elicitor="fight position"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Hä, wie soll das denn bei einer Mehrheitsabstimmung gehen? [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="10500">
+    <aml:Context>Anne: Man sollte sich nicht über etwas aufregen, was man  eh' nicht ändern kann.</aml:Context>
+  </aml:Item>
+  <aml:Item time="12500">
+    <aml:AffectInput>
+      <aml:Character name="Bruno"/>
+      <aml:Act addressee="Anne" listener="" type="Condemn" intensity="0.60" elicitor="loose mouth"/>
+    </aml:AffectInput>
+    <aml:Context>Bruno: Super Spruch! Da hast du dich ja wieder toll aus der Affäre gezogen. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="14500">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Calm" intensity="0.50" elicitor="dumb-ass bruno"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: Jetzt komm' erstmal wieder runter ... [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

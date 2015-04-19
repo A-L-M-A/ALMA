@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Context>Bruno hat schnell reagiert und ein Kind vor dem herbeifahrenden Auto beschützt und damit sein Leben gerettet.
+	Bruno und Anne sind Nachbarn und verstehen sich prima</aml:Context>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Anne"/>
+  </aml:Item>
+  <aml:Item time="0">
+    <aml:ResetCharacter name="Bruno"/>
+  </aml:Item>
+  <aml:Item time="1000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Event type="GoodEvent" intensity="0.70" elicitor="Rescued Child"/>
+    </aml:AffectInput>
+    <aml:Context>Anne: (denkt) Wahnsinn, Bruno hat meine Tochter gerade noch rechtzeitig festhalten können, sonst wäre sie voll in ein Auto rein gerannt. [signal]</aml:Context>
+  </aml:Item>
+  <aml:Item time="2000">
+    <aml:AffectInput>
+      <aml:Character name="Anne"/>
+      <aml:Act addressee="Bruno" listener="" type="Thank" intensity="0.60" elicitor="Rescued Child"/>
+    </aml:AffectInput>
+    <aml:Context>sagt: Danke Bruno, dass du so schnell reagiert hast und meine Kleine vor Schlimmerem bewahrt hast! [signal]</aml:Context>
+  </aml:Item>
+</aml:AffectScript>

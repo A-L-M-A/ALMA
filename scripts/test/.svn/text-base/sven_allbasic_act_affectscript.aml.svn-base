@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aml:AffectScript xmlns:aml="xml.affect.de">
+  <aml:Item time="0">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Action elicitor="" intensity="1.00" type="GoodActSelf"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="30">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Action elicitor="" intensity="1.00" type="BadActSelf"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="60">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Action elicitor="" intensity="1.00" type="GoodActOther"/>
+    </aml:AffectInput>
+  </aml:Item>
+  <aml:Item time="90">
+    <aml:AffectInput>
+      <aml:Character name="Sven"/>
+      <aml:Action elicitor="" intensity="1.00" type="BadActOther"/>
+    </aml:AffectInput>
+  </aml:Item>
+</aml:AffectScript>

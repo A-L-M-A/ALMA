@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+  <title>Group and Interaction</title>
+  <style type="text/css">
+  <!--
+    body  { font-size:12pt;
+            font-family:Helvetica,Arial,sans-serif;}
+    ul,li { font-size:12pt;
+            font-family:Helvetica,Arial,sans-serif;}
+    -->
+  </style>
+</head>
+<body bgcolor="white">
+<table>
+      <tr>
+	<td width="100%" align="left">
+          <h1>Group and Interaction</h1>
+        </td>
+	<td width="80px">&nbsp;</td>
+	<td align="right"><a href="index.html"><img border="0"
+	      src="docs/pics/upto.gif"></a></td>
+      </tr>
+</table>
+
+The representation of groups allows a simulation of on-going dialog interaction
+between each character and also a simulation of a meta-level group affect. The
+latter is work in progress. The approach is, that a group can be seen as a
+virtual character. A group has no personality. There is some evidence in 
+social science research, that a group <i>borrow</i> the personality of the 
+acting/leading group member. The appraisal and the computation of affect and 
+its specification is similar to the computation known from characters.
+<br><br>
+With the help of the InteractionRecorder an ongoing dialog between characters
+can be observed at the level of Dialog Acts and character based appraisal.
+<br><br>
+<img src="docs/pics/interactionrecorder.png">
+<br><br>
+The InteractionRecorder records Dialog Act Tag and Appraisal Tag input in a
+sequential way. The result is an AffectScript that consists of these tags. 
+AffectScripts can be replayed in order to inspect the influence of the 
+input items on the characters' affect.
+<br><br>
+AffectScripts can be created manually. A right-click on a character
+in the character wheel on the left side of the InteractionRecorder brings up
+a menu with the different input types and commands.
+<br><br>
+There are 2 commands: <i>Reset Character</i> and <i>Context</i>. 
+<I>Reset Character</i> resets a characters affective state to the defined
+default values. All elicited emotions will be removed.<br>
+The <i>Context</i> command lets the author add some comments about the situation.
+<br><br>
+Each item of an AffectScript can be edited or deleted. A right-click on the 
+desired item brings up a menu.
+
+    <hr>
+    <span style="font-size:8pt"> ALMA Help - Version 1.3 -
+      07.05.2008<br> Author: Patrick Gebhard
+    </span>
+  </body>
+</html>

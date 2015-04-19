@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AffectInput xmlns="xml.affect.de" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="xml.affect.de Affect.xsd">
+	<Character name="Anne"/>
+	<Act addressee="Bruno" listener="Clementine" type="Calm" intensity="0.9" elicitor="Test"/>
+</AffectInput>

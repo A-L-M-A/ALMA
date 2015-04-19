@@ -1,0 +1,516 @@
+/*
+ * AffectScriptViewPanel.java
+ *
+ * Copyright (c) 2004, 2005, 2006, 2007, 2008, Patrick Gebhard, DFKI GmbH
+ *
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *   - Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *   - Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in 
+ *     the documentation and/or other materials provided with the 
+ *     distribution.
+ *
+ *   - Neither the name of the DFKI GmbH nor the names of its contributors
+ *     may be used to endorse or promote products derived from this software
+ *     without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+ * POSSIBILITY OF SUCH DAMAGE. 
+ */
+package de.affect.gui.simulation;
+
+// utils
+import java.util.LinkedList;
+
+// awt stuff
+import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.ActionListener;
+
+// swing stuff
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.BoxLayout;
+import javax.swing.JTextArea;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
+import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
+
+// managers
+import de.affect.manage.CharacterManager;
+
+// own utils
+import de.affect.data.ActType;
+import de.affect.mood.MoodType;
+import de.affect.emotion.EmotionType;
+
+// xml things
+import de.affect.xml.AffectScriptDocument.AffectScript;
+import de.affect.xml.AffectInputDocument.AffectInput;
+
+// static awt
+import static java.awt.event.MouseEvent.*;
+
+// static swing
+import static javax.swing.BoxLayout.Y_AXIS;
+import static javax.swing.BorderFactory.createEmptyBorder;
+import static javax.swing.BorderFactory.createLineBorder;
+import static javax.swing.BorderFactory.createCompoundBorder;
+import static javax.swing.BorderFactory.createTitledBorder;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+
+// static custom
+import static de.affect.manage.AffectManager.sInterface;
+import static de.affect.gui.AlmaGUI.sAlmaDesktop;
+import static de.affect.gui.AlmaGUI.sBORDERLINE;
+import static de.affect.gui.AlmaGUI.sDefaultTitleFont;
+/**
+ * Panel for editing and viewing affect scripts.
+ */
+public class AffectScriptViewPanel extends JPanel {
+
+  private AffectScriptPopupMenu m_menu;
+  private InteractionSimulationPanel fPanel;
+  private DefaultTableModel fTableModel;
+  private JTable fScriptTable;
+  private JTextArea fContext;
+  private JSplitPane fSplitpane;
+  private long firstTime = 0;
+  private LinkedList<AffectScript.Item> fAffectScript = new LinkedList<AffectScript.Item>();
+
+  /**
+   * Initialize AffectScriptViewPanel.
+   * @param parent Parent InteractionSimulationPanel.
+   */
+  public AffectScriptViewPanel(InteractionSimulationPanel parent) {
+    setLayout(new BoxLayout(this, Y_AXIS));
+    fPanel = parent;
+
+    // insert script table
+    JScrollPane pane;
+    fTableModel = new DefaultTableModel(null, new String[]{"Time (ms)", "Performer",
+        "Signal", "Intensity",
+        "Addressee", "Listener",
+        "Elicitor", "Context"});
+    fScriptTable = new JTable();
+    fScriptTable.setModel(fTableModel);
+    fScriptTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+    fScriptTable.getColumnModel().getColumn(1).setPreferredWidth(70);
+    fScriptTable.getColumnModel().getColumn(2).setPreferredWidth(80);
+    fScriptTable.getColumnModel().getColumn(3).setPreferredWidth(50);
+    fScriptTable.getColumnModel().getColumn(4).setPreferredWidth(70);
+    fScriptTable.getColumnModel().getColumn(5).setPreferredWidth(70);
+    fScriptTable.getColumnModel().getColumn(6).setPreferredWidth(80);
+    fScriptTable.getColumnModel().getColumn(7).setPreferredWidth(90);
+    fScriptTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+    fScriptTable.setPreferredScrollableViewportSize(new Dimension(400, 100));
+    fScriptTable.addMouseListener(m_menu = new AffectScriptPopupMenu());
+    fScriptTable.setRowSelectionAllowed(true);
+    fScriptTable.setEnabled(false);
+    JScrollPane scriptPane = new JScrollPane(fScriptTable);
+    scriptPane.setBorder(createCompoundBorder(createTitledBorder(createLineBorder(sBORDERLINE), "Script", 0, 0, sDefaultTitleFont),
+      createEmptyBorder(1, 1, 1, 1)));
+    //add (pane);
+
+    // insert global context table
+    JScrollPane contextPane = new JScrollPane(fContext = new JTextArea());
+    contextPane.setMaximumSize(new Dimension(2000, 100));
+    contextPane.setPreferredSize(new Dimension(2000, 100));
+    contextPane.setBorder(createCompoundBorder(createTitledBorder(createLineBorder(sBORDERLINE), "Context", 0, 0, sDefaultTitleFont),
+      createEmptyBorder(1, 1, 1, 1)));
+    fContext.setLineWrap(true);
+    fContext.setWrapStyleWord(true);
+    //add (contextPane);
+
+    fSplitpane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, scriptPane, contextPane);
+    fSplitpane.setResizeWeight(0.85);
+    fSplitpane.setOneTouchExpandable(true);
+    fSplitpane.setContinuousLayout(true);
+
+    add(fSplitpane);
+  }
+
+  /**
+   * Add or replace script item.
+   * @param replace Item to replace (null if none).
+   * @param asi AffectScript item to add.
+   * @param normalize Normalize time.
+   */
+  public void addScriptItem(AffectScript.Item replace, AffectScript.Item asi, boolean normalize) throws Exception {
+    // get data
+    AffectScriptItem item = new AffectScriptItem(asi);
+
+    // normalize time
+    firstTime = (firstTime == 0) ? firstTime = item.time : firstTime;
+    if (normalize) {
+      item.time = item.time - firstTime;
+      asi.setTime(item.time);
+    }
+
+    // find item to replace
+    int index = -1;
+    if (replace != null) {
+      index = fAffectScript.indexOf(replace);
+    }
+
+    // add or replace item
+    if (index == -1) {
+      fAffectScript.add(asi);
+    } else {
+      fAffectScript.set(index, asi);
+    }
+
+    // add  table
+    if (index == -1) {
+      // check if script is same regarding use of context elements
+      if ((!item.context.equals("")) && (!item.affectContext.equals(""))) {
+        throw new Exception("Illegal use of context elements in affect script item " + item.time);
+      }
+      fTableModel.addRow(new Object[]{item.time, item.performer, item.signal, item.intensity,
+          item.addressee, item.listener, item.elicitor,
+          item.context + item.affectContext}); // fuse context
+      fixTable(fAffectScript.size() - 1);
+    } else {
+      // update table entries
+      fTableModel.setValueAt(item.time, index, 0);
+      fTableModel.setValueAt(item.performer, index, 1);
+      fTableModel.setValueAt(item.signal, index, 2);
+      fTableModel.setValueAt(item.intensity, index, 3);
+      fTableModel.setValueAt(item.addressee, index, 4);
+      fTableModel.setValueAt(item.listener, index, 5);
+      fTableModel.setValueAt(item.elicitor, index, 6);
+      fTableModel.setValueAt(item.context, index, 7);
+      fTableModel.setValueAt(item.affectContext, index, 7);
+
+      // fix table entries
+      fixTable(index);
+    }
+
+    // display
+    fScriptTable.updateUI();
+  }
+
+  /**
+   * Access AffectScript.
+   * @return Current AffectScript.
+   */
+  public LinkedList<AffectScript.Item> getScript() {
+    return fAffectScript;
+  }
+
+  /**
+   * Access AffectScript context.
+   * @return Current AffectScript context.
+   */
+  public String getScriptContext() {
+    return fContext.getText();
+  }
+
+  /**
+   * Set script.
+   * @param script An AffectScript item.
+   */
+  public void setScript(AffectScript script) {
+    clearScript();
+    try {
+      for (AffectScript.Item scriptItem : script.getItemList()) {
+        addScriptItem(null, scriptItem, false);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    if (script.isSetContext()) {
+      fContext.setText(script.getContext());
+    }
+  }
+
+  /**
+   * Clear script.
+   */
+  public void clearScript() {
+    firstTime = 0;
+    fAffectScript.clear();
+    for (int cnt = fTableModel.getRowCount(); cnt > 0; --cnt) {
+      fTableModel.removeRow(cnt - 1);
+    }
+    fScriptTable.updateUI();
+    fContext.setText(null);
+  }
+
+  /**
+   * Set selected row.
+   * @param row Row to select.
+   */
+  public void setSelectedRow(int row) {
+    if (row != -1) {
+      fScriptTable.setRowSelectionInterval(row, row);
+    } else {
+      fScriptTable.clearSelection();
+    }
+  }
+
+  /**
+   * Return time of last item.
+   * @return Time of last item (-1 if not existing).
+   */
+  public long getLastTime() {
+    if (fAffectScript.size() > 0) {
+      return fAffectScript.get(fAffectScript.size() - 1).getTime();
+    }
+
+    return -1;
+  }
+
+  /**
+   * En-/Disable menu.
+   * @param status New menu enabledness status.
+   */
+  public void setMenuEnabled(boolean status) {
+    m_menu.setEnabled(status);
+  }
+
+  /**
+   * Fix entries of table starting from given index.
+   * @param index Index to start fixing the table from.
+   */
+  private void fixTable(int index) {
+    int size = fAffectScript.size();
+
+    // shift table entry upwards
+    while ((index > 0) && (fAffectScript.get(index - 1).getTime() > fAffectScript.get(index).getTime())) {
+      flipTable(index, index - 1);
+      fAffectScript.set(index, fAffectScript.set(index - 1, fAffectScript.get(index)));
+      --index;
+    }
+
+    // shift table entry downwards
+    while ((index < size - 1) && (fAffectScript.get(index).getTime() > fAffectScript.get(index + 1).getTime())) {
+      flipTable(index, index + 1);
+      fAffectScript.set(index, fAffectScript.set(index + 1, fAffectScript.get(index)));
+      ++index;
+    }
+  }
+
+  /**
+   * Flip two table entries.
+   * @param source Source entry.
+   * @param target Target entry.
+   */
+  private void flipTable(int source, int target) {
+    for (int i = 0; i < 8; ++i) {
+      Object copy = fTableModel.getValueAt(source, i);
+      fTableModel.setValueAt(fTableModel.getValueAt(target, i), source, i);
+      fTableModel.setValueAt(copy, target, i);
+    }
+  }
+
+  /**
+   * AffectScript popup menu.
+   */
+  class AffectScriptPopupMenu extends JPopupMenu implements ActionListener, MouseListener {
+    // clicked row
+
+    int m_row = -1;
+
+    // edit
+    JMenuItem m_edit;
+
+    /**
+     * Constructor.
+     * @param panel Container panel.
+     */
+    AffectScriptPopupMenu() {
+      // menu setup
+      (m_edit = add("Edit")).addActionListener(this);
+      add("Delete").addActionListener(this);
+    }
+
+    /**
+     * Process mouse pressed event.
+     * Displays menu if it is a popup trigger.
+     * @param event Mouse event.
+     */
+    public void mousePressed(MouseEvent event) {
+      if (isEnabled() && isPopupTrigger(event) && ((m_row = fScriptTable.rowAtPoint(event.getPoint())) != -1)) {
+        show(event.getComponent(), event.getX(), event.getY());
+      }
+    }
+
+    /**
+     * Process mouse pressed event.
+     * Displays menu if it is a popup trigger.
+     * @param event Mouse event.
+     */
+    public void mouseReleased(MouseEvent event) {
+      if (isEnabled() && isPopupTrigger(event) && ((m_row = fScriptTable.rowAtPoint(event.getPoint())) != -1)) {
+        show(event.getComponent(), event.getX(), event.getY());
+      }
+    }
+
+    /**
+     * Menu item has been clicked.
+     * @param event Event source.
+     */
+    public void actionPerformed(ActionEvent event) {
+      // edit table row
+      if (event.getSource() == m_edit) {
+        // get interaction character of circle panel
+        String name = (String) fTableModel.getValueAt(m_row, 1);
+        InteractionCharacter character = fPanel.m_circle.character(name);
+
+        // hm if there is none we have to create an invisible interaction character
+        if ((character == null) && (name.length() != 0)) {
+          try {
+            // ask affect manager
+            CharacterManager manager = sInterface.getCharacterByName(name);
+            character = new InteractionCharacter(name,
+              manager.getAppraisalRuleKeys("Basic"),
+              ActType.getNames(),
+              EmotionType.getNames(),
+              MoodType.getNames(),
+              null);
+          } catch (Exception exception) {
+            // damn it, the character does not exist
+            JOptionPane.showMessageDialog(sAlmaDesktop, "Cannot edit action of unknown character: '" + name + "'.",
+              "Unknown character", ERROR_MESSAGE);
+            return;
+          }
+        }
+
+        // show edit dialog for this character
+        fPanel.showEditDialog(character, null, fAffectScript.get(m_row));
+      } // delete table row
+      else {
+        fAffectScript.remove(m_row);
+        fTableModel.removeRow(m_row);
+      }
+    }
+
+    // not needed here
+    public void mouseExited(MouseEvent event) {
+    }
+
+    public void mouseClicked(MouseEvent event) {
+    }
+
+    public void mouseEntered(MouseEvent event) {
+    }
+  }
+}
+
+/**
+ * Class representing an AffectScript.Item.
+ */
+class AffectScriptItem {
+
+  String performer = "";
+  String type = "";
+  String signal = "";
+  String intensity = "";
+  String elicitor = "";
+  String addressee = "";
+  String listener = "";
+  String affectContext = "";
+  String context = "";
+  long time = 0;
+
+  /**
+   * Initialize AffectScriptItem.
+   * @param item Item to initialize from.
+   */
+  AffectScriptItem(AffectScript.Item asi) {
+    if (asi.isSetAffectInput()) {
+      AffectInput ai = asi.getAffectInput();
+      performer = ai.getCharacter().getName();
+
+      if (ai.isSetAct()) {
+        type = "Act";
+        signal = ai.getAct().getType();
+        intensity = (ai.getAct().isSetIntensity()) ? ai.getAct().getIntensity().toString() : "1.0";
+        addressee = ai.getAct().getAddressee();
+        listener = (ai.getAct().isSetListener()) ? ai.getAct().getListener() : "";
+        elicitor = (ai.getAct().isSetElicitor()) ? ai.getAct().getElicitor() : "";
+      } else if (ai.isSetEmotionDisplay()) {
+        type = "Emotion";
+        signal = ai.getEmotionDisplay().getType().toString();
+        intensity = (ai.getEmotionDisplay().isSetIntensity()) ? ai.getEmotionDisplay().getIntensity().toString() : "1.0";
+        addressee = ai.getEmotionDisplay().getAddressee();
+        listener = (ai.getEmotionDisplay().isSetListener()) ? ai.getEmotionDisplay().getListener() : "";
+        elicitor = (ai.getEmotionDisplay().isSetElicitor()) ? ai.getEmotionDisplay().getElicitor() : "";
+      } else if (ai.isSetMoodDisplay()) {
+        type = "Mood";
+        signal = ai.getMoodDisplay().getType().toString();
+        intensity = ai.getMoodDisplay().getIntensity().toString();
+        addressee = ai.getMoodDisplay().getAddressee();
+        listener = (ai.getMoodDisplay().isSetListener()) ? ai.getMoodDisplay().getListener() : "";
+        elicitor = (ai.getMoodDisplay().isSetElicitor()) ? ai.getMoodDisplay().getElicitor() : "";
+      } else {
+        type = "Basic";
+        if (ai.isSetAction()) {
+          signal = ai.getAction().getType().toString();
+          intensity = (ai.getAction().isSetIntensity()) ? ai.getAction().getIntensity().toString() : "1.0";
+          elicitor = (ai.getAction().isSetElicitor()) ? ai.getAction().getElicitor() : "";
+        }
+        if (ai.isSetEvent()) {
+          signal = ai.getEvent().getType().toString();
+          intensity = (ai.getEvent().isSetIntensity()) ? ai.getEvent().getIntensity().toString() : "1.0";
+          elicitor = (ai.getEvent().isSetElicitor()) ? ai.getEvent().getElicitor() : "";
+        }
+        if (ai.isSetObject()) {
+          signal = ai.getObject().getType().toString();
+          intensity = (ai.getObject().isSetIntensity()) ? ai.getObject().getIntensity().toString() : "1.0";
+          elicitor = (ai.getObject().isSetElicitor()) ? ai.getObject().getElicitor() : "";
+        }
+        // basic eec
+        if (ai.isSetBasicEEC()) {
+          type = "EEC"; // mark type as eec
+          signal = "";
+          signal = (ai.getBasicEEC().getDesirability() > 0.0d) ? signal + "D+ " : (ai.getBasicEEC().getDesirability() < 0.0d) ? signal + "D- " : signal;
+          signal = (ai.getBasicEEC().getLiking() > 0.0d) ? signal + "L+ " : (ai.getBasicEEC().getLiking() < 0.0d) ? signal + "L- " : signal;
+          signal = (ai.getBasicEEC().getLikelihood() > 0.0d) ? signal + "LH+ " : (ai.getBasicEEC().getLikelihood() < 0.0d) ? signal + "LH- " : signal;
+          signal = (ai.getBasicEEC().getRealization() > 0.0d) ? signal + "R+ " : (ai.getBasicEEC().getRealization() < 0.0d) ? signal + "R- " : signal;
+          signal = (ai.getBasicEEC().getPraiseworthiness() > 0.0d) ? signal + "P+ " : (ai.getBasicEEC().getPraiseworthiness() < 0.0d) ? signal + "P- " : signal;
+          signal = (ai.getBasicEEC().getAppealingness() > 0.0d) ? signal + "A+ " : (ai.getBasicEEC().getAppealingness() < 0.0d) ? signal + "A- " : signal;
+          signal = (ai.getBasicEEC().getAgency().toString() == "self") ? signal + "As" : signal + "Ao";
+          intensity = "-";
+          addressee = "-";
+          listener = "-";
+          elicitor = (ai.getBasicEEC().isSetElicitor()) ? ai.getBasicEEC().getElicitor() : "";
+        }
+      }
+    } else if (asi.isSetAppraisal()) {
+      //TODO
+    } else if (asi.isSetResetCharacter()) {
+      performer = asi.getResetCharacter().getName();
+      type = signal = "Reset Character";
+    } else {
+      type = signal = "Context";
+    }
+
+    if (asi.isSetContext()) {
+      affectContext = asi.getContext();
+    }
+    time = asi.getTime();
+  }
+}
