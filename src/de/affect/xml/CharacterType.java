@@ -16,7 +16,7 @@ package de.affect.xml;
 public interface CharacterType extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(CharacterType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("charactertype8d3dtype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(CharacterType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("charactertype8d3dtype");
     
     /**
      * Gets the "name" attribute
@@ -46,7 +46,7 @@ public interface CharacterType extends org.apache.xmlbeans.XmlObject
     public interface Name extends org.apache.xmlbeans.XmlString
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Name.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("name64a8attrtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Name.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("name64a8attrtype");
         
         /**
          * A factory class with static methods for creating instances

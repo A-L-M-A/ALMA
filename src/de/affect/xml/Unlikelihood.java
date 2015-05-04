@@ -16,7 +16,7 @@ package de.affect.xml;
 public interface Unlikelihood extends org.apache.xmlbeans.XmlString
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Unlikelihood.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("unlikelihood9bf5type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Unlikelihood.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("unlikelihood9bf5type");
     
     /**
      * A factory class with static methods for creating instances

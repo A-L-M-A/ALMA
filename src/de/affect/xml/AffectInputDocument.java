@@ -17,7 +17,7 @@ package de.affect.xml;
 public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectInputDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("affectinput5f1fdoctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectInputDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("affectinput5f1fdoctype");
     
     /**
      * Gets the "AffectInput" element
@@ -42,7 +42,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
     public interface AffectInput extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectInput.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("affectinput49a0elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectInput.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("affectinput49a0elemtype");
         
         /**
          * Gets the "Character" element
@@ -267,7 +267,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
         public interface Character extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Character.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("charactera4d5elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Character.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("charactera4d5elemtype");
             
             /**
              * Gets the "name" attribute
@@ -297,7 +297,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Name extends org.apache.xmlbeans.XmlString
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Name.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("nameab40attrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Name.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("nameab40attrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -344,7 +344,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
         public interface Act extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Act.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("act64feelemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Act.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("act64feelemtype");
             
             /**
              * Gets the "addressee" attribute
@@ -511,7 +511,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
         public interface EmotionDisplay extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionDisplay.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("emotiondisplaybc83elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionDisplay.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("emotiondisplaybc83elemtype");
             
             /**
              * Gets the "addressee" attribute
@@ -678,7 +678,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
         public interface MoodDisplay extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodDisplay.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("mooddisplay0ef7elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodDisplay.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("mooddisplay0ef7elemtype");
             
             /**
              * Gets the "addressee" attribute
@@ -845,7 +845,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
         public interface Action extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Action.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("action9c12elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Action.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("action9c12elemtype");
             
             /**
              * Gets the "type" attribute
@@ -952,7 +952,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
         public interface Event extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Event.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("evente306elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Event.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("evente306elemtype");
             
             /**
              * Gets the "type" attribute
@@ -1059,7 +1059,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
         public interface Object extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Object.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("object65dbelemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Object.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("object65dbelemtype");
             
             /**
              * Gets the "type" attribute
@@ -1166,7 +1166,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
         public interface BasicEEC extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BasicEEC.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("basiceece1d1elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BasicEEC.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("basiceece1d1elemtype");
             
             /**
              * Gets the "desirability" attribute
@@ -1346,7 +1346,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Desirability extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Desirability.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("desirabilityfb02attrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Desirability.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("desirabilityfb02attrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -1376,7 +1376,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Praiseworthiness extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Praiseworthiness.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("praiseworthinessa183attrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Praiseworthiness.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("praiseworthinessa183attrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -1406,7 +1406,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Appealingness extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Appealingness.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("appealingnessd2dfattrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Appealingness.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("appealingnessd2dfattrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -1436,7 +1436,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Likelihood extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Likelihood.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("likelihood0841attrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Likelihood.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("likelihood0841attrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -1466,7 +1466,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Realization extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Realization.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("realization1f23attrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Realization.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("realization1f23attrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -1496,7 +1496,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Liking extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Liking.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("liking449dattrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Liking.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("liking449dattrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -1526,7 +1526,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Agency extends org.apache.xmlbeans.XmlString
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Agency.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("agencyefccattrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Agency.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("agencyefccattrtype");
                 
                 org.apache.xmlbeans.StringEnumAbstractBase enumValue();
                 void set(org.apache.xmlbeans.StringEnumAbstractBase e);
@@ -1629,7 +1629,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
         public interface PAD extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(PAD.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("pad07bfelemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(PAD.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("pad07bfelemtype");
             
             /**
              * Gets the "pleasure" attribute
@@ -1759,7 +1759,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Pleasure extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Pleasure.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("pleasure918cattrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Pleasure.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("pleasure918cattrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -1789,7 +1789,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Arousal extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Arousal.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("arousalf4ceattrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Arousal.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("arousalf4ceattrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -1819,7 +1819,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Dominance extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Dominance.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("dominance2addattrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Dominance.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("dominance2addattrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -1849,7 +1849,7 @@ public interface AffectInputDocument extends org.apache.xmlbeans.XmlObject
             public interface Intensity extends org.apache.xmlbeans.XmlDouble
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Intensity.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("intensityb55aattrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Intensity.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("intensityb55aattrtype");
                 
                 /**
                  * A factory class with static methods for creating instances

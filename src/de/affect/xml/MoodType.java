@@ -16,7 +16,7 @@ package de.affect.xml;
 public interface MoodType extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("moodtype637dtype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("moodtype637dtype");
     
     /**
      * Gets the "moodword" attribute
@@ -156,7 +156,7 @@ public interface MoodType extends org.apache.xmlbeans.XmlObject
     public interface Intensity extends org.apache.xmlbeans.XmlString
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Intensity.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("intensity2842attrtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Intensity.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("intensity2842attrtype");
         
         org.apache.xmlbeans.StringEnumAbstractBase enumValue();
         void set(org.apache.xmlbeans.StringEnumAbstractBase e);

@@ -16,7 +16,7 @@ package de.affect.xml;
 public interface SignedIntensity extends org.apache.xmlbeans.XmlDouble
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SignedIntensity.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("signedintensity9ef1type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SignedIntensity.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("signedintensity9ef1type");
     
     /**
      * A factory class with static methods for creating instances

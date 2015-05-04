@@ -66,7 +66,7 @@ auxiliary.show.customizer.message=<message>
         <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/3">
             <compilation-unit>
                 <package-root>src</package-root>
-                <classpath mode="compile">lib/PeasyCam.jar;lib/affect.jar;lib/emotionml.jar;lib/geomerative.jar;lib/jama.jar;lib/jsr173_1.0_api.jar;lib/vecmath.jar;lib/xbean.jar;lib/processing/core.jar;lib/j3dcore.jar;lib/j3dutils.jar</classpath>
+                <classpath mode="compile">lib/PeasyCam.jar:lib/affect.jar:lib/emotionml.jar:lib/geomerative.jar:lib/jama.jar:lib/jsr173_1.0_api.jar:lib/vecmath.jar:lib/xbean.jar:lib/processing/core.jar:lib/j3dcore.jar:lib/j3dutils.jar:lib/PeasyCam.jar:lib/PeasyCam.jar</classpath>
                 <source-level>1.7</source-level>
             </compilation-unit>
         </java-data>

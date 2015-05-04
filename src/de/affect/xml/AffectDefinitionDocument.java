@@ -17,7 +17,7 @@ package de.affect.xml;
 public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectDefinitionDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("affectdefinition17c4doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectDefinitionDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("affectdefinition17c4doctype");
     
     /**
      * Gets the "AffectDefinition" element
@@ -42,7 +42,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
     public interface AffectDefinition extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectDefinition.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("affectdefinition9940elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectDefinition.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("affectdefinition9940elemtype");
         
         /**
          * Gets a List of "CharacterAffect" elements
@@ -176,7 +176,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
         public interface CharacterAffect extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(CharacterAffect.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("characteraffect002aelemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(CharacterAffect.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("characteraffect002aelemtype");
             
             /**
              * Gets the "PersonalitySpecification" element
@@ -326,7 +326,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
             public interface PersonalitySpecification extends de.affect.xml.PersonalityType
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(PersonalitySpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("personalityspecification6d5belemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(PersonalitySpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("personalityspecification6d5belemtype");
                 
                 /**
                  * Gets the "derived" attribute
@@ -403,7 +403,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
             public interface MoodSpecification extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("moodspecification27c2elemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("moodspecification27c2elemtype");
                 
                 /**
                  * Gets the "decaytime" attribute
@@ -473,7 +473,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decaytime extends org.apache.xmlbeans.XmlLong
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decaytime.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decaytimea7f1attrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decaytime.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decaytimea7f1attrtype");
                     
                     /**
                      * A factory class with static methods for creating instances
@@ -503,7 +503,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decayperiod extends org.apache.xmlbeans.XmlInt
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayperiod.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decayperiodf265attrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayperiod.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decayperiodf265attrtype");
                     
                     /**
                      * A factory class with static methods for creating instances
@@ -550,7 +550,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
             public interface EmotionSpecification extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("emotionspecification724eelemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("emotionspecification724eelemtype");
                 
                 /**
                  * Gets the "decaytime" attribute
@@ -640,7 +640,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decaytime extends org.apache.xmlbeans.XmlLong
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decaytime.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decaytime4fbfattrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decaytime.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decaytime4fbfattrtype");
                     
                     /**
                      * A factory class with static methods for creating instances
@@ -670,7 +670,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decayperiod extends org.apache.xmlbeans.XmlInt
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayperiod.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decayperiod80cbattrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayperiod.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decayperiod80cbattrtype");
                     
                     /**
                      * A factory class with static methods for creating instances
@@ -700,7 +700,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decayfunction extends org.apache.xmlbeans.XmlString
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayfunction.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decayfunctione594attrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayfunction.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decayfunctione594attrtype");
                     
                     org.apache.xmlbeans.StringEnumAbstractBase enumValue();
                     void set(org.apache.xmlbeans.StringEnumAbstractBase e);
@@ -807,7 +807,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
             public interface Appraisal extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Appraisal.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("appraisal449belemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Appraisal.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("appraisal449belemtype");
                 
                 /**
                  * Gets the "Basic" element
@@ -1191,7 +1191,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Basic extends org.apache.xmlbeans.XmlObject
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Basic.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("basic0495elemtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Basic.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("basic0495elemtype");
                     
                     /**
                      * Gets the "GoodEvent" element
@@ -1471,7 +1471,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodevent9d7eelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodevent9d7eelemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -1518,7 +1518,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodEventForGoodOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEventForGoodOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodeventforgoodotherb328elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEventForGoodOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodeventforgoodotherb328elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -1605,7 +1605,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodEventForBadOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEventForBadOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodeventforbadother0d68elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEventForBadOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodeventforbadother0d68elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -1692,7 +1692,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badeventdfa6elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badeventdfa6elemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -1739,7 +1739,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadEventForGoodOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEventForGoodOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badeventforgoodotherf950elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEventForGoodOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badeventforgoodotherf950elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -1826,7 +1826,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadEventForBadOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEventForBadOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badeventforbadother6240elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEventForBadOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badeventforbadother6240elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -1913,7 +1913,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodLikelyFutureEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodLikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodlikelyfutureeventd9b7elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodLikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodlikelyfutureeventd9b7elemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -1980,7 +1980,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodUnlikelyFutureEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodUnlikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodunlikelyfutureeventa6beelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodUnlikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodunlikelyfutureeventa6beelemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -2047,7 +2047,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadLikelyFutureEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadLikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badlikelyfutureevent1fdfelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadLikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badlikelyfutureevent1fdfelemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -2114,7 +2114,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadUnlikelyFutureEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadUnlikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badunlikelyfutureevent02e6elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadUnlikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badunlikelyfutureevent02e6elemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -2181,7 +2181,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface EventConfirmed extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EventConfirmed.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("eventconfirmed2df6elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EventConfirmed.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("eventconfirmed2df6elemtype");
                       
                       /**
                        * Gets the "realization" attribute
@@ -2228,7 +2228,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface EventDisconfirmed extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EventDisconfirmed.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("eventdisconfirmedd66celemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EventDisconfirmed.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("eventdisconfirmedd66celemtype");
                       
                       /**
                        * Gets the "realization" attribute
@@ -2275,7 +2275,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodActSelf extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodActSelf.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodactselff222elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodActSelf.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodactselff222elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -2342,7 +2342,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodActOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodActOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodactother980celemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodActOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodactother980celemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -2409,7 +2409,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadActSelf extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadActSelf.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badactself4a4aelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadActSelf.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badactself4a4aelemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -2476,7 +2476,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadActOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadActOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badactother44e4elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadActOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badactother44e4elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -2543,7 +2543,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface NiceThing extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NiceThing.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("nicething2432elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NiceThing.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("nicething2432elemtype");
                       
                       /**
                        * Gets the "appealingness" attribute
@@ -2590,7 +2590,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface NastyThing extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NastyThing.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("nastything9b5aelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NastyThing.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("nastything9b5aelemtype");
                       
                       /**
                        * Gets the "appealingness" attribute
@@ -2671,7 +2671,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
             public interface Name extends org.apache.xmlbeans.XmlString
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Name.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("named095attrtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Name.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("named095attrtype");
                 
                 /**
                  * A factory class with static methods for creating instances
@@ -2718,7 +2718,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
         public interface GroupAffect extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GroupAffect.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("groupaffecta800elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GroupAffect.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("groupaffecta800elemtype");
             
             /**
              * Gets the "MoodSpecification" element
@@ -2883,7 +2883,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
             public interface MoodSpecification extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("moodspecification5b98elemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("moodspecification5b98elemtype");
                 
                 /**
                  * Gets the "decaytime" attribute
@@ -2933,7 +2933,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decaytime extends org.apache.xmlbeans.XmlLong
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decaytime.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decaytime4b47attrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decaytime.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decaytime4b47attrtype");
                     
                     /**
                      * A factory class with static methods for creating instances
@@ -2963,7 +2963,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decayperiod extends org.apache.xmlbeans.XmlInt
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayperiod.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decayperiodefbbattrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayperiod.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decayperiodefbbattrtype");
                     
                     /**
                      * A factory class with static methods for creating instances
@@ -3010,7 +3010,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
             public interface EmotionSpecification extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("emotionspecificationcc24elemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("emotionspecificationcc24elemtype");
                 
                 /**
                  * Gets the "decaytime" attribute
@@ -3080,7 +3080,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decaytime extends org.apache.xmlbeans.XmlLong
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decaytime.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decaytime0a15attrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decaytime.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decaytime0a15attrtype");
                     
                     /**
                      * A factory class with static methods for creating instances
@@ -3110,7 +3110,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decayperiod extends org.apache.xmlbeans.XmlInt
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayperiod.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decayperioda121attrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayperiod.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decayperioda121attrtype");
                     
                     /**
                      * A factory class with static methods for creating instances
@@ -3140,7 +3140,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Decayfunction extends org.apache.xmlbeans.XmlString
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayfunction.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("decayfunctiond26aattrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Decayfunction.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("decayfunctiond26aattrtype");
                     
                     org.apache.xmlbeans.StringEnumAbstractBase enumValue();
                     void set(org.apache.xmlbeans.StringEnumAbstractBase e);
@@ -3247,7 +3247,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
             public interface Appraisal extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Appraisal.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("appraisalccf1elemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Appraisal.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("appraisalccf1elemtype");
                 
                 /**
                  * Gets the "Basic" element
@@ -3413,7 +3413,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                 public interface Basic extends org.apache.xmlbeans.XmlObject
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Basic.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("basic99ebelemtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Basic.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("basic99ebelemtype");
                     
                     /**
                      * Gets the "GoodEvent" element
@@ -3693,7 +3693,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodevent0f54elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodevent0f54elemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -3740,7 +3740,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodEventForGoodOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEventForGoodOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodeventforgoodother89feelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEventForGoodOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodeventforgoodother89feelemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -3827,7 +3827,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodEventForBadOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEventForBadOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodeventforbadother043eelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodEventForBadOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodeventforbadother043eelemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -3914,7 +3914,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badeventa57celemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badeventa57celemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -3961,7 +3961,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadEventForGoodOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEventForGoodOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badeventforgoodother2426elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEventForGoodOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badeventforgoodother2426elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -4048,7 +4048,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadEventForBadOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEventForBadOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badeventforbadother8516elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadEventForBadOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badeventforbadother8516elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -4135,7 +4135,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodLikelyFutureEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodLikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodlikelyfutureevent500delemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodLikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodlikelyfutureevent500delemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -4202,7 +4202,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodUnlikelyFutureEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodUnlikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodunlikelyfutureeventb894elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodUnlikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodunlikelyfutureeventb894elemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -4269,7 +4269,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadLikelyFutureEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadLikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badlikelyfutureeventea35elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadLikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badlikelyfutureeventea35elemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -4336,7 +4336,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadUnlikelyFutureEvent extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadUnlikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badunlikelyfutureevent68bcelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadUnlikelyFutureEvent.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badunlikelyfutureevent68bcelemtype");
                       
                       /**
                        * Gets the "desirability" attribute
@@ -4403,7 +4403,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface EventConfirmed extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EventConfirmed.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("eventconfirmed9bccelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EventConfirmed.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("eventconfirmed9bccelemtype");
                       
                       /**
                        * Gets the "realization" attribute
@@ -4450,7 +4450,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface EventDisconfirmed extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EventDisconfirmed.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("eventdisconfirmedef42elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EventDisconfirmed.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("eventdisconfirmedef42elemtype");
                       
                       /**
                        * Gets the "realization" attribute
@@ -4497,7 +4497,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodActSelf extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodActSelf.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodactself55f8elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodActSelf.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodactself55f8elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -4564,7 +4564,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface GoodActOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodActOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("goodactother80e2elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GoodActOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("goodactother80e2elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -4631,7 +4631,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadActSelf extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadActSelf.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badactself0220elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadActSelf.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badactself0220elemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -4698,7 +4698,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface BadActOther extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadActOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("badactother59baelemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BadActOther.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("badactother59baelemtype");
                       
                       /**
                        * Gets the "agency" attribute
@@ -4765,7 +4765,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface NiceThing extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NiceThing.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("nicething1008elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NiceThing.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("nicething1008elemtype");
                       
                       /**
                        * Gets the "appealingness" attribute
@@ -4812,7 +4812,7 @@ public interface AffectDefinitionDocument extends org.apache.xmlbeans.XmlObject
                     public interface NastyThing extends org.apache.xmlbeans.XmlObject
                     {
                       public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NastyThing.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("nastything5b30elemtype");
+                        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NastyThing.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("nastything5b30elemtype");
                       
                       /**
                        * Gets the "appealingness" attribute

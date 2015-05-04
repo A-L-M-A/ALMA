@@ -16,7 +16,7 @@ package de.affect.xml;
 public interface IndirectActType extends de.affect.xml.AppraisalTag
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(IndirectActType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("indirectacttypedbf8type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(IndirectActType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("indirectacttypedbf8type");
     
     /**
      * Gets the "type" attribute

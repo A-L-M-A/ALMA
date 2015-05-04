@@ -17,7 +17,7 @@ package de.affect.xml;
 public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectComputationDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("affectcomputation64dcdoctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectComputationDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("affectcomputation64dcdoctype");
     
     /**
      * Gets the "AffectComputation" element
@@ -42,7 +42,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
     public interface AffectComputation extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectComputation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("affectcomputationfb1aelemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AffectComputation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("affectcomputationfb1aelemtype");
         
         /**
          * Gets the "AvailableActs" element
@@ -142,7 +142,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
         public interface AvailableActs extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AvailableActs.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("availableactsa970elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AvailableActs.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("availableactsa970elemtype");
             
             /**
              * Gets a List of "ActSpecification" elements
@@ -199,7 +199,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface ActSpecification extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ActSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("actspecification25fdelemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ActSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("actspecification25fdelemtype");
                 
                 /**
                  * Gets the "name" attribute
@@ -279,7 +279,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
                 public interface Name extends org.apache.xmlbeans.XmlString
                 {
                     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Name.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("nameefb2attrtype");
+                      org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Name.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("nameefb2attrtype");
                     
                     /**
                      * A factory class with static methods for creating instances
@@ -343,7 +343,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
         public interface AvailableEmotions extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AvailableEmotions.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("availableemotionsd307elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AvailableEmotions.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("availableemotionsd307elemtype");
             
             /**
              * Gets a List of "EmotionSpecification" elements
@@ -400,7 +400,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface EmotionSpecification extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("emotionspecification932belemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionSpecification.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("emotionspecification932belemtype");
                 
                 /**
                  * Gets the "name" attribute
@@ -514,7 +514,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
         public interface MoodRelations extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodRelations.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("moodrelations2926elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(MoodRelations.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("moodrelations2926elemtype");
             
             /**
              * Gets the "OpennessRelation" element
@@ -676,7 +676,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface OpennessRelation extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(OpennessRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("opennessrelatione7dfelemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(OpennessRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("opennessrelatione7dfelemtype");
                 
                 /**
                  * Gets the "pleasure" attribute
@@ -763,7 +763,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface ConscientiousnessRelation extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConscientiousnessRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("conscientiousnessrelation3e1delemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConscientiousnessRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("conscientiousnessrelation3e1delemtype");
                 
                 /**
                  * Gets the "pleasure" attribute
@@ -850,7 +850,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface ExtraversionRelation extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ExtraversionRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("extraversionrelation5ec6elemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ExtraversionRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("extraversionrelation5ec6elemtype");
                 
                 /**
                  * Gets the "pleasure" attribute
@@ -937,7 +937,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface AgreeablenessRelation extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AgreeablenessRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("agreeablenessrelationca2belemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AgreeablenessRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("agreeablenessrelationca2belemtype");
                 
                 /**
                  * Gets the "pleasure" attribute
@@ -1024,7 +1024,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface NeurotismRelation extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NeurotismRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("neurotismrelation7878elemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(NeurotismRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("neurotismrelation7878elemtype");
                 
                 /**
                  * Gets the "pleasure" attribute
@@ -1111,7 +1111,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface EmotionRelation extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("emotionrelationd2a9elemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(EmotionRelation.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("emotionrelationd2a9elemtype");
                 
                 /**
                  * Gets the "name" attribute
@@ -1235,7 +1235,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
         public interface PersonalityRelations extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(PersonalityRelations.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("personalityrelations753felemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(PersonalityRelations.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("personalityrelations753felemtype");
             
             /**
              * Gets the "PleasureRelation" element
@@ -1307,7 +1307,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
         public interface RealtimeOutput extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(RealtimeOutput.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("realtimeoutput8622elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(RealtimeOutput.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("realtimeoutput8622elemtype");
             
             /**
              * Gets the "FileLog" element
@@ -1387,7 +1387,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface FileLog extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(FileLog.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("filelogd32eelemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(FileLog.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("filelogd32eelemtype");
                 
                 /**
                  * Gets the "enable" attribute
@@ -1454,7 +1454,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
             public interface ConsoleLog extends org.apache.xmlbeans.XmlObject
             {
                 public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConsoleLog.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("consoleloga4d9elemtype");
+                    org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConsoleLog.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("consoleloga4d9elemtype");
                 
                 /**
                  * Gets the "enable" attribute
@@ -1518,7 +1518,7 @@ public interface AffectComputationDocument extends org.apache.xmlbeans.XmlObject
         public interface RuntimeInteractionMonitor extends org.apache.xmlbeans.XmlObject
         {
             public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(RuntimeInteractionMonitor.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s25552836AC541098714E7C2C64F0C27E").resolveHandle("runtimeinteractionmonitor4946elemtype");
+                org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(RuntimeInteractionMonitor.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sD0073D900832184E9BED1EA3B81E0474").resolveHandle("runtimeinteractionmonitor4946elemtype");
             
             /**
              * Gets the "enabled" attribute
