@@ -28,7 +28,7 @@
 
     <pathelement location="lib/ocd.jar"/>
     <pathelement location="lib/opengl.jar"/>
-    <pathelement location="lib/peasycam.jar"/>  
+    <pathelement location="lib/PeasyCam.jar"/>  
     <pathelement location="${java.home}/lib/plugin.jar"/>
   </path>
 
@@ -62,7 +62,7 @@
     <pathelement location="lib/processing/jogl-all.jar"/>
     <pathelement location="lib/ocd.jar"/>
     <pathelement location="lib/opengl.jar"/>
-    <pathelement location="lib/peasycam.jar"/>  
+    <pathelement location="lib/PeasyCam.jar"/>  
     <pathelement location="${java.home}/lib/plugin.jar"/>
   </path>
 
