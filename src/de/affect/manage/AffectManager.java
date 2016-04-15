@@ -52,9 +52,6 @@ import de.affect.data.AffectConsts;
 import de.affect.emotion.EmotionType;
 import static de.affect.emotion.EmotionType.*;
 import static de.affect.emotion.EmotionsPADRelation.*;
-import de.affect.gui.AlmaGUI;
-import de.affect.gui.CharacterConfigInternalFrame;
-import de.affect.gui.DesktopHelper;
 import static de.affect.manage.AffectOutputCreater.*;
 
 import static de.affect.manage.AppraisalRuleReader.readAppraisalRules;
@@ -133,7 +130,6 @@ public class AffectManager extends AppraisalManager {
 
   // project wide logger
   public static Logger sLog = Logger.getLogger("Alma");
-  public static DesktopHelper sDesktopHelper = null;
   public static InterfaceHolder sInterface = null;
   // Listener administration
   private Vector<AffectUpdateListener> fUpdateListener = null;
@@ -147,7 +143,6 @@ public class AffectManager extends AppraisalManager {
   private Hashtable<String, AffectAppraisalSimulation> fNameToAppraisalSimulation = null;
   private List<EmotionType> fAvailableEmotionTypes = new ArrayList<EmotionType>();
   private Timer fOutputTimer = null;
-  private AlmaGUI mALMAGUI = null;
   private boolean fDoFileLogging = false;
   private boolean fDoConsoleLogging = false;
   private static int fOutputPeriod = 500;
@@ -189,15 +184,6 @@ public class AffectManager extends AppraisalManager {
     // enable the static interface
     sInterface = new InterfaceHolder();
 
-    sDesktopHelper = new DesktopHelper(); //TODO static method which creats an instance
-
-    if (hasGUI) {
-      mALMAGUI = new AlmaGUI();
-      
-      System.setProperty("apple.laf.useScreenMenuBar", "true");
-      System.setProperty("com.apple.mrj.application.apple.menu.about.name", "ALMA CharacterBuilder");
-
-    }
     ConsoleHandler ch = new ConsoleHandler();
     ch.setFormatter(new AffectManagerConsoleFormatter());
     ch.setLevel(Level.INFO);
@@ -212,19 +198,14 @@ public class AffectManager extends AppraisalManager {
     if (ac != null) {
       initComputation(ac);
     }
-    // exit ALMA if some essential configuration is missing
-    if ((mALMAGUI == null) && ((ac == null) || (ad == null))) {
-      System.exit(-1);
-    }
+
     // bias initial splash screen scrollbar
     int itemsToBeLoaded = 0;
     if (ad != null) {
       itemsToBeLoaded += ad.getCharacterAffectList().size();
       itemsToBeLoaded += ad.getGroupAffectList().size();
     }
-    if (mALMAGUI != null) {
-      mALMAGUI.biasProgressBar(itemsToBeLoaded);
-    }
+ 
     // initalize the character affect profile definition
     fNameToCharacter = new Hashtable<String, CharacterManager>();
     if (ad != null && ad.getCharacterAffectList().size() > 0) {
@@ -235,40 +216,11 @@ public class AffectManager extends AppraisalManager {
     if (ad != null && ad.getGroupAffectList().size() > 0) {
       initGroups(ad);
     }
-    // if no gui mode, check if interaction monitor mode activated
-    if (!hasGUI) {
-      if ((ac.getRuntimeInteractionMonitor().getEnabled())) {
-        de.affect.gui.InteractionSimulationFrame isf =
-          new de.affect.gui.InteractionSimulationFrame();
-        isf.setVisible(true);
-        isf.startRecording();
-      }
-    }
+
     // start realtime output
     if (ac != null) {
       startRealtimeOutput(ac);
     }
-    // do final gui polish - if gui is present
-    if (mALMAGUI != null) {
-      mALMAGUI.monitorProgress();
-    
-      mALMAGUI.hideSplashDialog();
-              //tengfei's modification
-      
-      for (CharacterAffect characterAffectProfile: ad.getCharacterAffectList())
-                  mALMAGUI.creatCharacterPanel(characterAffectProfile.getName());
-      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-      if(screenSize.height<800){
-          mALMAGUI.createInteractionPanelTab();
-      }
-      mALMAGUI.createInteractionPanel();
-      mALMAGUI.newCharacter(); 
-     
-      //mALMAGUI.checkJava3DPresence();
- 
-    }
-         
-
   }
 
   /**
@@ -739,13 +691,10 @@ public class AffectManager extends AppraisalManager {
         fNameToAppraisalSimulation.put(name, new AffectAppraisalSimulation(character));
       }
     }
-    // In non-gui mode show AffectMonitor, if selected
-    boolean showAffectMonitor = (characterAffectProfile.isSetMonitored())
-      ? characterAffectProfile.getMonitored() : false;
-    character.showMonitor(showAffectMonitor);
-    if (mALMAGUI != null) {
-      mALMAGUI.monitorProgress();
-    }
+//    // In non-gui mode show AffectMonitor, if selected
+//    boolean showAffectMonitor = (characterAffectProfile.isSetMonitored())
+//      ? characterAffectProfile.getMonitored() : false;
+//    character.showMonitor(showAffectMonitor);
     // Register character
     fNameToCharacter.put(name, character);
   
@@ -813,13 +762,11 @@ public class AffectManager extends AppraisalManager {
     if (groupAffectProfile.isSetAppraisal()) {
       group.setAppraisalRules(readAppraisalRules(group, groupAffectProfile.getAppraisal()));
     }
-    // In non-gui mode show AffectMonitor, if selected
-    boolean showAffectMonitor = (groupAffectProfile.isSetMonitored())
-      ? groupAffectProfile.getMonitored() : false;
-    group.showMonitor(showAffectMonitor);
-    if (mALMAGUI != null) {
-      mALMAGUI.monitorProgress();
-    }
+//    // In non-gui mode show AffectMonitor, if selected
+//    boolean showAffectMonitor = (groupAffectProfile.isSetMonitored())
+//      ? groupAffectProfile.getMonitored() : false;
+//    group.showMonitor(showAffectMonitor);
+
     fNameToGroup.put(name, group);
   }
 

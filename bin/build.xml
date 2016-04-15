@@ -7,33 +7,9 @@
     <pathelement location="lib/jsr173_1.0_api.jar"/>
     <pathelement location="lib/xbean.jar"/>
     <pathelement location="lib/emotionml.jar"/>
-    <pathelement location="lib/j3dcore.jar"/>
-    <pathelement location="lib/j3dutils.jar"/>
-    <pathelement location="lib/vecmath.jar"/>
-    <pathelement location="lib/geomerative.jar"/>
-    <pathelement location="lib/processing/core.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-linux-amd64.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-linux-i586.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-macosx-universal.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-windows-amd64.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-windows-i586.jar"/>
-    <pathelement location="lib/processing/gluegen-rt.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-linux-amd64.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-linux-i586.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-macosx-universal.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-windows-amd64.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-windows-i586.jar"/>
-    <pathelement location="lib/processing/jogl-all.jar"/>
-    
-
-    <pathelement location="lib/ocd.jar"/>
-    <pathelement location="lib/opengl.jar"/>
-    <pathelement location="lib/PeasyCam.jar"/>  
-    <pathelement location="${java.home}/lib/plugin.jar"/>
   </path>
 
   <path id="jar-classpath">
-      
     <pathelement location="lib/ant.jar"/>
 
     <pathelement path="lib/affect.jar"/>
@@ -41,29 +17,6 @@
     <pathelement location="lib/jsr173_1.0_api.jar"/>
     <pathelement location="lib/xbean.jar"/>
     <pathelement location="lib/emotionml.jar"/>
-    <pathelement location="lib/processing/cor/library/core.jar"/>
-    <pathelement location="lib/j3dcore.jar"/>
-    <pathelement location="lib/j3dutils.jar"/>
-    <pathelement location="lib/vecmath.jar"/>
-    <pathelement location="j3dcore-ogl.dll"/>
-    <pathelement location="lib/geomerative.jar"/>
-    <pathelement location="lib/processing/core.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-linux-amd64.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-linux-i586.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-macosx-universal.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-windows-amd64.jar"/>
-    <pathelement location="lib/processing/gluegen-rt-natives-windows-i586.jar"/>
-    <pathelement location="lib/processing/gluegen-rt.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-linux-amd64.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-linux-i586.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-macosx-universal.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-windows-amd64.jar"/>
-    <pathelement location="lib/processing/jogl-all-natives-windows-i586.jar"/>
-    <pathelement location="lib/processing/jogl-all.jar"/>
-    <pathelement location="lib/ocd.jar"/>
-    <pathelement location="lib/opengl.jar"/>
-    <pathelement location="lib/PeasyCam.jar"/>  
-    <pathelement location="${java.home}/lib/plugin.jar"/>
   </path>
 
   <taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean">
@@ -199,11 +152,13 @@
       <attribute name="Built-By" value="Patrick Gebhard"/>
       <attribute name="Signature_version" value="2.0"/>
       <!-- <attribute name="Class-Path" value="jama.jar emotionml.jar jsr173_1.0_api.jar xbean.jar core.jar geomerative.jar gluegen-rt-natives-linux-amd64.jar gluegen-rt-natives-linux-i586.jar gluegen-rt-natives-macosx-universal.jar gluegen-rt-natives-windows-amd64.jar gluegen-rt-natives-windows-i586.jar gluegen-rt.jar jogl-all-natives-linux-amd64.jar jogl-all-natives-linux-i586.jar jogl-all-natives-macosx-universal.jar jogl-all-natives-windows-amd64.jar jogl-all-natives-windows-i586.jar jogl.all.jar ocd.jar opengl.jar peasycam.jar"/> -->
-      <attribute name="Class-Path" value="jama.jar emotionml.jar jsr173_1.0_api.jar xbean.jar/>"/>
+      <!-- <attribute name="Class-Path" value="jama.jar emotionml.jar jsr173_1.0_api.jar xbean.jar/>"/>-->
       <attribute name="Main-Class" value="de.affect.manage.AffectManager"/>
     </manifest>
     <jar jarfile="lib/affect.jar" basedir="lib" manifest="lib/MANIFEST.MF"
-         includes="conf/**,pics/**,docs/**,scripts/**,de/**,schemaorg_apache_xmlbeans/**"/>
+         includes="conf/**,pics/**,docs/**,scripts/**,de/**,schemaorg_apache_xmlbeans/**">
+        <zipgroupfileset dir="lib" excludes="META-INF/*.SF,META-INF/*.DSA,META-INF/*.RSA" includes="*.jar"/>
+    </jar>
     <delete file="lib/MANIFEST.MF"/>
     <delete dir="lib/conf"/>
     <delete dir="lib/pics"/>
@@ -322,34 +277,6 @@
     <copy file="src/de/affect/xml/demo/ParseAffectOutput.java" todir="deploy/src/de/affect/xml/demo"/>
   </target>
 
-  <!-- stuff that has nothing to do with the compilation process -->
-  <target name="run-input-example">
-    <java classname="de.affect.xml.demo.CreateAffectInput" fork="true">
-      <classpath refid="jar-classpath"/>
-    </java>
-  </target>
-
-  <target name="run-output-example">
-    <java classname="de.affect.xml.demo.ParseAffectOutput" fork="true">
-      <classpath refid="jar-classpath"/>
-      <arg line="xsd/AffectOutputExample.aml"/>
-    </java>
-  </target>
-
-  <target name="run-alma">
-    <java classname="de.affect.manage.AffectManager" fork="true">
-      <classpath refid="jar-classpath"/>
-      <arg line="conf/BasicComputation.aml conf/BasicDefinition.aml
-               false scripts/AffectInputExample.aml"/>
-    </java>
-  </target>
-
-  <target name="run-almagui-plain">
-    <java classname="de.affect.manage.AffectManager" fork="true">
-      <classpath refid="jar-classpath"/>
-    </java>
-  </target>
-
   <target name="run-characterbuilder">
     <java classname="de.affect.manage.AffectManager" fork="true">
       <classpath refid="jar-classpath"/>
@@ -357,143 +284,4 @@
                true"/>
     </java>
   </target>
-
-  <target name="run-characterbuilder-eval">
-    <java classname="de.affect.manage.AffectManager" fork="true">
-      <classpath refid="jar-classpath"/>
-      <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml
-               true scripts/AffectInputExample.aml"/>
-    </java>
-  </target>
-
-  <target name="run-characterbuilder-eval-profile">
-    <java classname="de.affect.manage.AffectManager" fork="true">
-      <classpath refid="jar-classpath"/>
-      <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml
-               true scripts/AffectInputExample.aml"/>
-      <jvmarg value="-agentpath:C:\Programme\NetBeans5\profiler1\lib\deployed\jdk15\windows\profilerinterface.dll=C:\Programme\NetBeans5\profiler1\lib,5140
-"/>
-    </java>
-  </target>
-
-  <target name="run-characterbuilder-zamb">
-    <java classname="de.affect.manage.AffectManager" fork="true">
-      <classpath refid="jar-classpath"/>
-      <arg line="conf/ZAMB-AffectComputation.aml conf/ZAMB-AffectDefinition.aml
-               true scripts/AffectInputExample.aml"/>
-    </java>
-  </target>
-
-  <target name="run-scriptplayer">
-    <java classname="de.affect.tools.AffectScriptPlayer" fork="true">
-      <classpath refid="jar-classpath"/>
-      <arg line="conf/AffectComputationExample.aml conf/Evaluation.aml
-               scripts/AffectScriptExample.aml"/>
-    </java>
-  </target>
-
-  <target name="htmlemotiontags">
-    <java classname="de.affect.tools.AffectScripts2HTML" fork="true">
-      <classpath refid="classpath"/>
-      <!-- arguments are:
-          ALMA computation Parameters
-          ALMA character Definitions
-          ALMA output dicitionary
-          ALMA output language (de|en)
-          input directory holding aml files
-          output file
-          show script file name in output (true|false)
-          show ALMA input tags in dialog lines (true|false)
-          show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
-          show question on emotional impact of the dialog on the dialog participants (true|false)
-          show question on mood impact of dialog on the dialog participants (true|false)
-      -->
-      <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/emotions docs/emotiontagsscriptsquestions.html false true false false false"/>
-    </java>
-  </target>
-
-  <target name="htmlmoodtags">
-    <java classname="de.affect.tools.AffectScripts2HTML" fork="true">
-      <classpath refid="classpath"/>
-      <!-- arguments are:
-          ALMA computation Parameters
-          ALMA character Definitions
-          ALMA output dicitionary
-          ALMA output language (de|en)
-          input directory holding aml files
-          output file
-          show script file name in output (true|false)
-          show ALMA input tags in dialog lines (true|false)
-          show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
-          show question on emotional impact of the dialog on the dialog participants (true|false)
-          show question on mood impact of dialog on the dialog participants (true|false)
-      -->
-      <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/moods docs/moodtagsscriptsquestions.html false true false false false"/>
-    </java>
-  </target>
-  
-
-  <target name="gen-htmlscriptsquestionsview" depends="htmlemotiontags,htmlmoodtags">
-  </target>
-
-  <target name="gen-htmlemotionscriptsquestionsview">
-    <java classname="de.affect.tools.AffectScripts2HTML" fork="true">
-      <classpath refid="classpath"/>
-      <!-- arguments are:
-          ALMA computation Parameters
-          ALMA character Definitions
-          ALMA output dicitionary
-          ALMA output language (de|en)
-          input directory holding aml files
-          output file
-          show script file name in output (true|false)
-          show ALMA input tags in dialog lines (true|false)
-          show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
-          show question on emotional impact of the dialog on the dialog participants (true|false)
-          show question on mood impact of dialog on the dialog participants (true|false)
-      -->
-      <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/emotions docs/emotionscriptsquestion.html false false false true false"/>
-    </java>
-  </target>
-
-  <target name="gen-htmlmoodscriptsquestionsview">
-    <java classname="de.affect.tools.AffectScripts2HTML" fork="true">
-      <classpath refid="classpath"/>
-      <!-- arguments are:
-          ALMA computation Parameters
-          ALMA character Definitions
-          ALMA output dicitionary
-          ALMA output language (de|en)
-          input directory holding aml files
-          output file
-          show script file name in output (true|false)
-          show ALMA input tags in dialog lines (true|false)
-          show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
-          show question on emotional impact of the dialog on the dialog participants (true|false)
-          show question on mood impact of dialog on the dialog participants (true|false)
-      -->
-      <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/moods docs/moodscriptsquestion.html false false false false true"/>
-    </java>
-  </target>
-
-  <target name="gen-evalresultemplate">
-    <java classname="de.affect.tools.EvaluationResultTemplate" fork="true">
-      <classpath refid="classpath"/>
-      <!-- arguments are:
-          ALMA computation Parameters
-          ALMA character Definitions
-          ALMA output dicitionary
-          ALMA output language (de|en)
-          input directory holding aml files
-          output file
-          show script file name in output (true|false)
-          show ALMA input tags in dialog lines (true|false)
-          show plausibilty questions of ALMA input tags (true|false), requires show ALMA input tags in dialog lines to be true
-          show question on emotional impact of the dialog on the dialog participants (true|false)
-          show question on mood impact of dialog on the dialog participants (true|false)
-      -->
-      <arg line="conf/EvaluationComputation.aml conf/EvaluationDefinition.aml conf/dictionary.ini de scripts/moods docs/annotation-result.txt true true false false false"/>
-    </java>
-  </target>
-
 </project>

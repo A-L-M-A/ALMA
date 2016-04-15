@@ -23,25 +23,18 @@ import static java.lang.Math.sqrt;
 import de.affect.compute.EmotionEngine;
 import de.affect.compute.DecayFunction;
 import de.affect.compute.MoodEngine;
-import de.affect.appraisal.AppraisalVariables;
 import de.affect.appraisal.EEC;
 import de.affect.emotion.EmotionHistory;
 import de.affect.emotion.EmotionVector;
 import de.affect.emotion.Emotion;
-import de.affect.mood.Mood;
 import de.affect.personality.Personality;
 import de.affect.personality.PersonalityEmotionsRelations;
-import de.affect.gui.GroupAffectMonitor;
-import de.affect.gui.GroupAffectMonitorFrame;
-import de.affect.gui.GroupAffectMonitorInternalFrame;
 import de.affect.data.AffectConsts;
 import de.affect.emotion.EmotionType;
 import de.affect.manage.event.EmotionMaintenanceEvent;
 import de.affect.manage.event.EmotionMaintenanceListener;
 
 import static de.affect.personality.PersonalityMoodRelations.getDefaultMood;
-import static de.affect.gui.AlmaGUI.sIntegratedDesktopMode;
-import static de.affect.util.Convert.doubleValue;
 
 /**
  * The class
@@ -61,7 +54,6 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
   private MoodEngine fMoodEngine = null;
   private EmotionEngine fEmotionEngine = null;
   private EmotionHistory fEmotionHistory = null;
-  private GroupAffectMonitor fGroupAffectMonitor = null;
   private DecayFunction fDecayFunction = null;
   private Timer fDecayTimer = null;
   private Timer fMoodComputationTimer = null;
@@ -103,21 +95,6 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
       fDefaultMood, fAc.moodReturnOverallTime);
     fMoodComputationTimer = new Timer(true);
     fMoodComputationTimer.schedule(new MoodComputationTask(), fAc.moodReturnPeriod, fAc.moodReturnPeriod);
-    // Setup affect monitoring
-    if (!sIntegratedDesktopMode) {
-      Thread startAffectMonitor = new Thread() {
-        public void run() {
-          fGroupAffectMonitor =
-            (GroupAffectMonitor) new GroupAffectMonitorFrame(fName, fEmotionVector,
-            fCurrentMood,
-            fSocialIntegrity,
-            fInSimilarMood,
-            fInExtremeMood);
-
-        }
-      };
-      startAffectMonitor.start();
-    }
   }
 
   /**
@@ -132,9 +109,6 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
     public synchronized void run() {
       fEmotionVector =
         fEmotionEngine.decay(fEmotionHistory, fEmotionVector, createEmotionVector());
-      if ((fGroupAffectMonitor != null) && fShowAffectMonitor) {
-        fGroupAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      }
     }
   }
 
@@ -144,17 +118,17 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
    * is usually done by the EmotionDecayTask, but in case it is diabled some other
    * method has to monitor the emotions.
    */
-  private class EmotionMonitorTask extends TimerTask {
-
-    private EmotionMonitorTask() {
-    }
-
-    public synchronized void run() {
-      if ((fGroupAffectMonitor != null) && fShowAffectMonitor) {
-        fGroupAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      }
-    }
-  }
+//  private class EmotionMonitorTask extends TimerTask {
+//
+//    private EmotionMonitorTask() {
+//    }
+//
+////    public synchronized void run() {
+////      if ((fGroupAffectMonitor != null) && fShowAffectMonitor) {
+////        fGroupAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+////      }
+////    }
+//  }
 
   /**
    * Returns a flag if emotion decay is enabled.
@@ -181,7 +155,7 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
   public void enableEmotionMonitoring() {
     if (!fEnableDecay) {
       fDecayTimer = new Timer(true);
-      fDecayTimer.schedule(new EmotionMonitorTask(), fAc.emotionDecayPeriod, fAc.emotionDecayPeriod);
+      //fDecayTimer.schedule(new EmotionMonitorTask(), fAc.emotionDecayPeriod, fAc.emotionDecayPeriod);
     }
   }
 
@@ -263,32 +237,32 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
   public void showMonitor(final boolean visible) {
     // Put the operation into a thread if the affectMonitor object
     // has not been yet instanciated
-    if ((fGroupAffectMonitor == null) && visible) {
-      Thread waitNShowMonitor = new Thread() {
-        public void run() {
-          boolean exit = false;
-          while (!exit) {
-            //debug log.info("Waiting for affect monitor ...");
-            if (fGroupAffectMonitor != null) {
-              exit = true;
-              fShowAffectMonitor = visible;
-              fGroupAffectMonitor.showFrame(visible);
-            }
-            try {
-              this.sleep(500);
-            } catch (InterruptedException ie) {
-              ie.printStackTrace();
-            }
-          }
-        }
-      };
-      waitNShowMonitor.start();
-      return;
-    }
-    if (fGroupAffectMonitor != null) {
-      fShowAffectMonitor = visible;
-      fGroupAffectMonitor.showFrame(visible);
-    }
+//    if ((fGroupAffectMonitor == null) && visible) {
+//      Thread waitNShowMonitor = new Thread() {
+//        public void run() {
+//          boolean exit = false;
+//          while (!exit) {
+//            //debug log.info("Waiting for affect monitor ...");
+//            if (fGroupAffectMonitor != null) {
+//              exit = true;
+//              fShowAffectMonitor = visible;
+//              fGroupAffectMonitor.showFrame(visible);
+//            }
+//            try {
+//              this.sleep(500);
+//            } catch (InterruptedException ie) {
+//              ie.printStackTrace();
+//            }
+//          }
+//        }
+//      };
+//      waitNShowMonitor.start();
+//      return;
+//    }
+//    if (fGroupAffectMonitor != null) {
+//      fShowAffectMonitor = visible;
+//      fGroupAffectMonitor.showFrame(visible);
+//    }
   }
 
   /**
@@ -305,31 +279,31 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
    *
    * @return true if the character's affect monitor is visible, false otherwise
    */
-  public GroupAffectMonitor getAffectMonitor() {
-    return fGroupAffectMonitor;
-  }
+//  public GroupAffectMonitor getAffectMonitor() {
+//    return fGroupAffectMonitor;
+//  }
 
   /**
    * Sets a new affect monitor for this character.
    *
    * @param affectMonitor the new affect monitor
    */
-  public synchronized void setAffectMonitor(GroupAffectMonitor affectMonitor) {
-    disableEmotionDecay();
-    disableMoodComputation();
-    if (affectMonitor != null) {
-      fGroupAffectMonitor = affectMonitor;
-      fShowAffectMonitor = true;
-      fGroupAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      fGroupAffectMonitor.updateMoodDisplay(fName, fEmotionVector,
-        fMoodEngine.getEmotionsCenter(),
-        fDefaultMood, fCurrentMood,
-        fSocialIntegrity, fInSimilarMood,
-        fInExtremeMood);
-    }
-    enableMoodComputation();
-    enableEmotionDecay();
-  }
+//  public synchronized void setAffectMonitor(GroupAffectMonitor affectMonitor) {
+//    disableEmotionDecay();
+//    disableMoodComputation();
+//    if (affectMonitor != null) {
+//      fGroupAffectMonitor = affectMonitor;
+//      fShowAffectMonitor = true;
+//      fGroupAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+//      fGroupAffectMonitor.updateMoodDisplay(fName, fEmotionVector,
+//        fMoodEngine.getEmotionsCenter(),
+//        fDefaultMood, fCurrentMood,
+//        fSocialIntegrity, fInSimilarMood,
+//        fInExtremeMood);
+//    }
+//    enableMoodComputation();
+//    enableEmotionDecay();
+//  }
 
   /**
    * The
@@ -438,13 +412,13 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
         }
       }
       //log.info("Characters in similar mood: " + fInSimilarMood);
-      if ((fGroupAffectMonitor != null) && fShowAffectMonitor) {
-        fGroupAffectMonitor.updateMoodDisplay(fName, fEmotionVector,
-          fMoodEngine.getEmotionsCenter(),
-          fDefaultMood, fCurrentMood,
-          fSocialIntegrity, fInSimilarMood,
-          fInExtremeMood);
-      }
+//      if ((fGroupAffectMonitor != null) && fShowAffectMonitor) {
+//        fGroupAffectMonitor.updateMoodDisplay(fName, fEmotionVector,
+//          fMoodEngine.getEmotionsCenter(),
+//          fDefaultMood, fCurrentMood,
+//          fSocialIntegrity, fInSimilarMood,
+//          fInExtremeMood);
+//      }
     }
   }
 
@@ -500,14 +474,14 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
 
     // Not for groups! fDefaultMood = getDefaultMood(personality);
     // Not for groups! fCurrentMood = getDefaultMood(personality);
-    if ((fGroupAffectMonitor != null) && fShowAffectMonitor) {
-      fGroupAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      fGroupAffectMonitor.updateMoodDisplay(fName, fEmotionVector,
-        fMoodEngine.getEmotionsCenter(),
-        fDefaultMood, fCurrentMood,
-        fSocialIntegrity, fInSimilarMood,
-        fInExtremeMood);
-    }
+//    if ((fGroupAffectMonitor != null) && fShowAffectMonitor) {
+//      fGroupAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+//      fGroupAffectMonitor.updateMoodDisplay(fName, fEmotionVector,
+//        fMoodEngine.getEmotionsCenter(),
+//        fDefaultMood, fCurrentMood,
+//        fSocialIntegrity, fInSimilarMood,
+//        fInExtremeMood);
+//    }
     enableMoodComputation();
     enableEmotionDecay();
   }
@@ -539,9 +513,9 @@ public class GroupManager extends EntityManager implements EmotionMaintenanceLis
     fEmotionEngine.clearEEC();
     fEmotionHistory.add(result);
     fEmotionVector = fEmotionHistory.getEmotionalState(fEmotionVector);
-    if ((fGroupAffectMonitor != null) && fShowAffectMonitor) {
-      fGroupAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-    }
+//    if ((fGroupAffectMonitor != null) && fShowAffectMonitor) {
+//      fGroupAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+//    }
     return result;
   }
 

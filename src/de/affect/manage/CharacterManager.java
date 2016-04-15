@@ -23,18 +23,13 @@ import de.affect.emotion.Emotion;
 import de.affect.mood.Mood;
 import de.affect.personality.Personality;
 import de.affect.personality.PersonalityEmotionsRelations;
-import de.affect.gui.AffectMonitor;
-import de.affect.gui.AffectStatusDisplay;
-import de.affect.gui.AffectMonitorFrame;
 
 import de.affect.data.AffectConsts;
 import de.affect.emotion.EmotionType;
 import de.affect.emotion.PADEmotion;
-import static de.affect.gui.AlmaGUI.sIntegratedDesktopMode;
 import de.affect.manage.event.EmotionMaintenanceEvent;
 import de.affect.manage.event.EmotionMaintenanceListener;
 
-import static de.affect.personality.PersonalityMoodRelations.getDefaultMood;
 import static de.affect.personality.PersonalityMoodRelations.getDefaultMood;
 import static java.lang.Thread.sleep;
 
@@ -56,8 +51,6 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
   private MoodEngine fMoodEngine = null;
   private EmotionEngine fEmotionEngine = null;
   private EmotionHistory fEmotionHistory = null;
-  private AffectMonitor fAffectMonitor = null;
-  private AffectStatusDisplay fAffectStatusDisplay = null;
   private boolean fDerivedPersonality = false;
   private DecayFunction fDecayFunction = null;
   private Timer fDecayTimer = null;
@@ -92,17 +85,6 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
       fDefaultMood, fAc.moodReturnOverallTime);
     fMoodComputationTimer = new Timer(true);
     fMoodComputationTimer.schedule(new MoodComputationTask(), fAc.moodReturnPeriod, fAc.moodReturnPeriod);
-    // Setup affect monitoring
-    if (!sIntegratedDesktopMode) {
-      Thread startAffectMonitor = new Thread() {
-        @Override
-        public void run() {
-          fAffectMonitor = (AffectMonitor) new AffectMonitorFrame(fName, fEmotionVector, fCurrentMood);
-          fAffectMonitor.addEmotionMaintenanceListener(fCharacterManagerInstance);
-        }
-      };
-      startAffectMonitor.start();
-    }
   }
 
   /**
@@ -117,13 +99,6 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
     public synchronized void run() {
       fEmotionVector =
         fEmotionEngine.decay(fEmotionHistory, fEmotionVector, createEmotionVector());
-      if ((fAffectMonitor != null) && fShowAffectMonitor) {
-        fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      }
-      if ((fAffectStatusDisplay != null)) {
-        fAffectStatusDisplay.updateStatusDisplay(fName, fEmotionVector,
-          fDefaultMood, fCurrentMood, fCurrentMoodTendency);
-      }
     }
   }
 
@@ -139,13 +114,13 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
     }
 
     public synchronized void run() {
-      if ((fAffectMonitor != null) && fShowAffectMonitor) {
-        fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      }
-      if ((fAffectStatusDisplay != null)) {
-        fAffectStatusDisplay.updateStatusDisplay(fName, fEmotionVector,
-          fDefaultMood, fCurrentMood, fCurrentMoodTendency);
-      }
+//      if ((fAffectMonitor != null) && fShowAffectMonitor) {
+//        fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+//      }
+//      if ((fAffectStatusDisplay != null)) {
+//        fAffectStatusDisplay.updateStatusDisplay(fName, fEmotionVector,
+//          fDefaultMood, fCurrentMood, fCurrentMoodTendency);
+//      }
     }
   }
 
@@ -252,33 +227,33 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
     // TODO: Put the operation into a thread if the affectMonitor object
 
     // has not been yet instanciated
-    if ((fAffectMonitor == null) && visible) {
-      Thread waitNShowMonitor = new Thread() {
-        @Override
-        public void run() {
-          boolean exit = false;
-          while (!exit) {
-            //debug log.info("Waiting for affect monitor ...");
-            if (fAffectMonitor != null) {
-              exit = true;
-              fShowAffectMonitor = visible;
-              fAffectMonitor.showFrame(visible);
-            }
-            try {
-              sleep(500);
-            } catch (InterruptedException ie) {
-              ie.printStackTrace();
-            }
-          }
-        }
-      };
-      waitNShowMonitor.start();
-      return;
-    }
-    if (fAffectMonitor != null) {
-      fShowAffectMonitor = visible;
-      fAffectMonitor.showFrame(visible);
-    }
+//    if ((fAffectMonitor == null) && visible) {
+//      Thread waitNShowMonitor = new Thread() {
+//        @Override
+//        public void run() {
+//          boolean exit = false;
+//          while (!exit) {
+//            //debug log.info("Waiting for affect monitor ...");
+//            if (fAffectMonitor != null) {
+//              exit = true;
+//              fShowAffectMonitor = visible;
+//              fAffectMonitor.showFrame(visible);
+//            }
+//            try {
+//              sleep(500);
+//            } catch (InterruptedException ie) {
+//              ie.printStackTrace();
+//            }
+//          }
+//        }
+//      };
+//      waitNShowMonitor.start();
+//      return;
+//    }
+//    if (fAffectMonitor != null) {
+//      fShowAffectMonitor = visible;
+//      fAffectMonitor.showFrame(visible);
+//    }
   }
 
   /**
@@ -295,46 +270,46 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
    *
    * @return true if the character's affect monitor is visible, false otherwise
    */
-  public AffectMonitor getAffectMonitor() {
-    return fAffectMonitor;
-  }
+//  public AffectMonitor getAffectMonitor() {
+//    return fAffectMonitor;
+//  }
 
   /**
    * Sets a new affect monitor for this character.
    *
    * @param affectMonitor the new affect monitor
    */
-  public synchronized void setAffectMonitor(AffectMonitor affectMonitor) {
-    disableEmotionDecay();
-    disableMoodComputation();
-    if (affectMonitor != null) {
-      fAffectMonitor = affectMonitor;
-      fShowAffectMonitor = true;
-      fAffectMonitor.addEmotionMaintenanceListener(fCharacterManagerInstance);
-      fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
-        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
-    }
-    enableMoodComputation();
-    enableEmotionDecay();
-  }
+//  public synchronized void setAffectMonitor(AffectMonitor affectMonitor) {
+//    disableEmotionDecay();
+//    disableMoodComputation();
+//    if (affectMonitor != null) {
+//      fAffectMonitor = affectMonitor;
+//      fShowAffectMonitor = true;
+//      fAffectMonitor.addEmotionMaintenanceListener(fCharacterManagerInstance);
+//      fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+//      fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
+//        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
+//    }
+//    enableMoodComputation();
+//    enableEmotionDecay();
+//  }
 
   /**
    * Sets a new affect status display for this character.
    *
    * @param affectStatus the new affect status display
    */
-  public synchronized void setAffectStatusDisplay(AffectStatusDisplay affectStatus) {
-    disableEmotionDecay();
-    disableMoodComputation();
-    if (affectStatus != null) {
-      fAffectStatusDisplay = affectStatus;
-      fAffectStatusDisplay.updateStatusDisplay(fName, fEmotionVector,
-        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
-    }
-    enableMoodComputation();
-    enableEmotionDecay();
-  }
+//  public synchronized void setAffectStatusDisplay(AffectStatusDisplay affectStatus) {
+//    disableEmotionDecay();
+//    disableMoodComputation();
+//    if (affectStatus != null) {
+//      fAffectStatusDisplay = affectStatus;
+//      fAffectStatusDisplay.updateStatusDisplay(fName, fEmotionVector,
+//        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
+//    }
+//    enableMoodComputation();
+//    enableEmotionDecay();
+//  }
 
   /**
    * The
@@ -349,10 +324,10 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
     public synchronized void run() {
       fCurrentMood = fMoodEngine.compute(fCurrentMood, fEmotionVector);
       fCurrentMoodTendency = fMoodEngine.getCurrentMoodTendency();
-      if ((fAffectMonitor != null) && fShowAffectMonitor) {
-        fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
-          fDefaultMood, fCurrentMood, fCurrentMoodTendency);
-      }
+//      if ((fAffectMonitor != null) && fShowAffectMonitor) {
+//        fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
+//          fDefaultMood, fCurrentMood, fCurrentMoodTendency);
+      //}
     }
   }
 
@@ -437,11 +412,11 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
     fDefaultMood = getDefaultMood(personality);
     fCurrentMood = getDefaultMood(personality);
 
-    if ((fAffectMonitor != null) && fShowAffectMonitor) {
-      fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
-        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
-    }
+//    if ((fAffectMonitor != null) && fShowAffectMonitor) {
+//      fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+//      fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
+//        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
+//    }
 
     enableMoodComputation();
     enableEmotionDecay();
@@ -480,11 +455,11 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
     fEmotionHistory.add(result);
     fEmotionVector = fEmotionHistory.getEmotionalState(fEmotionVector);
 
-    if ((fAffectMonitor != null) && fShowAffectMonitor) {
-      fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
-        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
-    }
+//    if ((fAffectMonitor != null) && fShowAffectMonitor) {
+//      fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+//      fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
+//        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
+//    }
     return result;
   }
 
@@ -499,11 +474,11 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
     fEmotionHistory.add(result);
     fEmotionVector = fEmotionHistory.getEmotionalState(fEmotionVector);
 
-    if ((fAffectMonitor != null) && fShowAffectMonitor) {
-      fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-      fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
-        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
-    }
+//    if ((fAffectMonitor != null) && fShowAffectMonitor) {
+//      fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+//      fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
+//        fDefaultMood, fCurrentMood, fCurrentMoodTendency);
+//    }
     return result;
   }
 
@@ -574,12 +549,12 @@ public class CharacterManager extends EntityManager implements EmotionMaintenanc
       fEmotionVector = fEmotionHistory.getEmotionalState(fEmotionVector);
 
       // show elicited emotion(s) in affect monitor even if affect computation is paused
-      if ((fAffectMonitor != null) && fShowAffectMonitor) {
-        fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
-
-        fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
-          fDefaultMood, fCurrentMood, fCurrentMoodTendency);
-      }
+//      if ((fAffectMonitor != null) && fShowAffectMonitor) {
+//        fAffectMonitor.updateEmotionDisplay(fName, fEmotionVector);
+//
+//        fAffectMonitor.updateMoodDisplay(fName, fEmotionVector, fMoodEngine.getEmotionsCenter(),
+//          fDefaultMood, fCurrentMood, fCurrentMoodTendency);
+//      }
     }
   }
 }
